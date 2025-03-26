@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class EnemyParent : MonoBehaviour
 {
-    
     private CircleCollider2D enemyCollider;
     private Transform target;
 
+    [Header ("Enemy Stats")]
     public float movementSpeed = 4f;
     public float sightRange = 10;
 
@@ -18,7 +18,7 @@ public class EnemyParent : MonoBehaviour
     private float lastAttackTime = 0f;
     public float attackCooldown = 1f;
 
-    public int health = 3;
+    public int health = 100;
 
     private float scaleX;
 
