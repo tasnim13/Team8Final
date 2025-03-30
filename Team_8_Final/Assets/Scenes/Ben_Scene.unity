@@ -3003,6 +3003,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1501532120083861143, guid: ebf8c7ab3beaf4c4ba58c03ee7ba573c, type: 3}
+      propertyPath: attackRange
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501532120083861143, guid: ebf8c7ab3beaf4c4ba58c03ee7ba573c, type: 3}
+      propertyPath: jumpTimeMax
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501532120083861143, guid: ebf8c7ab3beaf4c4ba58c03ee7ba573c, type: 3}
+      propertyPath: jumpDistance
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501532120083861143, guid: ebf8c7ab3beaf4c4ba58c03ee7ba573c, type: 3}
+      propertyPath: jumpDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650127629333637156, guid: ebf8c7ab3beaf4c4ba58c03ee7ba573c, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1885345273113006069, guid: ebf8c7ab3beaf4c4ba58c03ee7ba573c, type: 3}
       propertyPath: m_Name
       value: BeetleEnemy

@@ -23,54 +23,57 @@ public class EnemyParent : MonoBehaviour
     private float scaleX;
 
     public virtual void Start () {
-            //Obtain circle collider for attack range purposes
-            enemyCollider = GetComponent<CircleCollider2D>();
-            enemyCollider.radius = attackRange;
+        //Obtain circle collider for attack range purposes
+        enemyCollider = GetComponent<CircleCollider2D>();
+        enemyCollider.radius = attackRange;
 
-            //Obtain position of this object
-            scaleX = gameObject.transform.localScale.x;
+        //Obtain position of this object
+        scaleX = gameObject.transform.localScale.x;
 
-            //Identify player for position tracking
-            if (GameObject.FindGameObjectWithTag ("Player") != null) {
-                    target = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform> ();
-            }
+        //Identify player for position tracking
+        if (GameObject.FindGameObjectWithTag ("Player") != null) {
+                target = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform> ();
+        }
     }
 
     public virtual void FixedUpdate () {
-            //Track player position and lurk when in sight range
-            float DistToPlayer = Vector3.Distance(transform.position, target.position);
+        //Track player position and lurk when in sight range
+        float DistToPlayer = Vector3.Distance(transform.position, target.position);
 
-            if ((target != null) && (DistToPlayer <= sightRange)){
-                    transform.position = Vector2.MoveTowards (transform.position, target.position, movementSpeed * Time.deltaTime);
-                //flip enemy to face player direction. Wrong direction? Swap the * -1.
-                if (target.position.x > gameObject.transform.position.x){
-                                gameObject.transform.localScale = new Vector2(scaleX, gameObject.transform.localScale.y);
-                } else {
-                                gameObject.transform.localScale = new Vector2(scaleX * -1, gameObject.transform.localScale.y);
-                }
-            }
+        //Detect if player is within sight range
+        if ((target != null) && (DistToPlayer <= sightRange)){
+                //Actively lurk the player
+                transform.position = Vector2.MoveTowards (transform.position, target.position, movementSpeed * Time.deltaTime);
+                
+                //Calculate direction to player
+                Vector2 direction = target.position - transform.position;
+                //Calculate angle in degrees
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                //Make sure the top of the sprite faces the player
+                transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
+        }
 
-            //Deal damage when player is within attack range
-            if (isAttacking && Time.time >= lastAttackTime + attackCooldown) {
+        //Deal damage when player is within attack range
+        if (isAttacking && Time.time >= lastAttackTime + attackCooldown) {
                 GameHandler.playerHealth -= damage;
                 lastAttackTime = Time.time;
-            }
+        }
     }
 
     //When player is in range and being attacked
     public virtual void OnTriggerEnter2D(Collider2D collision){
-            if (collision.CompareTag("Player")) {
-                    isAttacking = true;
-                    //anim.SetBool("Attack", true);
-            }
+        if (collision.CompareTag("Player")) {
+                isAttacking = true;
+                //anim.SetBool("Attack", true);
+        }
     }
 
     //When player is out of range and no longer being attacked
     public virtual void OnTriggerExit2D(Collider2D collision){
-            if (collision.CompareTag("Player")) {
-                    isAttacking = false;
-                    //anim.SetBool("Attack", false);
-            }
+        if (collision.CompareTag("Player")) {
+                isAttacking = false;
+                //anim.SetBool("Attack", false);
+        }
     }
 
     //DISPLAY attack range and sight range

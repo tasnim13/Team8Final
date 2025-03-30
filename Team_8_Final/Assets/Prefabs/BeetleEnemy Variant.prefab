@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 283710929326130265, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 283710929326130265, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_LocalScale.x
@@ -145,8 +145,10 @@ MonoBehaviour:
   movementSpeed: 4
   sightRange: 2
   damage: 3
-  attackRange: 0.35
+  attackRange: 0.3
   attackCooldown: 1
   health: 100
+  jumpDistance: 1.6
+  jumpDuration: 0.1
   jumpTimeMin: 0
   jumpTimeMax: 10
