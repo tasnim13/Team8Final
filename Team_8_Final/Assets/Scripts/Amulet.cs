@@ -26,25 +26,36 @@ public class Amulet : MonoBehaviour{
 
       public void OnTriggerEnter2D (Collider2D other){
             if (other.gameObject.tag == "Player"){
+                  PlayerForms forms = other.gameObject.GetComponent<PlayerForms>();
                   GetComponent<Collider2D>().enabled = false;
+                  // TODO: the audio clip here gets cut off. Also
+                  // we're using a TF2 one right now
                   GetComponent<AudioSource>().Play();
                   StartCoroutine(DestroyThis());
 
                   switch (amuletID) {
                     case 0:
-                        Debug.Log("picked up generic amulet!");
+                        // Debug.Log("picked up generic amulet!");
                         break;
                     case 1:
-                        Debug.Log("Picked up Amulet of Wadjet!");
+                        forms.unlock(1);
+                        forms.ChangeForm(1);
+                        // Debug.Log("Picked up Amulet of Wadjet!");
                         break;
                     case 2:
-                        Debug.Log("Picked up Amulet of Khnum!");
+                        forms.unlock(2);
+                        forms.ChangeForm(2);
+                        // Debug.Log("Picked up Amulet of Khnum!");
                         break;
                     case 3:
-                        Debug.Log("Picked up Amulet of Horus");
+                        forms.unlock(3);
+                        forms.ChangeForm(3);
+                        // Debug.Log("Picked up Amulet of Horus");
                         break;
                     case 4:
-                        Debug.Log("Picked up Amulet of Sekhmet!");
+                        forms.unlock(4);
+                        forms.ChangeForm(4);
+                        // Debug.Log("Picked up Amulet of Sekhmet!");
                         break;
                     default:
                         Debug.Log("UH OH! Unknown Amulet type");
