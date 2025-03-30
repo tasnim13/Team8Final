@@ -22,7 +22,7 @@ public class EnemyParent : MonoBehaviour
 
     private float scaleX;
 
-    void Start () {
+    public virtual void Start () {
             //Obtain circle collider for attack range purposes
             enemyCollider = GetComponent<CircleCollider2D>();
             enemyCollider.radius = attackRange;
@@ -36,7 +36,7 @@ public class EnemyParent : MonoBehaviour
             }
     }
 
-    void FixedUpdate () {
+    public virtual void FixedUpdate () {
             //Track player position and lurk when in sight range
             float DistToPlayer = Vector3.Distance(transform.position, target.position);
 
@@ -58,26 +58,26 @@ public class EnemyParent : MonoBehaviour
     }
 
     //When player is in range and being attacked
-    public void OnTriggerEnter2D(Collider2D collision){
+    public virtual void OnTriggerEnter2D(Collider2D collision){
             if (collision.CompareTag("Player")) {
                     isAttacking = true;
-                    Debug.Log("DAMAGE!");
                     //anim.SetBool("Attack", true);
             }
     }
 
     //When player is out of range and no longer being attacked
-    public void OnTriggerExit2D(Collider2D collision){
+    public virtual void OnTriggerExit2D(Collider2D collision){
             if (collision.CompareTag("Player")) {
-                    Debug.Log("NO DAMAGE.");
                     isAttacking = false;
                     //anim.SetBool("Attack", false);
             }
     }
 
     //DISPLAY attack range and sight range
-    void OnDrawGizmosSelected(){
-            Gizmos.DrawWireSphere(transform.position, sightRange);
-            Gizmos.DrawWireSphere(transform.position, attackRange);
+    public virtual void OnDrawGizmosSelected(){
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
