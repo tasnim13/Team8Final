@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameHandler
   - PauseMenuSlider
+  - Amulet
   layers:
   - Default
   - TransparentFX
