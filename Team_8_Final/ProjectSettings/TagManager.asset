@@ -4,16 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - GameHandler
-  - PauseMenuSlider
+  - Enemy
+  - Walls
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Obstacles
   - 
   - 
   - Enemy
