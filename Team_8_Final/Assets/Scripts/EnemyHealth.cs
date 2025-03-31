@@ -25,7 +25,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
-        Debug.Log($"{gameObject.name} died!");
+        Debug.Log($"{gameObject.name} is dead.");
         Destroy(gameObject);
     }
 }
