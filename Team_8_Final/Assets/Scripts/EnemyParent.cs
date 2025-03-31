@@ -64,7 +64,6 @@ public class EnemyParent : MonoBehaviour
     public virtual void OnTriggerEnter2D(Collider2D collision){
         if (collision.CompareTag("Player")) {
                 isAttacking = true;
-                //anim.SetBool("Attack", true);
         }
     }
 
@@ -72,7 +71,6 @@ public class EnemyParent : MonoBehaviour
     public virtual void OnTriggerExit2D(Collider2D collision){
         if (collision.CompareTag("Player")) {
                 isAttacking = false;
-                //anim.SetBool("Attack", false);
         }
     }
 
