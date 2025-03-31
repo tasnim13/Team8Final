@@ -5,17 +5,20 @@ using UnityEngine.UI;
 
 public class EnemyParent : MonoBehaviour
 {
+    [Header ("Don't Touch")]
     private CircleCollider2D enemyCollider;
-    private Transform target;
+    public Transform target;
+    public bool isAttacking = false;
+    public float lastAttackTime = 0f;
 
     [Header ("Enemy Stats")]
     public float movementSpeed = 4f;
-    public float sightRange = 10;
+    public float sightRange = 10f;
+    public float sightOffsetX = 0f;
+    public float sightOffsetY = 0f;
 
     public int damage = 10;
     public float attackRange = 1f;
-    private bool isAttacking = false;
-    private float lastAttackTime = 0f;
     public float attackCooldown = 1f;
 
     public int health = 100;
@@ -26,6 +29,7 @@ public class EnemyParent : MonoBehaviour
         //Obtain circle collider for attack range purposes
         enemyCollider = GetComponent<CircleCollider2D>();
         enemyCollider.radius = attackRange;
+        enemyCollider.offset = new Vector2(sightOffsetX, sightOffsetY);
 
         //Obtain position of this object
         scaleX = gameObject.transform.localScale.x;
@@ -75,10 +79,14 @@ public class EnemyParent : MonoBehaviour
     }
 
     //DISPLAY attack range and sight range
-    public virtual void OnDrawGizmosSelected(){
+    public virtual void OnDrawGizmosSelected()
+    {
+        Vector3 offset = new Vector3(sightOffsetX, sightOffsetY, 0f);
+        //Sight range - Blue
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.DrawWireSphere(transform.position + offset, sightRange);
+        //Attack range - Red
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.DrawWireSphere(transform.position + offset, attackRange);
     }
 }
