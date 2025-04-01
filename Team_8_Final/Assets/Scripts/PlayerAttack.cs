@@ -5,6 +5,8 @@ using UnityEngine;
 // for now this is just hand ot hand combat damange. we will later use this template to set up a swtich between weapons.
 public class PlayerAttack : MonoBehaviour
 {
+    public AudioClip weaponSwitchClip;           // Sound to play on weapon switch
+    private AudioSource audioSource;     
     public Transform attackPoint;              // Empty GameObject where attack originates
     public float attackRange = 1f;             // Radius for detecting enemies
     public LayerMask enemyLayers;              // Layer(s) that count as enemies
@@ -27,6 +29,10 @@ public class PlayerAttack : MonoBehaviour
             Attack();
         }
     }
+void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void SwitchWeapon()
     {
@@ -42,17 +48,22 @@ public class PlayerAttack : MonoBehaviour
 
         Debug.Log($"Switched to {weaponName} (Index {currentWeaponIndex})");
 
-        // Set the sprite if it's not hand-to-hand, otherwise clear it
         if (weaponRenderer != null)
         {
-            if (currentWeaponIndex == 0)
-            {
-                weaponRenderer.sprite = null; // Clear the weapon sprite
-            }
-            else if (weaponSprites.Length > currentWeaponIndex)
+            if (weaponSprites != null && weaponSprites.Length > currentWeaponIndex)
             {
                 weaponRenderer.sprite = weaponSprites[currentWeaponIndex];
             }
+            else
+            {
+                weaponRenderer.sprite = null;
+            }
+        }
+
+        // Play weapon switch sound
+        if (weaponSwitchClip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(weaponSwitchClip);
         }
     }
 
