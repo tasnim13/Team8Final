@@ -1,10 +1,9 @@
 using UnityEngine;
 
-using UnityEngine;
-
 public class EnemyHippo : EnemyParent
 {
     private Animator anim;
+
     [Header("Hippo-Specific Stats")]
     public float visionWidth = 3f;
     public float visionHeight = 10f;
@@ -20,7 +19,7 @@ public class EnemyHippo : EnemyParent
         if (target != null && IsPlayerInSight())
         {
             isCharging = true;
-            
+
             transform.position = Vector2.MoveTowards(transform.position, target.position, movementSpeed * Time.deltaTime);
 
             Vector2 direction = target.position - transform.position;

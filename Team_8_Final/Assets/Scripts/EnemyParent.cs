@@ -22,6 +22,8 @@ public class EnemyParent : MonoBehaviour
     public float attackCooldown = 1f;
 
     public int health = 100;
+    private int currHealth = 0;
+    public HealthBar healthBar;
 
     private float scaleX;
 
@@ -38,6 +40,10 @@ public class EnemyParent : MonoBehaviour
         if (GameObject.FindGameObjectWithTag ("Player") != null) {
                 target = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform> ();
         }
+
+        //Set health to max
+        currHealth = health;
+        healthBar.Initialize();
     }
 
     public virtual void FixedUpdate () {
@@ -64,6 +70,13 @@ public class EnemyParent : MonoBehaviour
         }
     }
 
+    public virtual void Update() {
+        //Test health bar & damage
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            TakeDamage(4);
+        }
+    }
+
     //When player is in range and being attacked
     public virtual void OnTriggerEnter2D(Collider2D collision){
         if (collision.CompareTag("Player")) {
@@ -75,6 +88,19 @@ public class EnemyParent : MonoBehaviour
     public virtual void OnTriggerExit2D(Collider2D collision){
         if (collision.CompareTag("Player")) {
                 isAttacking = false;
+        }
+    }
+
+    public void TakeDamage(int damage) {
+        currHealth -= damage;
+        currHealth = Mathf.Max(0, currHealth);
+        float percent = (float)currHealth / health;
+        healthBar.UpdateBar(percent);
+
+        //Destoy enemy if health reaches zero
+        if (currHealth <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 
