@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// for now this is just hand ot hand combat damange. we will later use this template to set up a swtich between weapons.
+// for now we are manually setting the weapons. we need to decide if thats how we want to keep it or if we want a do a random weapon kind of situation.
 public class PlayerAttack : MonoBehaviour
 {
     public AudioClip weaponSwitchClip;           // Sound to play on weapon switch
     private AudioSource audioSource;     
-    public Transform attackPoint;              // Empty GameObject where attack originates
-    public float attackRange = 1f;             // Radius for detecting enemies
-    public LayerMask enemyLayers;              // Layer(s) that count as enemies
+    public Transform attackPoint;              // point of origin of attack... move aorund in scene to adjust
+    public float attackRange = 1f;             // attack radius... can be editied in inspector
+    public LayerMask enemyLayers;              // designate enemy layer
 
     private int currentWeaponIndex = 0;
 
-    public int[] weaponDamages = { 10, 20, 35 };       // Damage for hand, weapon1, weapon2
-    public Sprite[] weaponSprites;                     // Sprites for each weapon (set in Inspector)
-    public SpriteRenderer weaponRenderer;              // SpriteRenderer to show current weapon
+    public int[] weaponDamages = { 10, 20, 35 };       // damage array for each sprite... can be editied in inspector
+    public Sprite[] weaponSprites;                     // sprite array for different weapons
+    public SpriteRenderer weaponRenderer;              
 
     void Update()
     {
@@ -84,12 +84,4 @@ void Start()
         }
     }
 
-    // Draw attack range in Scene view
-    void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null) return;
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
 }
