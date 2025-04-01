@@ -65,6 +65,7 @@ public class EnemyParent : MonoBehaviour
 
         //Deal damage when player is within attack range
         if (isAttacking && Time.time >= lastAttackTime + attackCooldown) {
+                GetComponent<AudioSource>().Play();
                 GameHandler.playerHealth -= damage;
                 lastAttackTime = Time.time;
         }
