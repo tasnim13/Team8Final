@@ -32,8 +32,9 @@ public class EnemyHippo : EnemyParent
 
         if (isAttacking && Time.time >= lastAttackTime + attackCooldown)
         {
-            GetComponent<AudioSource>().Play();
-            GameHandler.playerHealth -= damage;
+            // GetComponent<AudioSource>().Play();
+            // GameHandler.playerHealth -= damage;
+            gameHandler.playerGetHit(damage);
             lastAttackTime = Time.time;
         }
     }

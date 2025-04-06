@@ -27,9 +27,9 @@ public class GameHandler : MonoBehaviour {
       void Start(){
             player = GameObject.FindWithTag("Player");
             sceneName = SceneManager.GetActiveScene().name;
-            //if (sceneName=="MainMenu"){ //uncomment these two lines when the MainMenu exists
+            if (sceneName=="MainMenu"){ //uncomment these two lines when the MainMenu exists
                   playerHealth = StartPlayerHealth;
-            //}
+            }
             updateStatsDisplay();
       }
 
@@ -39,49 +39,48 @@ public class GameHandler : MonoBehaviour {
       }
 
       public void playerGetHit(int damage){
-        //    if (isDefending == false){
-        //           playerHealth -= damage;
-        //           if (playerHealth >=0){
-        //                 updateStatsDisplay();
-        //           }
-        //           if (damage > 0){
-        //                 //play GetHit animation:
-        //                 player.GetComponent<PlayerHurt>().playerHit();
-        //           }
-        //     }
+            playerHealth -= damage;
+            if (playerHealth >=0){
+                  updateStatsDisplay();
+            }
+            if (damage > 0){
+                  //play GetHit animation:
+                  player.GetComponent<PlayerHurt>().playerHit();
+            }
 
+      // NOTE: this prevents overheal
         //    if (playerHealth > StartPlayerHealth){
         //           playerHealth = StartPlayerHealth;
         //           updateStatsDisplay();
         //     }
 
-        //    if (playerHealth <= 0){
-        //           playerHealth = 0;
-        //           updateStatsDisplay();
-        //           playerDies();
-        //     }
+           if (playerHealth <= 0){
+                  playerHealth = 0;
+                  updateStatsDisplay();
+                  playerDies();
+            }
       }
 
       public void updateStatsDisplay(){
-            // Text healthTextTemp = healthText.GetComponent<Text>();
-            // healthTextTemp.text = "HEALTH: " + playerHealth;
+            Text healthTextTemp = healthText.GetComponent<Text>();
+            healthTextTemp.text = "Player Health: " + playerHealth;
 
             // Text tokensTextTemp = tokensText.GetComponent<Text>();
             // tokensTextTemp.text = "GOLD: " + gotTokens;
       }
 
       public void playerDies(){
-            // player.GetComponent<PlayerHurt>().playerDead();       //play Death animation
-            // lastLevelDied = sceneName;       //allows replaying the Level where you died
-            // StartCoroutine(DeathPause());
+            player.GetComponent<PlayerHurt>().playerDead();       //play Death animation
+            lastLevelDied = sceneName;       //allows replaying the Level where you died
+            StartCoroutine(DeathPause());
       }
 
-    //   IEnumerator DeathPause(){
-    //         player.GetComponent<PlayerMove>().isAlive = false;
-    //         player.GetComponent<PlayerJump>().isAlive = false;
-    //         yield return new WaitForSeconds(1.0f);
-    //         SceneManager.LoadScene("EndLose");
-    //   }
+      IEnumerator DeathPause(){
+            // player.GetComponent<PlayerMove>().isAlive = false;
+            // player.GetComponent<PlayerJump>().isAlive = false;
+            yield return new WaitForSeconds(1.0f);
+            SceneManager.LoadScene("EndLose");
+      }
 
       public void StartGame() {
             SceneManager.LoadScene("Level1");

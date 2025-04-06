@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Move : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
     public float moveSpeed = 5f;  // Adjustable speed in Inspector
     private Rigidbody2D rb;

@@ -7,7 +7,7 @@ public class PlayerForms : MonoBehaviour
     public int currForm;
     private SpriteRenderer spriteRenderer;
     public Sprite[] formSprites;
-    private Move playermove;
+    private PlayerMove playermove;
 
     private bool isUnlockedCobra;
     private bool isUnlockedRam;
@@ -21,7 +21,7 @@ public class PlayerForms : MonoBehaviour
     void Start()
     {
         currForm = 0;
-        playermove = GetComponent<Move>();
+        playermove = GetComponent<PlayerMove>();
         spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
         isUnlockedCobra = false;
         isUnlockedRam = false;

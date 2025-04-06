@@ -26,6 +26,8 @@ public class EnemyParent : MonoBehaviour
     public HealthBar healthBar;
 
     private float scaleX;
+    
+    public GameHandler gameHandler;
 
     public virtual void Start () {
         //Obtain circle collider for attack range purposes
@@ -40,6 +42,8 @@ public class EnemyParent : MonoBehaviour
         if (GameObject.FindGameObjectWithTag ("Player") != null) {
                 target = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform> ();
         }
+
+        gameHandler = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();;
 
         //Set health to max
         currHealth = health;
@@ -65,8 +69,9 @@ public class EnemyParent : MonoBehaviour
 
         //Deal damage when player is within attack range
         if (isAttacking && Time.time >= lastAttackTime + attackCooldown) {
-                GetComponent<AudioSource>().Play();
-                GameHandler.playerHealth -= damage;
+                // GetComponent<AudioSource>().Play();
+                // GameHandler.playerHealth -= damage;
+                gameHandler.playerGetHit(damage);
                 lastAttackTime = Time.time;
         }
     }
