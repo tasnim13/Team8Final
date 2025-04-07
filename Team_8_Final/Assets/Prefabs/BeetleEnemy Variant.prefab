@@ -157,9 +157,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9b5df746722445ebefd665def2225d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   target: {fileID: 0}
   isAttacking: 0
   lastAttackTime: 0
+  lastPosition: {x: 0, y: 0, z: 0}
   movementSpeed: 4
   sightRange: 2
   sightOffsetX: 0
@@ -171,7 +173,7 @@ MonoBehaviour:
   healthBar: {fileID: 5271277856541061479}
   gameHandler: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
   jumpDistance: 1.6
-  jumpDuration: 0.15
+  jumpDuration: 0.1
   jumpTimeMin: 0
   jumpTimeMax: 10
 --- !u!95 &5586379193406158443

@@ -172,7 +172,7 @@ MonoBehaviour:
   movementSpeed: 1.5
   sightRange: 3.5
   sightOffsetX: 0
-  sightOffsetY: 0.4
+  sightOffsetY: 0.3
   damage: 12
   attackRange: 0.5
   attackCooldown: 2.5
