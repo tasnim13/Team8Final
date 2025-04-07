@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: player_punch
+  m_Name: player_attack_hands
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -22,13 +22,13 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 1328242415, guid: 5948675b780a544de89e6e6a5867c490, type: 3}
-    - time: 0.1
+    - time: 0.25
       value: {fileID: 918993662, guid: 5948675b780a544de89e6e6a5867c490, type: 3}
-    - time: 0.2
+    - time: 0.46666667
       value: {fileID: -474538419, guid: 5948675b780a544de89e6e6a5867c490, type: 3}
-    - time: 0.3
+    - time: 0.6666667
       value: {fileID: 1488154942, guid: 5948675b780a544de89e6e6a5867c490, type: 3}
-    - time: 0.4
+    - time: 0.8333333
       value: {fileID: 1328242415, guid: 5948675b780a544de89e6e6a5867c490, type: 3}
     attribute: m_Sprite
     path: 
@@ -62,7 +62,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.4166667
+    m_StopTime: 0.84999996
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
