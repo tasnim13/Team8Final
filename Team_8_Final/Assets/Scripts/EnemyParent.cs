@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class EnemyParent : MonoBehaviour
 {
     [Header ("Don't Touch")]
+    public Animator anim;
     private CircleCollider2D enemyCollider;
     public Transform target;
     public bool isAttacking = false;
     public float lastAttackTime = 0f;
+    public Vector3 lastPosition;
 
     [Header ("Enemy Stats")]
     public float movementSpeed = 4f;
@@ -39,18 +41,22 @@ public class EnemyParent : MonoBehaviour
         scaleX = gameObject.transform.localScale.x;
 
         //Identify player for position tracking
-        if (GameObject.FindGameObjectWithTag ("Player") != null) {
-                target = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform> ();
-        }
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform> ();
 
+        //Identify GameHandler
         gameHandler = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();;
 
         //Set health to max
         currHealth = health;
         healthBar.Initialize();
+
+        //Obtain animator and position for walking purposes
+        anim = GetComponent<Animator>();
+        lastPosition = transform.position;
+        
     }
 
-    public virtual void FixedUpdate () {
+    public virtual void Update () {
         //Track player position and lurk when in sight range
         float DistToPlayer = Vector3.Distance(transform.position, target.position);
 
@@ -67,21 +73,26 @@ public class EnemyParent : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
         }
 
+        //Simple check to see if the enemy is moving
+        bool isMoving = (transform.position != lastPosition);
+        anim.SetBool("isMoving", isMoving);
+        lastPosition = transform.position;
+
         //Deal damage when player is within attack range
         if (isAttacking && Time.time >= lastAttackTime + attackCooldown) {
                 // GetComponent<AudioSource>().Play();
-                // GameHandler.playerHealth -= damage;
-                gameHandler.playerGetHit(damage);
+                GameHandler.playerHealth -= damage;
+                //gameHandler.playerGetHit(damage);
                 lastAttackTime = Time.time;
         }
     }
 
-    public virtual void Update() {
-        //Test health bar & damage
+    //Testing Health Bar
+    /* public void Update() {
         if (Input.GetKeyDown(KeyCode.Space)) {
             TakeDamage(4);
         }
-    }
+    } */
 
     //When player is in range and being attacked
     public virtual void OnTriggerEnter2D(Collider2D collision){
@@ -97,6 +108,7 @@ public class EnemyParent : MonoBehaviour
         }
     }
 
+    //Take damage, update health bar and destroy enemy when dead 
     public void TakeDamage(int damage) {
         currHealth -= damage;
         currHealth = Mathf.Max(0, currHealth);
@@ -104,8 +116,7 @@ public class EnemyParent : MonoBehaviour
         healthBar.UpdateBar(percent);
 
         //Destoy enemy if health reaches zero
-        if (currHealth <= 0)
-        {
+        if (currHealth <= 0) {
             Destroy(gameObject);
         }
     }

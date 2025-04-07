@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeetleEnemy Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 725940972760891837, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1601208832716351989, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -165,6 +169,7 @@ MonoBehaviour:
   attackCooldown: 1
   health: 50
   healthBar: {fileID: 5271277856541061479}
+  gameHandler: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
   jumpDistance: 1.6
   jumpDuration: 0.15
   jumpTimeMin: 0
@@ -210,6 +215,10 @@ PrefabInstance:
       propertyPath: enemyParent
       value: 
       objectReference: {fileID: 1429586568027114001}
+    - target: {fileID: 4054826466187235888, guid: 0203ab8b7027a4f85b751ca5f40ece2e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5703480352641235854, guid: 0203ab8b7027a4f85b751ca5f40ece2e, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -220,6 +229,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5703480352641235854, guid: 0203ab8b7027a4f85b751ca5f40ece2e, type: 3}
       propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703480352641235854, guid: 0203ab8b7027a4f85b751ca5f40ece2e, type: 3}
+      propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5703480352641235854, guid: 0203ab8b7027a4f85b751ca5f40ece2e, type: 3}

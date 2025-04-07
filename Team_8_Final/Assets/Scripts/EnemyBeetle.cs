@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyBeetle : EnemyParent
 {
-    private Animator anim;
     [Header ("Beetle-Specific Stats")]
     public float jumpDistance = 1f;
     public float jumpDuration = 0.1f;
@@ -20,15 +19,9 @@ public class EnemyBeetle : EnemyParent
     private float jumpTimer = 0f;
     private bool isJumping = false;
 
-    public override void Start() {
-        base.Start();
-        anim = GetComponent<Animator>();
-    }
-
     // Update is called once per frame
-    public override void FixedUpdate()
-    {
-        base.FixedUpdate();
+    public override void Update() {
+        base.Update();
 
         //Jump in a random direction at a random time
         if (Time.time >= lastJumpTime + jumpCooldown) {

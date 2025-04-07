@@ -104,6 +104,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HippoEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 725940972760891837, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1601208832716351989, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Radius
       value: 0.5
@@ -173,6 +177,7 @@ MonoBehaviour:
   attackCooldown: 2
   health: 100
   healthBar: {fileID: 1990109255323008107}
+  gameHandler: {fileID: 0}
   visionWidth: 1
   visionHeight: 4.5
 --- !u!224 &3067852746935299012 stripped

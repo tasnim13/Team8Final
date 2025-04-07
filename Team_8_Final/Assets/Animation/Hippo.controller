@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isCharging
+    m_ConditionEvent: isMoving
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5130126115362306033}
@@ -88,7 +88,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isCharging
+    m_ConditionEvent: isMoving
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3499066829831355971}
@@ -113,7 +113,7 @@ AnimatorController:
   m_Name: Hippo
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: isCharging
+  - m_Name: isMoving
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -143,10 +143,10 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -5130126115362306033}
-    m_Position: {x: 230.60583, y: 293.46793, z: 0}
+    m_Position: {x: 230, y: 290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3499066829831355971}
-    m_Position: {x: 520.369, y: 315.96097, z: 0}
+    m_Position: {x: 500, y: 460, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
