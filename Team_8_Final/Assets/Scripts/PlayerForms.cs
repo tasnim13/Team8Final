@@ -7,7 +7,8 @@ public class PlayerForms : MonoBehaviour
     public int currForm;
     private SpriteRenderer spriteRenderer;
     public Sprite[] formSprites;
-    private PlayerMove playermove;
+    // private PlayerMove playermove;
+    private PlayerMoveNoAnim playermove;
 
     private bool isUnlockedCobra;
     private bool isUnlockedRam;
@@ -16,12 +17,15 @@ public class PlayerForms : MonoBehaviour
 
     private float cooldownTime;
     private bool cooldownOver;
+    private float baseSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
         currForm = 0;
-        playermove = GetComponent<PlayerMove>();
+        // playermove = GetComponent<PlayerMove>();
+        playermove = GetComponent<PlayerMoveNoAnim>();
+        baseSpeed = playermove.moveSpeed;
         spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
         isUnlockedCobra = false;
         isUnlockedRam = false;
@@ -95,23 +99,23 @@ public class PlayerForms : MonoBehaviour
             switch (id) {
                 case 0:
                     Debug.Log("TRANSFORMING: GENERIC");
-                    playermove.moveSpeed = 5f;
+                    playermove.moveSpeed = baseSpeed;
                     break;
                 case 1:
                     Debug.Log("TRANSFORMING: Cobra");
-                    playermove.moveSpeed = 5f;
+                    playermove.moveSpeed = baseSpeed;
                     break;
                 case 2:
                     Debug.Log("TRANSFORMING: Ram");
-                    playermove.moveSpeed = 7f;
+                    playermove.moveSpeed = baseSpeed * 1.5f;
                     break;
                 case 3:
                     Debug.Log("TRANSFORMING: Falcon");
-                    playermove.moveSpeed = 1f;
+                    playermove.moveSpeed = baseSpeed / 3f;
                     break;
                 case 4:
                     Debug.Log("TRANSFORMING: Lioness");
-                    playermove.moveSpeed = 10f;
+                    playermove.moveSpeed = baseSpeed * 2f;
                     break;
                 default:
                     break;

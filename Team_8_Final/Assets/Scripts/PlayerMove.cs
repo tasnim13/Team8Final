@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour {
 
-       public float speed = 3f; // player movement speed
+       public float moveSpeed = 3f; // player movement speed
        private Vector3 change; // player movement direction
        private Rigidbody2D rb2d;
        private Animator anim;
@@ -48,7 +48,7 @@ public class PlayerMove : MonoBehaviour {
        void UpdateAnimationAndMove() {
               if (isAlive == true){
                      if (change!=Vector3.zero) {
-                            rb2d.MovePosition(transform.position + change * speed * Time.deltaTime);
+                            rb2d.MovePosition(transform.position + change * moveSpeed * Time.deltaTime);
                             anim.SetBool("Walk", true);
                             //if (!audioWalk.isPlaying){ audioWalk.Play(); }
                      } else {
