@@ -19,6 +19,11 @@ public class PlayerForms : MonoBehaviour
     private bool cooldownOver;
     private float baseSpeed;
 
+    public AmuletIcon ramIcon;
+    public AmuletIcon cobraIcon;
+    public AmuletIcon falconIcon;
+    public AmuletIcon lionessIcon;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,20 +47,28 @@ public class PlayerForms : MonoBehaviour
                 break;
             case 1:
                 isUnlockedCobra = true;
+                cobraIcon.unlock();
                 break;
             case 2:
                 isUnlockedRam = true;
+                ramIcon.unlock();
                 break;
             case 3:
                 isUnlockedFalcon = true;
+                falconIcon.unlock();
                 break;
             case 4:
                 isUnlockedLioness = true;
+                lionessIcon.unlock();
                 break;
             default:
                 Debug.Log("Uh OH! unlock error");
                 break;
         }
+        ramIcon.select(id);
+        cobraIcon.select(id);
+        falconIcon.select(id);
+        lionessIcon.select(id);
     }
 
 
@@ -95,6 +108,12 @@ public class PlayerForms : MonoBehaviour
     public void ChangeForm(int id) {
         if (0 <= id && id <= 4) {
             ChangeSprite(formSprites[id]);
+
+            ramIcon.select(id);
+            cobraIcon.select(id);
+            falconIcon.select(id);
+            lionessIcon.select(id);
+
             currForm = id;
             switch (id) {
                 case 0:
