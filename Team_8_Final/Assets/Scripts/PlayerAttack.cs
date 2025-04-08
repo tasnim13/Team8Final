@@ -81,6 +81,7 @@ void Start()
         {
             Debug.Log($"Hit enemy: {enemy.name}");
             enemy.GetComponent<EnemyHealth>()?.TakeDamage(attackDamage);
+            enemy.GetComponent<EnemyParent>()?.TakeDamage(attackDamage);
         }
     }
 

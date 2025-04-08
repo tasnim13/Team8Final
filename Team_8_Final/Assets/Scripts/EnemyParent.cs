@@ -108,6 +108,29 @@ public class EnemyParent : MonoBehaviour
         }
     }
 
+    public void Die()
+    {
+        Debug.Log($"{gameObject.name} is dead.");
+
+        GameHandler handler = FindObjectOfType<GameHandler>();
+        if (handler != null)
+        {
+            // Set this enemy to null in the enemiesToDefeat array
+            for (int i = 0; i < handler.enemiesToDefeat.Length; i++)
+            {
+                if (handler.enemiesToDefeat[i] == gameObject)
+                {
+                    handler.enemiesToDefeat[i] = null;
+                    break;
+                }
+            }
+
+            handler.CheckEnemiesStatus();
+        }
+
+        Destroy(gameObject);
+    }
+
     //Take damage, update health bar and destroy enemy when dead 
     public void TakeDamage(int damage) {
         currHealth -= damage;
@@ -117,9 +140,11 @@ public class EnemyParent : MonoBehaviour
 
         //Destoy enemy if health reaches zero
         if (currHealth <= 0) {
-            Destroy(gameObject);
+            Die();
         }
     }
+
+    
 
     //DISPLAY attack range and sight range
     public virtual void OnDrawGizmosSelected()

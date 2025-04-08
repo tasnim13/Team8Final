@@ -11,11 +11,13 @@ GameObject:
   - component: {fileID: 4549346513664009381}
   - component: {fileID: 207589960713128813}
   - component: {fileID: 131332532908662273}
+  - component: {fileID: 348677604638894250}
+  - component: {fileID: 188399580772114784}
   - component: {fileID: 3997320265679319660}
   - component: {fileID: 6246753547471829311}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75bb35e36b1a84e999e0a362fa51e199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 35
 --- !u!114 &131332532908662273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,6 +72,37 @@ MonoBehaviour:
   weaponDamages: 0a0000001400000023000000
   weaponSprites: []
   weaponRenderer: {fileID: 0}
+--- !u!114 &348677604638894250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6225063006445170039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5797ac08a33648a5950603208a17a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2D: {fileID: 6246753547471829311}
+--- !u!114 &188399580772114784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6225063006445170039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea24751596cb408189928c21a5e1f5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currForm: 0
+  formSprites: []
+  ramIcon: {fileID: 0}
+  cobraIcon: {fileID: 0}
+  falconIcon: {fileID: 0}
+  lionessIcon: {fileID: 0}
 --- !u!61 &3997320265679319660
 BoxCollider2D:
   m_ObjectHideFlags: 0
