@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerForms : MonoBehaviour
 {
     public int currForm;
+    public bool shouldChangeSprite = false;
     private SpriteRenderer spriteRenderer;
     public Sprite[] formSprites;
-    // private PlayerMove playermove;
-    private PlayerMoveNoAnim playermove;
+    private PlayerMove playermove;
+    // private PlayerMoveNoAnim playermove;
 
     private bool isUnlockedCobra;
     private bool isUnlockedRam;
@@ -28,8 +29,8 @@ public class PlayerForms : MonoBehaviour
     void Start()
     {
         currForm = 0;
-        // playermove = GetComponent<PlayerMove>();
-        playermove = GetComponent<PlayerMoveNoAnim>();
+        playermove = GetComponent<PlayerMove>();
+        // playermove = GetComponent<PlayerMoveNoAnim>();
         baseSpeed = playermove.moveSpeed;
         spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
         isUnlockedCobra = false;
@@ -107,7 +108,9 @@ public class PlayerForms : MonoBehaviour
 
     public void ChangeForm(int id) {
         if (0 <= id && id <= 4) {
-            ChangeSprite(formSprites[id]);
+            if (shouldChangeSprite) {
+                ChangeSprite(formSprites[id]);
+            }
 
             ramIcon.select(id);
             cobraIcon.select(id);

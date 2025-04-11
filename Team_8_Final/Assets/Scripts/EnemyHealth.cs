@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -26,6 +27,23 @@ public class EnemyHealth : MonoBehaviour
     void Die()
     {
         Debug.Log($"{gameObject.name} is dead.");
+
+        GameHandler handler = FindObjectOfType<GameHandler>();
+        if (handler != null)
+        {
+            // Set this enemy to null in the enemiesToDefeat array
+            for (int i = 0; i < handler.enemiesToDefeat.Length; i++)
+            {
+                if (handler.enemiesToDefeat[i] == gameObject)
+                {
+                    handler.enemiesToDefeat[i] = null;
+                    break;
+                }
+            }
+
+            handler.CheckEnemiesStatus();
+        }
+
         Destroy(gameObject);
     }
 }
