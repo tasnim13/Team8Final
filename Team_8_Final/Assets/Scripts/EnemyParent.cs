@@ -30,6 +30,7 @@ public class EnemyParent : MonoBehaviour
     private float scaleX;
     
     public GameHandler gameHandler;
+    public PlayerHealthBar playerHealthBar;
 
     public virtual void Start () {
         //Obtain circle collider for attack range purposes
@@ -81,9 +82,9 @@ public class EnemyParent : MonoBehaviour
         //Deal damage when player is within attack range
         if (isAttacking && Time.time >= lastAttackTime + attackCooldown) {
                 // GetComponent<AudioSource>().Play();
-                GameHandler.playerHealth -= damage;
-                //gameHandler.playerGetHit(damage);
                 lastAttackTime = Time.time;
+                gameHandler.playerGetHit(damage);
+                playerHealthBar.UpdateHealthBar();
         }
     }
 
