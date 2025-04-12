@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75bb35e36b1a84e999e0a362fa51e199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 35
+  moveSpeed: 80
 --- !u!114 &131332532908662273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currForm: 0
+  shouldChangeSprite: 0
   formSprites: []
   ramIcon: {fileID: 0}
   cobraIcon: {fileID: 0}
@@ -174,7 +175,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &8243314648862392833
 GameObject:
   m_ObjectHideFlags: 0
