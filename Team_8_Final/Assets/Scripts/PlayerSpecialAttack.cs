@@ -8,6 +8,7 @@ public class PlayerSpecialAttack : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform firePoint;
     public float projectileSpeed = 10f;
+    // public float projectileSpeed = 0f;
 
     // Update is called once per frame
     // TODO: restrict to form
@@ -30,9 +31,12 @@ public class PlayerSpecialAttack : MonoBehaviour
         // GameObject projectile;
         
         for (int i = 0; i < num; i++) {
-            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+            Vector3 orb_placement = new Vector3(0, 0, i * (360f / num));
+            Vector3 fwd3 = fwd;
+            GameObject projectile = Instantiate(projectilePrefab, firePoint.position + fwd3, Quaternion.identity);
+
             projectile.GetComponent<Rigidbody2D>().AddForce(fwd * projectileSpeed, ForceMode2D.Impulse); 
-            projectile.GetComponentInChildren<SpriteRenderer>().transform.Rotate(new Vector3(0, 0, i * (360f / num)));
+            projectile.GetComponentInChildren<SpriteRenderer>().transform.Rotate(orb_placement);
             fwd = Quaternion.AngleAxis(360f / num, Vector3.forward) * fwd;
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour{
 
-      public int damage = 1;
+      public int damage = 45;
     //   public GameObject hitEffectAnim;
       public float SelfDestructTime = 0.3f;
       public float SelfDestructVFX = 0.5f;
@@ -19,19 +19,22 @@ public class PlayerProjectile : MonoBehaviour{
       //if the bullet hits a collider, play the explosion animation, then destroy the effect and the bullet
       void OnTriggerEnter2D(Collider2D other){
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
-                Debug.Log("PlayerProjectile: enemy hit");
                   //gameHandlerObj.playerGetHit(damage);
-                //   other.gameObject.GetComponent<EnemyMeleeDamage>().TakeDamage(damage);
+                  other.gameObject.GetComponent<EnemyParent>().TakeDamage(damage);
             }
-        //    if (other.gameObject.tag != "Player") {
-        // //    if (other.gameObject.tag != "Enemy" || other.gameObject.tag != "Player") {
-        //           gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        //         //   GameObject animEffect = Instantiate (hitEffectAnim, transform.position, Quaternion.identity);
-        //         //   projectileArt.SetActive(false);
-        //           //Destroy (animEffect, 0.5);
-        //         //   StartCoroutine(SelfDestructHit(animEffect));
-        //           StartCoroutine(SelfDestruct());
-            // }
+           if (other.gameObject.tag != "Player" && other.gameObject.tag != "Projectile") {
+                Debug.Log("collided with " + other.gameObject.name);
+        //    if (other.gameObject.tag != "Enemy" || other.gameObject.tag != "Player") {
+                  gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                //   GameObject animEffect = Instantiate (hitEffectAnim, transform.position, Quaternion.identity);
+                //   projectileArt.SetActive(false);
+                  //Destroy (animEffect, 0.5);
+                //   StartCoroutine(SelfDestructHit(animEffect));
+                  StartCoroutine(SelfDestruct());
+
+            }
+
+
       }
 
       IEnumerator SelfDestructHit(GameObject VFX){
