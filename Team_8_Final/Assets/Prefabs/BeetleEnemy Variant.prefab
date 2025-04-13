@@ -172,6 +172,7 @@ MonoBehaviour:
   health: 50
   healthBar: {fileID: 5271277856541061479}
   gameHandler: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
+  playerHealthBar: {fileID: 4575063029312613678, guid: 7019a1727748642259ff943cf41baf11, type: 3}
   jumpDistance: 1.6
   jumpDuration: 0.1
   jumpTimeMin: 0

@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Walls
+  - PauseMenuSlider
+  - GameHandler
+  - Amulet
+  - PlayerHealthBar
   layers:
   - Default
   - TransparentFX

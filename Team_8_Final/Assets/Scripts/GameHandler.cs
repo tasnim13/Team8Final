@@ -50,10 +50,10 @@ public class GameHandler : MonoBehaviour
         {
             updateStatsDisplay();
         }
-        if (damage > 0)
+        /*if (damage > 0)
         {
             player.GetComponent<PlayerHurt>().playerHit();
-        }
+        }*/
 
         if (playerHealth <= 0)
         {
