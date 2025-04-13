@@ -16,6 +16,7 @@ public class PlayerHealthBar : MonoBehaviour
 
     void Start()
     {
+        gameHandler = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         maxHealth = gameHandler.StartPlayerHealth;
         previousHealth = GameHandler.playerHealth;
         UpdateBarInstant();

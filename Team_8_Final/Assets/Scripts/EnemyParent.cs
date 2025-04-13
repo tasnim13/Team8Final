@@ -54,7 +54,9 @@ public class EnemyParent : MonoBehaviour
         //Obtain animator and position for walking purposes
         anim = GetComponent<Animator>();
         lastPosition = transform.position;
-        
+
+        //Get health bar
+        playerHealthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar").GetComponent<PlayerHealthBar>();
     }
 
     public virtual void Update () {
@@ -81,10 +83,11 @@ public class EnemyParent : MonoBehaviour
 
         //Deal damage when player is within attack range
         if (isAttacking && Time.time >= lastAttackTime + attackCooldown) {
-                // GetComponent<AudioSource>().Play();
-                lastAttackTime = Time.time;
-                gameHandler.playerGetHit(damage);
-                playerHealthBar.UpdateHealthBar();
+            // GetComponent<AudioSource>().Play();
+            //GameHandler.playerHealth -= 10;
+            lastAttackTime = Time.time;
+            gameHandler.playerGetHit(damage);
+            playerHealthBar.UpdateHealthBar();
         }
     }
 
