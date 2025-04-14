@@ -28,6 +28,7 @@ public class EnemyParent : MonoBehaviour
     public HealthBar healthBar;
 
     private float scaleX;
+    private Rigidbody2D rb;
     
     public GameHandler gameHandler;
     public PlayerHealthBar playerHealthBar;
@@ -51,45 +52,46 @@ public class EnemyParent : MonoBehaviour
         currHealth = health;
         healthBar.Initialize();
 
-        //Obtain animator and position for walking purposes
+        //Obtain animator for walking purposes
         anim = GetComponent<Animator>();
-        lastPosition = transform.position;
+
+        //Get rigidbody
+        rb = GetComponent<Rigidbody2D>();
 
         //Get health bar
         playerHealthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar").GetComponent<PlayerHealthBar>();
     }
 
     public virtual void Update () {
-        //Track player position and lurk when in sight range
-        float DistToPlayer = Vector3.Distance(transform.position, target.position);
-
-        //Detect if player is within sight range
-        if ((target != null) && (DistToPlayer <= sightRange)){
-                //Actively lurk the player
-                transform.position = Vector2.MoveTowards (transform.position, target.position, movementSpeed * Time.deltaTime);
-                
-                //Calculate direction to player
-                Vector2 direction = target.position - transform.position;
-                //Calculate angle in degrees
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                //Make sure the top of the sprite faces the player
-                transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
-        }
-
-        //Simple check to see if the enemy is moving
-        bool isMoving = (transform.position != lastPosition);
-        anim.SetBool("isMoving", isMoving);
-        lastPosition = transform.position;
-
         //Deal damage when player is within attack range
         if (isAttacking && Time.time >= lastAttackTime + attackCooldown) {
             // GetComponent<AudioSource>().Play();
-            //GameHandler.playerHealth -= 10;
             lastAttackTime = Time.time;
             gameHandler.playerGetHit(damage);
             playerHealthBar.UpdateHealthBar();
         }
     }
+
+    public virtual void FixedUpdate() {
+        //Track player position and lurk when in sight range
+        float distToPlayer = Vector3.Distance(transform.position, target.position);
+
+        //Detect if player is within sight range
+        if (distToPlayer <= sightRange) {
+            Vector2 direction = (target.position - transform.position).normalized;
+            Vector2 newPosition = rb.position + direction * movementSpeed * Time.fixedDeltaTime;
+            rb.MovePosition(newPosition);
+
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
+        }
+
+        //Check movement after applying Rigidbody movement
+        bool isMoving = (transform.position != lastPosition);
+        anim.SetBool("isMoving", isMoving);
+        lastPosition = transform.position;
+    }
+
 
     //Testing Health Bar
     /* public void Update() {
