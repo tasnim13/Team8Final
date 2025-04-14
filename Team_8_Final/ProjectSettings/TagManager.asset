@@ -11,6 +11,7 @@ TagManager:
   - PauseMenuSlider
   - Projectile
   - PlayerHealthBar
+  - PauseMenuUI
   layers:
   - Default
   - TransparentFX

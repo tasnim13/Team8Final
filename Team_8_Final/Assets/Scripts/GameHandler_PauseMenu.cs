@@ -20,6 +20,7 @@ public class GameHandler_PauseMenu : MonoBehaviour {
                         sliderVolumeCtrl = sliderTemp.GetComponent<Slider>();
                         sliderVolumeCtrl.value = volumeLevel;
                 }
+                pauseMenuUI = GameObject.FindWithTag("PauseMenuUI");
         }
 
         void Start(){
