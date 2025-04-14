@@ -12,6 +12,7 @@ public class EnemyParent : MonoBehaviour
     public bool isAttacking = false;
     public float lastAttackTime = 0f;
     public Vector3 lastPosition;
+    public Rigidbody2D rb;
 
     [Header ("Enemy Stats")]
     public float movementSpeed = 4f;
@@ -28,7 +29,6 @@ public class EnemyParent : MonoBehaviour
     public HealthBar healthBar;
 
     private float scaleX;
-    private Rigidbody2D rb;
     
     public GameHandler gameHandler;
     public PlayerHealthBar playerHealthBar;
@@ -46,7 +46,7 @@ public class EnemyParent : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform> ();
 
         //Identify GameHandler
-        gameHandler = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();;
+        gameHandler = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
 
         //Set health to max
         currHealth = health;

@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75bb35e36b1a84e999e0a362fa51e199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 70
+  moveSpeed: 80
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSwitchClip: {fileID: 0}
-  attackPoint: {fileID: 0}
+  attackPoint: {fileID: 4549346513664009381}
   attackRange: 1
   enemyLayers:
     serializedVersion: 2
