@@ -92,6 +92,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 598878460716135806, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -147,6 +159,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 725940972760891837, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       insertIndex: 2
       addedObject: {fileID: 8077581068240759044}
+    - targetCorrespondingSourceObject: {fileID: 725940972760891837, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2517805236410917462}
   m_SourcePrefab: {fileID: 100100000, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
 --- !u!1 &2553485119993753120 stripped
 GameObject:
@@ -165,9 +180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615fa02e252e046d4b0bc6eb708c0d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   target: {fileID: 0}
   isAttacking: 0
   lastAttackTime: 0
+  lastPosition: {x: 0, y: 0, z: 0}
   movementSpeed: 2
   sightRange: 4
   sightOffsetX: 0
@@ -177,9 +194,46 @@ MonoBehaviour:
   attackCooldown: 2
   health: 100
   healthBar: {fileID: 1990109255323008107}
-  gameHandler: {fileID: 0}
+  gameHandler: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
+  playerHealthBar: {fileID: 4575063029312613678, guid: 7019a1727748642259ff943cf41baf11, type: 3}
   visionWidth: 1
   visionHeight: 4.5
+  healthBarTransform: {fileID: 8997677476350370949}
+--- !u!70 &2517805236410917462
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2553485119993753120}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0055018067, y: -0.31031513}
+  m_Size: {x: 0.9986657, y: 1.3793697}
+  m_Direction: 0
 --- !u!224 &3067852746935299012 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 283710929326130265, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
@@ -205,6 +259,10 @@ PrefabInstance:
       propertyPath: enemyParent
       value: 
       objectReference: {fileID: 3067852746935299012}
+    - target: {fileID: 4054826466187235888, guid: 0203ab8b7027a4f85b751ca5f40ece2e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5703480352641235854, guid: 0203ab8b7027a4f85b751ca5f40ece2e, type: 3}
       propertyPath: m_RootOrder
       value: 7

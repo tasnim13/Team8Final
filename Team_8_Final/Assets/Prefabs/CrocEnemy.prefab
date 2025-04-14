@@ -92,6 +92,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 598878460716135806, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -146,6 +158,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 725940972760891837, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       insertIndex: 2
       addedObject: {fileID: 157800000478070578}
+    - targetCorrespondingSourceObject: {fileID: 725940972760891837, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4655780278679632998}
   m_SourcePrefab: {fileID: 100100000, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
 --- !u!1 &2394202389704038976 stripped
 GameObject:
@@ -173,15 +188,51 @@ MonoBehaviour:
   sightRange: 3.5
   sightOffsetX: 0
   sightOffsetY: 0.3
-  damage: 12
+  damage: 8
   attackRange: 0.5
   attackCooldown: 2.5
   health: 100
   healthBar: {fileID: 5259668532567627047}
   gameHandler: {fileID: 0}
+  playerHealthBar: {fileID: 0}
   hitsBeforeSpin: 3
-  spinDamage: 12
+  spinDamage: 13
   spinDuration: 0.5
+--- !u!70 &4655780278679632998
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2394202389704038976}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.000000059604645, y: 0.01801753}
+  m_Size: {x: 0.6506264, y: 1.0360351}
+  m_Direction: 0
 --- !u!224 &2937776884106305444 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 283710929326130265, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
