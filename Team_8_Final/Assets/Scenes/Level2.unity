@@ -1042,7 +1042,7 @@ PrefabInstance:
       objectReference: {fileID: 2059494540}
     - target: {fileID: 207589960713128813, guid: 8644c5c6b7b1f45c8a8c589697e4863b, type: 3}
       propertyPath: moveSpeed
-      value: 42
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3997320265679319660, guid: 8644c5c6b7b1f45c8a8c589697e4863b, type: 3}
       propertyPath: m_Enabled
@@ -1438,6 +1438,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f69a8e30c7e494deca9a67f723426167, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1062041997 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -1374926896474140559, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
+  m_PrefabInstance: {fileID: 1062041995}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffe296bcf5ed4503b2f4290aca3ede9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1072333290
@@ -2240,6 +2251,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1809513710}
     m_Modifications:
+    - target: {fileID: 3290033068124364354, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1062041997}
+    - target: {fileID: 3290033068124364354, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
     - target: {fileID: 5031273606223518389, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
       propertyPath: m_Name
       value: Player UI (no canvas)
