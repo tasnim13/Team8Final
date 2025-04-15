@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class PyramidClickHandler : MonoBehaviour
 {
-    public Canvas Canvas; // Assign the new Canvas in Inspector
-    public Canvas currentCanvas; // Assign the current Canvas in Inspector
+    public Canvas HomeVillage;  // Drag "Canvas" here
+    public Canvas Canvas;   // Drag your new Canvas here (e.g., PyramidCanvas)
 
     private void OnMouseDown()
     {
-        // When player clicks on this GameObject
-        if (newCanvas != null && currentCanvas != null)
+        if (HomeVillage != null && Canvas != null)
         {
-            currentCanvas.enabled = false; // Hide current canvas
-            newCanvas.enabled = true;      // Show new canvas
+            HomeVillage.gameObject.SetActive(false);  // Hide current canvas
+            Canvas.gameObject.SetActive(true);    // Show new canvas
         }
     }
 }
