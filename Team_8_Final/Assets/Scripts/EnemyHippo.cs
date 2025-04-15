@@ -2,37 +2,70 @@ using UnityEngine;
 
 public class EnemyHippo : EnemyParent
 {
-    [Header("Hippo-Specific Stats")]
+    [Header("Elephant-Specific Stats")]
     public float visionWidth = 3f;
     public float visionHeight = 10f;
+    public Transform visualTransform;
 
-    public override void Update() {
+    public override void Start() {
+        base.Start();
+        anim = GetComponentInChildren<Animator>();
+    }
 
-        if (target != null && IsPlayerInSight())
+    public override void FixedUpdate()
+    {
+        if (target == null) return;
+
+        Vector2 moveDirection = Vector2.zero;
+
+        if (IsPlayerInSight())
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, movementSpeed * Time.deltaTime);
+            moveDirection = (target.position - transform.position).normalized;
 
-            Vector2 direction = target.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            // Movement
+            Vector2 newPosition = rb.position + moveDirection * movementSpeed * Time.fixedDeltaTime;
+            rb.MovePosition(newPosition);
+
+            // Rotate
+            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
-        } 
-
-        if (isAttacking && Time.time >= lastAttackTime + attackCooldown)
-        {
-            // GetComponent<AudioSource>().Play();
-            GameHandler.playerHealth -= damage;
-            //gameHandler.playerGetHit(damage);
-            lastAttackTime = Time.time;
         }
 
-        //Simple check to see if the enemy is moving
+        // Animator blend tree inputs
+        anim.SetFloat("inputX", moveDirection.x);
+        anim.SetFloat("inputY", moveDirection.y);
+
+        if (moveDirection != Vector2.zero)
+        {
+            anim.SetFloat("lastInputX", moveDirection.x);
+            anim.SetFloat("lastInputY", moveDirection.y);
+        }
+
+        // Walk toggle
         bool isMoving = (transform.position != lastPosition);
         anim.SetBool("isMoving", isMoving);
         lastPosition = transform.position;
+
+        // Keep visual upright (no rotation)
+        if (visualTransform != null) {
+            visualTransform.rotation = Quaternion.identity;
+        }
     }
 
-    private bool IsPlayerInSight() {
-        //Create a rectangle from the top of the enemy
+    public override void Update()
+    {
+        // Use parent's attack logic
+        if (isAttacking && Time.time >= lastAttackTime + attackCooldown)
+        {
+            lastAttackTime = Time.time;
+            gameHandler.playerGetHit(damage);
+            playerHealthBar.UpdateHealthBar();
+        }
+    }
+
+    private bool IsPlayerInSight()
+    {
+        // Create a rectangle from the top of the enemy
         Vector2 origin = transform.position + transform.up * (visionHeight / 2);
         Vector2 size = new Vector2(visionWidth, visionHeight);
         Collider2D[] hits = Physics2D.OverlapBoxAll(origin, size, transform.eulerAngles.z);
@@ -47,10 +80,11 @@ public class EnemyHippo : EnemyParent
         return false;
     }
 
-    public override void OnDrawGizmosSelected() {
+    public override void OnDrawGizmosSelected()
+    {
         Gizmos.color = Color.green;
 
-        //Show vision box in Scene view
+        // Show vision box in Scene view
         Vector2 origin = transform.position + transform.up * (visionHeight / 2);
         Vector2 size = new Vector2(visionWidth, visionHeight);
         Quaternion rotation = Quaternion.Euler(0, 0, transform.eulerAngles.z);
@@ -58,7 +92,8 @@ public class EnemyHippo : EnemyParent
         Gizmos.matrix = Matrix4x4.TRS(origin, rotation, Vector3.one);
         Gizmos.DrawWireCube(Vector3.zero, size);
         Gizmos.matrix = Matrix4x4.identity;
-        //Show attack hitbox in Scene view
+
+        // Show attack hitbox in Scene view
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }

@@ -13,30 +13,39 @@ public class EnemyPhoenix : EnemyParent
     private int shotsFiredSinceLastSpiral = 0;
 
 
-    public override void FixedUpdate()
-    {
+    public override void FixedUpdate() {
         if (target == null) return;
 
         float distToPlayer = Vector3.Distance(transform.position, target.position);
 
+        Vector2 moveDirection = Vector2.zero;
+
         if (distToPlayer <= sightRange)
         {
-            // Movement (keep from parent)
-            Vector2 direction = (target.position - transform.position).normalized;
-            Vector2 newPosition = rb.position + direction * movementSpeed * Time.fixedDeltaTime;
+            moveDirection = (target.position - transform.position).normalized;
+
+            Vector2 newPosition = rb.position + moveDirection * movementSpeed * Time.fixedDeltaTime;
             rb.MovePosition(newPosition);
 
-            // 🔄 Custom: Rotate gradually toward player
-            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            //Rotate toward player over time
+            float targetAngle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
             Quaternion desiredRotation = Quaternion.Euler(0f, 0f, targetAngle - 90f);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, rotationSpeed * Time.fixedDeltaTime);
         }
 
-        // Movement animation
+        anim.SetFloat("inputX", moveDirection.x);
+        anim.SetFloat("inputY", moveDirection.y);
+
+        if (moveDirection != Vector2.zero) {
+            anim.SetFloat("lastInputX", moveDirection.x);
+            anim.SetFloat("lastInputY", moveDirection.y);
+        }
+
         bool isMoving = (transform.position != lastPosition);
         anim.SetBool("isMoving", isMoving);
         lastPosition = transform.position;
     }
+
 
     public override void Update()
     {

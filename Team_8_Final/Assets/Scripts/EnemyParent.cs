@@ -77,13 +77,26 @@ public class EnemyParent : MonoBehaviour
         float distToPlayer = Vector3.Distance(transform.position, target.position);
 
         //Detect if player is within sight range
-        if (distToPlayer <= sightRange) {
-            Vector2 direction = (target.position - transform.position).normalized;
-            Vector2 newPosition = rb.position + direction * movementSpeed * Time.fixedDeltaTime;
+        Vector2 moveDirection = Vector2.zero;
+
+        if (distToPlayer <= sightRange && target != null) {
+            moveDirection = (target.position - transform.position).normalized;
+
+            Vector2 newPosition = rb.position + moveDirection * movementSpeed * Time.fixedDeltaTime;
             rb.MovePosition(newPosition);
 
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
+        }
+
+        //Animation: Movement direction
+        anim.SetFloat("inputX", moveDirection.x);
+        anim.SetFloat("inputY", moveDirection.y);
+
+        //Animation: Store last direction if there's movement
+        if (moveDirection != Vector2.zero) {
+            anim.SetFloat("lastInputX", moveDirection.x);
+            anim.SetFloat("lastInputY", moveDirection.y);
         }
 
         //Check movement after applying Rigidbody movement

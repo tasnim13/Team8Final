@@ -72,8 +72,8 @@ MonoBehaviour:
   attackRange: 1
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 0
-  weaponDamages: 0a0000001400000023000000
+    m_Bits: 512
+  weaponDamages: 050000000500000005000000
   weaponSprites: []
   weaponRenderer: {fileID: 0}
 --- !u!114 &348677604638894250
