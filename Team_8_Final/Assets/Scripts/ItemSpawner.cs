@@ -4,24 +4,37 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
-    public GameObject itemArt; // Assign file_art here
-    public int maxItems = 2; // Limit to 3 spawns
+    public GameObject itemPrefab;    // This should be a prefab with SpriteRenderer
+    public Sprite[] possibleSprites; // Drag all your item sprites here in inspector
+    public int maxItems = 3;
 
     void Start()
     {
-        for (int i = 0; i < maxItems; i++) // Spawn exactly 3 items
+        List<int> usedIndexes = new List<int>();
+
+        for (int i = 0; i < maxItems; i++)
         {
-            SpawnItem();
+            int randomIndex;
+
+            // Ensure no duplicate sprites
+            do {
+                randomIndex = Random.Range(0, possibleSprites.Length);
+            } while (usedIndexes.Contains(randomIndex));
+
+            usedIndexes.Add(randomIndex);
+
+            SpawnItem(possibleSprites[randomIndex]);
         }
     }
 
-    void SpawnItem()
+    void SpawnItem(Sprite spriteToUse)
     {
         Vector2 randomPosition = new Vector2(
-            Random.Range(-8f, 8f),  // X position range
-            Random.Range(-4f, 4f)   // Y position range
+            Random.Range(-8f, 8f),
+            Random.Range(-4f, 4f)
         );
 
-        Instantiate(itemArt, randomPosition, Quaternion.identity);
+        GameObject newItem = Instantiate(itemPrefab, randomPosition, Quaternion.identity);
+        newItem.GetComponent<SpriteRenderer>().sprite = spriteToUse;
     }
 }

@@ -113,19 +113,19 @@ TextureImporter:
       name: AmuletArt_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 827
-        width: 160
-        height: 197
+        x: 19
+        y: 855
+        width: 129
+        height: 114
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d3c894eecc2945b49d68b8c7622dd62
-      internalID: 344941433
+      spriteID: 73ebd0323033d4d9cbcd83887f38a101
+      internalID: 916909555
       vertices: []
       indices: 
       edges: []
@@ -135,18 +135,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 292
-        y: 825
-        width: 163
-        height: 165
+        y: 829
+        width: 180
+        height: 161
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 611a2a94ab17d4ed5bc188232ea505fc
-      internalID: 378531343
+      spriteID: 5fdae8e7d2b45455dac60103a76627aa
+      internalID: 1027590775
       vertices: []
       indices: 
       edges: []
@@ -155,19 +155,19 @@ TextureImporter:
       name: AmuletArt_2
       rect:
         serializedVersion: 2
-        x: 540
-        y: 820
-        width: 158
-        height: 170
+        x: 543
+        y: 827
+        width: 146
+        height: 156
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 555a5a40074e94a9da42dbddd274f188
-      internalID: 1304788525
+      spriteID: 835d97c2bd37a4afa98f248f5ebd1591
+      internalID: -1268247172
       vertices: []
       indices: 
       edges: []
@@ -178,17 +178,17 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 626
-        width: 198
+        width: 189
         height: 142
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 293f3482ed1744a799e3b70814d1bc42
-      internalID: -243683496
+      spriteID: 62489d5093ff84e4daf53f11736223d9
+      internalID: 415629881
       vertices: []
       indices: 
       edges: []
@@ -197,19 +197,19 @@ TextureImporter:
       name: AmuletArt_4
       rect:
         serializedVersion: 2
-        x: 274
-        y: 612
-        width: 158
-        height: 156
+        x: 278
+        y: 615
+        width: 161
+        height: 148
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03366c1dbc61f4af2a3ad8e5d31a3fe3
-      internalID: -820837884
+      spriteID: 70689169070004b75af95cced1da8a54
+      internalID: -189107937
       vertices: []
       indices: 
       edges: []
@@ -223,14 +223,14 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 163c111c3967142bd8995dd50ff177ff
-      internalID: 1648995615
+      spriteID: e38087b6a58244620a33916aa61d8fa9
+      internalID: 914830742
       vertices: []
       indices: 
       edges: []
@@ -246,12 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      AmuletArt_0: 344941433
-      AmuletArt_1: 378531343
-      AmuletArt_2: 1304788525
-      AmuletArt_3: -243683496
-      AmuletArt_4: -820837884
-      AmuletArt_5: 1648995615
+      AmuletArt_0: 916909555
+      AmuletArt_1: 1027590775
+      AmuletArt_2: -1268247172
+      AmuletArt_3: 415629881
+      AmuletArt_4: -189107937
+      AmuletArt_5: 914830742
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
