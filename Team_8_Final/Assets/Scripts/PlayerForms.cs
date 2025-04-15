@@ -9,12 +9,13 @@ public class PlayerForms : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public Sprite[] formSprites;
     private PlayerMove playermove;
+    private PlayerSpecialAttack spatk;
     // private PlayerMoveNoAnim playermove;
 
-    private bool isUnlockedCobra;
-    private bool isUnlockedRam;
-    private bool isUnlockedFalcon;
-    private bool isUnlockedLioness;
+    public bool isUnlockedCobra;
+    public bool isUnlockedRam;
+    public bool isUnlockedFalcon;
+    public bool isUnlockedLioness;
 
     private float cooldownTime;
     private bool cooldownOver;
@@ -30,6 +31,7 @@ public class PlayerForms : MonoBehaviour
     {
         currForm = 0;
         playermove = GetComponent<PlayerMove>();
+        spatk = GetComponent<PlayerSpecialAttack>();
         // playermove = GetComponent<PlayerMoveNoAnim>();
         baseSpeed = playermove.moveSpeed;
         spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
@@ -85,18 +87,29 @@ public class PlayerForms : MonoBehaviour
     void Update()
     {
         if (cooldownOver) {
-            if (isUnlockedCobra && Input.GetKeyDown("1")) {
+            // TODO: updating numbers so it's fixed.
+            // if (isUnlockedCobra && Input.GetKeyDown("1")) {
+            if (isUnlockedCobra && Input.GetKeyDown("3")) {
                 // cooldownOver = false;
                 // ChangeForm(1);
                 StartCoroutine(ChangeFormWithCooldown(1));
-            } else if (isUnlockedRam && Input.GetKeyDown("2")) {
+            // } else if (isUnlockedRam && Input.GetKeyDown("2")) {
+            } else if (isUnlockedRam && Input.GetKeyDown("4")) {
                 StartCoroutine(ChangeFormWithCooldown(2));
-            } else if (isUnlockedFalcon && Input.GetKeyDown("3")) {
+            // } else if (isUnlockedFalcon && Input.GetKeyDown("3")) {
+            } else if (isUnlockedFalcon && Input.GetKeyDown("1")) {
                 StartCoroutine(ChangeFormWithCooldown(3));
-            } else if (isUnlockedLioness && Input.GetKeyDown("4")) {
+            // } else if (isUnlockedLioness && Input.GetKeyDown("4")) {
+            } else if (isUnlockedLioness && Input.GetKeyDown("2")) {
                 StartCoroutine(ChangeFormWithCooldown(4));
             } 
             // StartCoroutine(holdup(cooldownTime));
+        }
+
+        if (currForm == 4) {
+            if (Input.GetKeyDown(KeyCode.F)) {
+                spatk.roarAttack();
+            }
         }
     }
 
