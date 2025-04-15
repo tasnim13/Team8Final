@@ -14,13 +14,13 @@ public class PlayerSpecialAttack : MonoBehaviour
     // TODO: restrict to form
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) {
-            roarAttack();
-        }
+        // if (Input.GetKeyDown(KeyCode.F)) {
+        //     roarAttack();
+        // }
     }
 
 
-    void roarAttack() {
+    public void roarAttack() {
         // number of projectiles
         int num = 16;
         // TODO: ??
@@ -33,11 +33,25 @@ public class PlayerSpecialAttack : MonoBehaviour
         for (int i = 0; i < num; i++) {
             Vector3 orb_placement = new Vector3(0, 0, i * (360f / num));
             Vector3 fwd3 = fwd;
-            GameObject projectile = Instantiate(projectilePrefab, firePoint.position + fwd3, Quaternion.identity);
+            // GameObject projectile = Instantiate(projectilePrefab, firePoint.position + fwd3, Quaternion.identity);
+            // Start at center?
+            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
 
             projectile.GetComponent<Rigidbody2D>().AddForce(fwd * projectileSpeed, ForceMode2D.Impulse); 
             projectile.GetComponentInChildren<SpriteRenderer>().transform.Rotate(orb_placement);
             fwd = Quaternion.AngleAxis(360f / num, Vector3.forward) * fwd;
         }
+    }
+
+    public void ramAttack() {
+
+    }
+
+    public void snakeAttack() {
+        
+    }
+
+    public void falconAttack() {
+
     }
 }
