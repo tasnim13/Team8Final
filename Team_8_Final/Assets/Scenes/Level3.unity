@@ -2565,6 +2565,7 @@ RectTransform:
   - {fileID: 2112528750}
   - {fileID: 1094565922}
   - {fileID: 1689073051}
+  - {fileID: 1627729145}
   - {fileID: 1797860564}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -3005,6 +3006,72 @@ Transform:
   m_Father: {fileID: 2138781447}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1627729144
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1254161096}
+    m_Modifications:
+    - target: {fileID: 5031273606223518389, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
+      propertyPath: m_Name
+      value: Player UI (no canvas)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828472142660850302, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828472142660850302, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828472142660850302, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828472142660850302, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828472142660850302, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828472142660850302, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828472142660850302, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828472142660850302, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828472142660850302, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828472142660850302, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828472142660850302, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
+--- !u!4 &1627729145 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5828472142660850302, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
+  m_PrefabInstance: {fileID: 1627729144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1655437058
 GameObject:
   m_ObjectHideFlags: 0
@@ -4665,6 +4732,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AMULET ICONS
       objectReference: {fileID: 0}
+    - target: {fileID: 4462280854918438653, guid: 34fe362d4998f44388d6b91b6252f23f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5173,6 +5244,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 36ea48ebd22d54efdb766e719ff7d392, type: 3}
   - {fileID: 21300000, guid: c9273c5d3a1044aa3a29a45d3ced093d, type: 3}
   - {fileID: 21300000, guid: e6183dae6e2524de39576d8f04e1579f, type: 3}
+  isUnlockedCobra: 0
+  isUnlockedRam: 0
+  isUnlockedFalcon: 0
+  isUnlockedLioness: 0
   ramIcon: {fileID: 1689073054}
   cobraIcon: {fileID: 1689073053}
   falconIcon: {fileID: 1689073052}
@@ -5618,7 +5693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -418.88525, y: 305}
+  m_AnchoredPosition: {x: -418.88525, y: 453}
   m_SizeDelta: {x: 388.2297, y: 58.3754}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2113418823
@@ -5833,6 +5908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f8ba3f653d4413db8f705b13111ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextLevel: Level2
+  NextLevel: EndWin
   msgPressE: {fileID: 1533860599}
   canPressE: 0

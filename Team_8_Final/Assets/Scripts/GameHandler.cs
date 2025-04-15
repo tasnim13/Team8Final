@@ -19,6 +19,15 @@ public class GameHandler : MonoBehaviour
     public static bool stairCaseUnlocked = false;
     public static string lastLevelDied;
 
+
+    public bool isLastLevel = false;
+
+
+    public bool isUnlockedCobra;
+    public bool isUnlockedRam;
+    public bool isUnlockedFalcon;
+    public bool isUnlockedLioness;
+
     [Header("Enemies to Defeat")]
     public GameObject[] enemiesToDefeat;
 
@@ -26,6 +35,12 @@ public class GameHandler : MonoBehaviour
 
     void Start()
     {
+
+        isUnlockedCobra = false;
+        isUnlockedRam = false;
+        isUnlockedFalcon = false;
+        isUnlockedLioness = false;
+
         player = GameObject.FindWithTag("Player");
         sceneName = SceneManager.GetActiveScene().name;
 
@@ -84,6 +99,8 @@ public class GameHandler : MonoBehaviour
 
     public void CheckEnemiesStatus()
     {
+        if (!isLastLevel) { return; }
+
         foreach (GameObject enemy in enemiesToDefeat)
         {
             if (enemy != null)

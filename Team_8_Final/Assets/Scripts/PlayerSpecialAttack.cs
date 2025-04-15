@@ -21,8 +21,24 @@ public class PlayerSpecialAttack : MonoBehaviour
 
 
     public void roarAttack() {
+        basicAttack(8);
+    }
+
+
+    public void ramAttack() {
+        basicAttack(4);
+    }
+
+    public void snakeAttack() {
+        basicAttack(3);
+    }
+
+    public void falconAttack() {
+        basicAttack(16);
+    }
+
+    private void basicAttack(int num) {
         // number of projectiles
-        int num = 16;
         // TODO: ??
         // Vector2 fwd = (firePoint.position - this.transform.position).normalized; 
         // Debug.Log("roar attack!!!");
@@ -43,15 +59,4 @@ public class PlayerSpecialAttack : MonoBehaviour
         }
     }
 
-    public void ramAttack() {
-
-    }
-
-    public void snakeAttack() {
-        
-    }
-
-    public void falconAttack() {
-
-    }
 }

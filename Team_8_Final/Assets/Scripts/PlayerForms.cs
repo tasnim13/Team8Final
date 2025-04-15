@@ -12,6 +12,7 @@ public class PlayerForms : MonoBehaviour
     private PlayerSpecialAttack spatk;
     // private PlayerMoveNoAnim playermove;
 
+    private GameHandler gh;
     public bool isUnlockedCobra;
     public bool isUnlockedRam;
     public bool isUnlockedFalcon;
@@ -33,6 +34,7 @@ public class PlayerForms : MonoBehaviour
         playermove = GetComponent<PlayerMove>();
         spatk = GetComponent<PlayerSpecialAttack>();
         // playermove = GetComponent<PlayerMoveNoAnim>();
+        gh =  GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         baseSpeed = playermove.moveSpeed;
         spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
         isUnlockedCobra = false;
@@ -50,18 +52,22 @@ public class PlayerForms : MonoBehaviour
                 break;
             case 1:
                 isUnlockedCobra = true;
+                gh.isUnlockedCobra = true;
                 cobraIcon.unlock();
                 break;
             case 2:
                 isUnlockedRam = true;
+                gh.isUnlockedRam = true;
                 ramIcon.unlock();
                 break;
             case 3:
                 isUnlockedFalcon = true;
+                gh.isUnlockedFalcon = true;
                 falconIcon.unlock();
                 break;
             case 4:
                 isUnlockedLioness = true;
+                gh.isUnlockedLioness = true;
                 lionessIcon.unlock();
                 break;
             default:
@@ -89,27 +95,34 @@ public class PlayerForms : MonoBehaviour
         if (cooldownOver) {
             // TODO: updating numbers so it's fixed.
             // if (isUnlockedCobra && Input.GetKeyDown("1")) {
-            if (isUnlockedCobra && Input.GetKeyDown("3")) {
+            if (gh.isUnlockedCobra && Input.GetKeyDown("3")) {
                 // cooldownOver = false;
                 // ChangeForm(1);
                 StartCoroutine(ChangeFormWithCooldown(1));
             // } else if (isUnlockedRam && Input.GetKeyDown("2")) {
-            } else if (isUnlockedRam && Input.GetKeyDown("4")) {
+            } else if (gh.isUnlockedRam && Input.GetKeyDown("4")) {
                 StartCoroutine(ChangeFormWithCooldown(2));
             // } else if (isUnlockedFalcon && Input.GetKeyDown("3")) {
-            } else if (isUnlockedFalcon && Input.GetKeyDown("1")) {
+            } else if (gh.isUnlockedFalcon && Input.GetKeyDown("1")) {
                 StartCoroutine(ChangeFormWithCooldown(3));
             // } else if (isUnlockedLioness && Input.GetKeyDown("4")) {
-            } else if (isUnlockedLioness && Input.GetKeyDown("2")) {
+            } else if (gh.isUnlockedLioness && Input.GetKeyDown("2")) {
                 StartCoroutine(ChangeFormWithCooldown(4));
             } 
             // StartCoroutine(holdup(cooldownTime));
         }
 
-        if (currForm == 4) {
-            if (Input.GetKeyDown(KeyCode.F)) {
+        if (Input.GetKeyDown(KeyCode.F)) {
+            if (currForm == 4) {
                 spatk.roarAttack();
+            } else if (currForm == 1) {
+                spatk.snakeAttack();
+            } else if (currForm == 2) {
+                spatk.ramAttack();
+            } else if (currForm == 3) {
+                spatk.falconAttack();
             }
+
         }
     }
 
