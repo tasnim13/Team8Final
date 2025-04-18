@@ -29,6 +29,8 @@ public class EnemyParent : MonoBehaviour
     public HealthBar healthBar;
 
     private float scaleX;
+    private Color originalColor;
+    private SpriteRenderer spriteRenderer;
     
     public GameHandler gameHandler;
     public PlayerHealthBar playerHealthBar;
@@ -60,6 +62,10 @@ public class EnemyParent : MonoBehaviour
 
         //Get health bar
         playerHealthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar").GetComponent<PlayerHealthBar>();
+
+        //Get sprite renderer and set original color
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
     }
 
     public virtual void Update () {
@@ -157,13 +163,23 @@ public class EnemyParent : MonoBehaviour
         float percent = (float)currHealth / health;
         healthBar.UpdateBar(percent);
 
+        DamageFlash();
+
         //Destoy enemy if health reaches zero
         if (currHealth <= 0) {
             Die();
         }
     }
 
-    
+    public void DamageFlash() {
+        spriteRenderer.color = Color.red;
+
+        LeanTween.value(gameObject, 0f, 1f, 0.2f)
+            .setOnUpdate((float t) => {
+                spriteRenderer.color = Color.Lerp(Color.red, originalColor, t);
+            })
+            .setEase(LeanTweenType.linear);
+    }
 
     //DISPLAY attack range and sight range
     public virtual void OnDrawGizmosSelected()
