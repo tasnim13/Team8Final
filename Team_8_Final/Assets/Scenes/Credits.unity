@@ -539,7 +539,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Created by:
+  m_Text: 'Game created by:
 
     Tasnim Hossain
 
@@ -548,7 +548,12 @@ MonoBehaviour:
     Ben Stratton
 
     Yuying
-    Wang'
+    Wang
+
+
+    Music by:
+
+    Skylar Hale'
 --- !u!222 &1344748706
 CanvasRenderer:
   m_ObjectHideFlags: 0
