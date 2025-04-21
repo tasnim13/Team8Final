@@ -17,6 +17,9 @@ public class EnemyBeetle : EnemyParent {
     private float jumpTimer = 0f;
     private bool isJumping = false;
 
+    [Header("Jump Obstacle Check")]
+    public LayerMask obstacleMask;
+
     public override void FixedUpdate() {
         if (isDead || isJumping || target == null) return;
 
@@ -48,10 +51,10 @@ public class EnemyBeetle : EnemyParent {
     public override void Update() {
         if (isDead) return;
 
-        base.Update(); //Handles attack logic
+        base.Update();//Handles attack logic
 
         if (!isJumping && Time.time >= lastJumpTime + jumpCooldown) {
-            JumpRandomDirection();
+            TryJump();
             anim.SetBool("isFlying", true);
             lastJumpTime = Time.time;
             jumpCooldown = Random.Range(jumpTimeMin, jumpTimeMax);
@@ -70,13 +73,25 @@ public class EnemyBeetle : EnemyParent {
         }
     }
 
-    public void JumpRandomDirection() {
+    private void TryJump() {
         if (isDead || isJumping) return;
 
-        Vector2 randomDir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-        startPosition = transform.position;
-        targetPosition = startPosition + (Vector3)(randomDir * jumpDistance);
-        jumpTimer = 0f;
-        isJumping = true;
+        for (int i = 0; i < 10; i++) {
+            Vector2 randomDir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+            Vector3 candidateTarget = transform.position + (Vector3)(randomDir * jumpDistance);
+
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, randomDir, jumpDistance, obstacleMask);
+            bool blockedLanding = Physics2D.OverlapCircle(candidateTarget, 0.2f, obstacleMask);
+
+            if (!hit && !blockedLanding) {
+                startPosition = transform.position;
+                targetPosition = candidateTarget;
+                jumpTimer = 0f;
+                isJumping = true;
+                return;
+            }
+        }
+
+        Debug.Log("Beetle jump blocked on all sides.");
     }
 }
