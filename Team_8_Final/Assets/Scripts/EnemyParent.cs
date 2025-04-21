@@ -14,6 +14,10 @@ public class EnemyParent : MonoBehaviour
     public Vector3 lastPosition;
     public Rigidbody2D rb;
 
+    [Header("Wall Collision")]
+    public LayerMask wallLayer;
+    public float skinWidth = 0.05f;
+
     [Header ("Enemy Stats")]
     public float movementSpeed = 4f;
     public float sightRange = 10f;
@@ -85,11 +89,24 @@ public class EnemyParent : MonoBehaviour
         //Detect if player is within sight range
         Vector2 moveDirection = Vector2.zero;
 
-        if (distToPlayer <= sightRange && target != null) {
+        if (distToPlayer <= sightRange && target != null)
+        {
             moveDirection = (target.position - transform.position).normalized;
+            Vector2 moveDelta = moveDirection * movementSpeed * Time.fixedDeltaTime;
 
-            Vector2 newPosition = rb.position + moveDirection * movementSpeed * Time.fixedDeltaTime;
-            rb.MovePosition(newPosition);
+            //Lookahead collision check using Cast
+            RaycastHit2D[] hitResults = new RaycastHit2D[1];
+            int hitCount = rb.Cast(moveDelta.normalized, new ContactFilter2D
+            {
+                layerMask = wallLayer,
+                useLayerMask = true,
+                useTriggers = false
+            }, hitResults, moveDelta.magnitude + skinWidth);
+
+            if (hitCount == 0)
+            {
+                rb.MovePosition(rb.position + moveDelta);
+            }
 
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);

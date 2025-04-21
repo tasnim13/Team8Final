@@ -52,8 +52,7 @@ public class EnemyHippo : EnemyParent
         }
     }
 
-    public override void Update()
-    {
+    public override void Update() {
         // Use parent's attack logic
         if (isAttacking && Time.time >= lastAttackTime + attackCooldown)
         {
@@ -63,20 +62,18 @@ public class EnemyHippo : EnemyParent
         }
     }
 
-    private bool IsPlayerInSight()
-    {
+    private bool IsPlayerInSight() {
         // Create a rectangle from the top of the enemy
         Vector2 origin = transform.position + transform.up * (visionHeight / 2);
         Vector2 size = new Vector2(visionWidth, visionHeight);
         Collider2D[] hits = Physics2D.OverlapBoxAll(origin, size, transform.eulerAngles.z);
 
-        foreach (Collider2D hit in hits)
-        {
-            if (hit.CompareTag("Player"))
-            {
+        foreach (Collider2D hit in hits) {
+            if (hit.CompareTag("Player")) {
                 return true;
             }
         }
+
         return false;
     }
 
