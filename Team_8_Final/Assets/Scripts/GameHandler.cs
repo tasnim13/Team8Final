@@ -23,24 +23,21 @@ public class GameHandler : MonoBehaviour
     public bool isLastLevel = false;
 
 
-    public bool isUnlockedCobra;
-    public bool isUnlockedRam;
-    public bool isUnlockedFalcon;
-    public bool isUnlockedLioness;
+    public static bool[] formUnlocked = new bool[4];
 
     [Header("Enemies to Defeat")]
     public GameObject[] enemiesToDefeat;
 
     private string sceneName;
 
+    public void Awake() {
+        for (int i = 0; i < 4; i++) {
+            formUnlocked[i] = false;
+        }
+    }
+
     void Start()
     {
-
-        isUnlockedCobra = false;
-        isUnlockedRam = false;
-        isUnlockedFalcon = false;
-        isUnlockedLioness = false;
-
         player = GameObject.FindWithTag("Player");
         sceneName = SceneManager.GetActiveScene().name;
 

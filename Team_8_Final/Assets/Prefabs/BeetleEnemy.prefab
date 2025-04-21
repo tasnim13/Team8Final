@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Mass
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_BodyType
@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_LinearDrag
-      value: 5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Interpolate
@@ -98,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 725940972760891837, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Name
-      value: BeetleEnemy Variant
+      value: BeetleEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 725940972760891837, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Layer
@@ -193,10 +193,11 @@ MonoBehaviour:
   damage: 3
   attackRange: 0.3
   attackCooldown: 1
-  health: 50
+  health: 35
   healthBar: {fileID: 5271277856541061479}
   gameHandler: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
   playerHealthBar: {fileID: 4575063029312613678, guid: 7019a1727748642259ff943cf41baf11, type: 3}
+  deathSprite: {fileID: 21300000, guid: d2b66cc7e497f4269808114c2a1c9ab8, type: 3}
   jumpDistance: 1.6
   jumpDuration: 0.1
   jumpTimeMin: 0

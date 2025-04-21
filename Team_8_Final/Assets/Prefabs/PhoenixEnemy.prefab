@@ -344,14 +344,15 @@ MonoBehaviour:
   damage: 0
   attackRange: 10
   attackCooldown: 2
-  health: 100
+  health: 500
   healthBar: {fileID: 9104772997596305689}
   gameHandler: {fileID: 0}
   playerHealthBar: {fileID: 0}
+  deathSprite: {fileID: 21300000, guid: d2b66cc7e497f4269808114c2a1c9ab8, type: 3}
   fireballPrefab: {fileID: 1738675151584067049, guid: 77d0a941f251945fe80407eb3520379c, type: 3}
   firePoint: {fileID: 5626374183687544444}
   projectileSpeed: 2
-  rotationSpeed: 40
+  rotationSpeed: 60
   shotsBeforeSpiral: 3
   spiralFireballCount: 8
 --- !u!95 &6705957440162724595

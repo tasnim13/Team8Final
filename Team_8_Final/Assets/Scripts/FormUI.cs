@@ -6,6 +6,7 @@ public class FormUI : MonoBehaviour
 {
     public GameObject[] glows;
     public GameObject[] forms;
+    public GameObject[] formsDisabled;
 
     private int currentIndex = -1;
     public LeanTweenType easeType;
@@ -19,15 +20,46 @@ public class FormUI : MonoBehaviour
         {
             glows[i].SetActive(false);
         }
+
+        // Enable only unlocked forms and disable others
+        for (int i = 0; i < forms.Length; i++)
+        {
+            bool unlocked = GameHandler.formUnlocked[i];
+
+            forms[i].SetActive(unlocked);
+            formsDisabled[i].SetActive(!unlocked);
+        }
     }
 
     void Update()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < forms.Length; i++)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1 + i))
             {
-                HandleSelection(i);
+                if (GameHandler.formUnlocked[i])
+                {
+                    HandleSelection(i);
+                } else {
+                    // Shake the disabled icon horizontally
+                    RectTransform disabledRect = formsDisabled[i].GetComponent<RectTransform>();
+                    if (disabledRect != null)
+                    {
+                        LeanTween.cancel(disabledRect);
+                        Vector3 originalPos = disabledRect.anchoredPosition;
+
+                        // Wiggle back and forth
+                        float shakeAmount = 5f;
+                        float shakeDuration = 0.3f;
+
+                        LeanTween.moveLocalX(disabledRect.gameObject, originalPos.x + shakeAmount, shakeDuration / 4f)
+                            .setLoopPingPong(2)
+                            .setOnComplete(() => {
+                                disabledRect.anchoredPosition = originalPos;
+                            });
+                    }
+                }
+
             }
         }
     }
@@ -36,21 +68,18 @@ public class FormUI : MonoBehaviour
     {
         if (newIndex == currentIndex)
         {
-            // Toggle off the currently active one
             glows[newIndex].SetActive(false);
             AnimateFormDown(newIndex);
             currentIndex = -1;
         }
         else
         {
-            // Animate previous one down if any
             if (currentIndex != -1)
             {
                 glows[currentIndex].SetActive(false);
                 AnimateFormDown(currentIndex);
             }
 
-            // Activate new one
             glows[newIndex].SetActive(true);
             AnimateFormUp(newIndex);
             currentIndex = newIndex;
@@ -59,23 +88,29 @@ public class FormUI : MonoBehaviour
 
     void AnimateFormUp(int index)
     {
-        RectTransform rect = forms[index].GetComponent<RectTransform>();
-        LeanTween.cancel(rect);
+        RectTransform formRect = forms[index].GetComponent<RectTransform>();
+        RectTransform glowRect = glows[index].GetComponent<RectTransform>();
+        LeanTween.cancel(formRect);
+        LeanTween.cancel(glowRect);
 
-        Vector2 startPos = rect.anchoredPosition;
+        Vector2 startPos = formRect.anchoredPosition;
         Vector2 targetPos = startPos + new Vector2(0f, yOffset);
 
-        LeanTween.move(rect, targetPos, duration).setEase(easeType);
+        LeanTween.move(formRect, targetPos, duration).setEase(easeType);
+        LeanTween.move(glowRect, targetPos, duration).setEase(easeType);
     }
 
     void AnimateFormDown(int index)
     {
-        RectTransform rect = forms[index].GetComponent<RectTransform>();
-        LeanTween.cancel(rect);
+        RectTransform formRect = forms[index].GetComponent<RectTransform>();
+        RectTransform glowRect = glows[index].GetComponent<RectTransform>();
+        LeanTween.cancel(formRect);
+        LeanTween.cancel(glowRect);
 
-        Vector2 startPos = rect.anchoredPosition;
+        Vector2 startPos = formRect.anchoredPosition;
         Vector2 targetPos = startPos - new Vector2(0f, yOffset);
 
-        LeanTween.move(rect, targetPos, duration).setEase(easeType);
+        LeanTween.move(formRect, targetPos, duration).setEase(easeType);
+        LeanTween.move(glowRect, targetPos, duration).setEase(easeType);
     }
 }

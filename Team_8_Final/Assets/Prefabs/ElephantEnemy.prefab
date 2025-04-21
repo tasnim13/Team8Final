@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5518763637808845210}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.13324392, y: 0.048189044, z: -0.059051193}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -25215565, guid: a1b196e4672364162b4bf5ce2a336831, type: 3}
+  m_Sprite: {fileID: -409466005, guid: a1b196e4672364162b4bf5ce2a336831, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -201,7 +201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Mass
-      value: 200
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_BodyType
@@ -209,7 +209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_LinearDrag
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Interpolate
@@ -314,6 +314,7 @@ MonoBehaviour:
   healthBar: {fileID: 1990109255323008107}
   gameHandler: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
   playerHealthBar: {fileID: 4575063029312613678, guid: 7019a1727748642259ff943cf41baf11, type: 3}
+  deathSprite: {fileID: 21300000, guid: d2b66cc7e497f4269808114c2a1c9ab8, type: 3}
   visionWidth: 1
   visionHeight: 4.5
   visualTransform: {fileID: 6572119070243573770}
@@ -349,8 +350,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0055018067, y: -0.31031513}
-  m_Size: {x: 0.9986657, y: 1.3793697}
+  m_Offset: {x: -0.074284256, y: -0.18564701}
+  m_Size: {x: 1.153426, y: 1.2332067}
   m_Direction: 0
 --- !u!224 &3067852746935299012 stripped
 RectTransform:
