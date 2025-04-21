@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class EnemyHippo : EnemyParent
-{
+public class EnemyHippo : EnemyParent {
     [Header("Elephant-Specific Stats")]
     public float visionWidth = 3f;
     public float visionHeight = 10f;
@@ -12,50 +11,49 @@ public class EnemyHippo : EnemyParent
         anim = GetComponentInChildren<Animator>();
     }
 
-    public override void FixedUpdate()
-    {
+    public override void FixedUpdate() {
         if (target == null) return;
 
         Vector2 moveDirection = Vector2.zero;
+        bool shouldMove = false;
 
-        if (IsPlayerInSight())
-        {
+        if (IsPlayerInSight()) {
             moveDirection = (target.position - transform.position).normalized;
+            Vector2 moveDelta = moveDirection * movementSpeed * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + moveDelta);
+            shouldMove = true;
 
-            // Movement
-            Vector2 newPosition = rb.position + moveDirection * movementSpeed * Time.fixedDeltaTime;
-            rb.MovePosition(newPosition);
-
-            // Rotate
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
         }
 
-        // Animator blend tree inputs
+        //Animator blend tree inputs
         anim.SetFloat("inputX", moveDirection.x);
         anim.SetFloat("inputY", moveDirection.y);
 
-        if (moveDirection != Vector2.zero)
-        {
+        if (moveDirection != Vector2.zero) {
             anim.SetFloat("lastInputX", moveDirection.x);
             anim.SetFloat("lastInputY", moveDirection.y);
         }
 
-        // Walk toggle
-        bool isMoving = (transform.position != lastPosition);
-        anim.SetBool("isMoving", isMoving);
+        //Only update walk toggle if the hippo is actively chasing
+        if (shouldMove) {
+            bool isMoving = (transform.position != lastPosition);
+            anim.SetBool("isMoving", isMoving);
+        } else {
+            anim.SetBool("isMoving", false);
+        }
+
         lastPosition = transform.position;
 
-        // Keep visual upright (no rotation)
+        //Keep visual upright (no rotation)
         if (visualTransform != null) {
             visualTransform.rotation = Quaternion.identity;
         }
     }
 
     public override void Update() {
-        // Use parent's attack logic
-        if (isAttacking && Time.time >= lastAttackTime + attackCooldown)
-        {
+        if (isAttacking && Time.time >= lastAttackTime + attackCooldown) {
             lastAttackTime = Time.time;
             gameHandler.playerGetHit(damage);
             playerHealthBar.UpdateHealthBar();
@@ -63,7 +61,7 @@ public class EnemyHippo : EnemyParent
     }
 
     private bool IsPlayerInSight() {
-        // Create a rectangle from the top of the enemy
+        //Create a rectangle from the top of the enemy
         Vector2 origin = transform.position + transform.up * (visionHeight / 2);
         Vector2 size = new Vector2(visionWidth, visionHeight);
         Collider2D[] hits = Physics2D.OverlapBoxAll(origin, size, transform.eulerAngles.z);
@@ -77,11 +75,10 @@ public class EnemyHippo : EnemyParent
         return false;
     }
 
-    public override void OnDrawGizmosSelected()
-    {
+    public override void OnDrawGizmosSelected() {
         Gizmos.color = Color.green;
 
-        // Show vision box in Scene view
+        //Show vision box in Scene view
         Vector2 origin = transform.position + transform.up * (visionHeight / 2);
         Vector2 size = new Vector2(visionWidth, visionHeight);
         Quaternion rotation = Quaternion.Euler(0, 0, transform.eulerAngles.z);
@@ -90,8 +87,17 @@ public class EnemyHippo : EnemyParent
         Gizmos.DrawWireCube(Vector3.zero, size);
         Gizmos.matrix = Matrix4x4.identity;
 
-        // Show attack hitbox in Scene view
+        //Show attack hitbox in Scene view
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
+
+    public override void OnTriggerEnter2D(Collider2D collision) {
+        if (isDead) return;
+
+        if (collision.CompareTag("Player")) {
+            isAttacking = true;
+        }
+    }
+
 }

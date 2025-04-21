@@ -35,7 +35,12 @@ public class PlayerForms : MonoBehaviour
     }
 
     public void unlock(int id) {
-        GameHandler.formUnlocked[id] = true;
+        if (id < 1 || id > 4) {
+            Debug.Log("Uh OH! unlock error");
+            return;
+        }
+
+        GameHandler.formUnlocked[id - 1] = true;
 
         switch (id) {
             case 1:
@@ -49,9 +54,6 @@ public class PlayerForms : MonoBehaviour
                 break;
             case 4:
                 lionessIcon.unlock();
-                break;
-            default:
-                Debug.Log("Uh OH! unlock error");
                 break;
         }
 
@@ -71,13 +73,13 @@ public class PlayerForms : MonoBehaviour
     void Update()
     {
         if (cooldownOver) {
-            if (GameHandler.formUnlocked[3] && Input.GetKeyDown("1")) {
+            if (GameHandler.formUnlocked[2] && Input.GetKeyDown("1")) {
                 StartCoroutine(ChangeFormWithCooldown(3));
-            } else if (GameHandler.formUnlocked[4] && Input.GetKeyDown("2")) {
+            } else if (GameHandler.formUnlocked[3] && Input.GetKeyDown("2")) {
                 StartCoroutine(ChangeFormWithCooldown(4));
-            } else if (GameHandler.formUnlocked[1] && Input.GetKeyDown("3")) {
+            } else if (GameHandler.formUnlocked[0] && Input.GetKeyDown("3")) {
                 StartCoroutine(ChangeFormWithCooldown(1));
-            } else if (GameHandler.formUnlocked[2] && Input.GetKeyDown("4")) {
+            } else if (GameHandler.formUnlocked[1] && Input.GetKeyDown("4")) {
                 StartCoroutine(ChangeFormWithCooldown(2));
             }
         }

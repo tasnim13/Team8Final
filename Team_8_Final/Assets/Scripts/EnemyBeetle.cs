@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBeetle : EnemyParent
-{
+public class EnemyBeetle : EnemyParent {
     [Header("Beetle-Specific Stats")]
     public float jumpDistance = 1f;
     public float jumpDuration = 0.1f;
@@ -18,17 +17,14 @@ public class EnemyBeetle : EnemyParent
     private float jumpTimer = 0f;
     private bool isJumping = false;
 
-    public override void FixedUpdate()
-    {
-        if (isJumping || target == null) return;
+    public override void FixedUpdate() {
+        if (isDead || isJumping || target == null) return;
 
         Vector2 moveDirection = Vector2.zero;
         float distToPlayer = Vector3.Distance(transform.position, target.position);
 
-        if (distToPlayer <= sightRange)
-        {
+        if (distToPlayer <= sightRange) {
             moveDirection = (target.position - transform.position).normalized;
-
             Vector2 newPosition = rb.position + moveDirection * movementSpeed * Time.fixedDeltaTime;
             rb.MovePosition(newPosition);
 
@@ -39,8 +35,7 @@ public class EnemyBeetle : EnemyParent
         anim.SetFloat("inputX", moveDirection.x);
         anim.SetFloat("inputY", moveDirection.y);
 
-        if (moveDirection != Vector2.zero)
-        {
+        if (moveDirection != Vector2.zero) {
             anim.SetFloat("lastInputX", moveDirection.x);
             anim.SetFloat("lastInputY", moveDirection.y);
         }
@@ -50,13 +45,12 @@ public class EnemyBeetle : EnemyParent
         lastPosition = transform.position;
     }
 
-    public override void Update()
-    {
-        base.Update(); // Handles attack logic
+    public override void Update() {
+        if (isDead) return;
 
-        // Execute jump behavior
-        if (!isJumping && Time.time >= lastJumpTime + jumpCooldown)
-        {
+        base.Update(); //Handles attack logic
+
+        if (!isJumping && Time.time >= lastJumpTime + jumpCooldown) {
             JumpRandomDirection();
             anim.SetBool("isFlying", true);
             lastJumpTime = Time.time;
@@ -64,26 +58,22 @@ public class EnemyBeetle : EnemyParent
             Debug.Log("Jump cooldown is " + jumpCooldown);
         }
 
-        if (isJumping)
-        {
+        if (isJumping) {
             jumpTimer += Time.deltaTime;
             float t = jumpTimer / jumpDuration;
             transform.position = Vector3.Lerp(startPosition, targetPosition, t);
 
-            if (t >= 1f)
-            {
+            if (t >= 1f) {
                 isJumping = false;
                 anim.SetBool("isFlying", false);
             }
         }
     }
 
-    public void JumpRandomDirection()
-    {
-        if (isJumping) return;
+    public void JumpRandomDirection() {
+        if (isDead || isJumping) return;
 
         Vector2 randomDir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-
         startPosition = transform.position;
         targetPosition = startPosition + (Vector3)(randomDir * jumpDistance);
         jumpTimer = 0f;

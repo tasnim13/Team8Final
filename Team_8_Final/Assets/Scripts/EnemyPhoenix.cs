@@ -1,33 +1,29 @@
 using UnityEngine;
 
-public class EnemyPhoenix : EnemyParent
-{
+public class EnemyPhoenix : EnemyParent {
     [Header("Phoenix-Specific")]
     public GameObject fireballPrefab;
     public Transform firePoint;
     public float projectileSpeed = 10f;
-    public float rotationSpeed = 180f; // degrees per second
+    public float rotationSpeed = 180f;
+
     [Header("Phoenix Spiral Attack")]
     public int shotsBeforeSpiral = 3;
     public int spiralFireballCount = 8;
     private int shotsFiredSinceLastSpiral = 0;
 
-
     public override void FixedUpdate() {
-        if (target == null) return;
+        if (isDead || target == null) return;
 
         float distToPlayer = Vector3.Distance(transform.position, target.position);
-
         Vector2 moveDirection = Vector2.zero;
 
-        if (distToPlayer <= sightRange)
-        {
+        if (distToPlayer <= sightRange) {
             moveDirection = (target.position - transform.position).normalized;
 
             Vector2 newPosition = rb.position + moveDirection * movementSpeed * Time.fixedDeltaTime;
             rb.MovePosition(newPosition);
 
-            //Rotate toward player over time
             float targetAngle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
             Quaternion desiredRotation = Quaternion.Euler(0f, 0f, targetAngle - 90f);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, rotationSpeed * Time.fixedDeltaTime);
@@ -46,11 +42,10 @@ public class EnemyPhoenix : EnemyParent
         lastPosition = transform.position;
     }
 
+    public override void Update() {
+        if (isDead) return;
 
-    public override void Update()
-    {
-        if (isAttacking && Time.time >= lastAttackTime + attackCooldown)
-        {
+        if (isAttacking && Time.time >= lastAttackTime + attackCooldown) {
             lastAttackTime = Time.time;
             ShootFireball();
         }
@@ -61,42 +56,36 @@ public class EnemyPhoenix : EnemyParent
 
         shotsFiredSinceLastSpiral++;
 
-        // 🔁 Regular fireball shot (in facing direction)
         GameObject fireball = Instantiate(fireballPrefab, firePoint.position, Quaternion.identity);
         Vector2 direction = firePoint.up;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         fireball.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
         Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
+        if (rb != null) {
             rb.velocity = direction * projectileSpeed;
         }
 
-        // Sprial every few shots
-        if (shotsFiredSinceLastSpiral >= shotsBeforeSpiral)
-        {
+        if (shotsFiredSinceLastSpiral >= shotsBeforeSpiral) {
             FireSpiral();
             shotsFiredSinceLastSpiral = 0;
         }
     }
 
     private void FireSpiral() {
+        if (fireballPrefab == null || firePoint == null) return;
+
         float angleStep = 360f / spiralFireballCount;
 
-        for (int i = 0; i < spiralFireballCount; i++)
-        {
+        for (int i = 0; i < spiralFireballCount; i++) {
             float angle = i * angleStep * Mathf.Deg2Rad;
-
-            // Calculate outward direction
             Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
 
             GameObject fireball = Instantiate(fireballPrefab, firePoint.position, Quaternion.identity);
             fireball.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
 
             Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
+            if (rb != null) {
                 rb.velocity = direction * projectileSpeed;
             }
         }

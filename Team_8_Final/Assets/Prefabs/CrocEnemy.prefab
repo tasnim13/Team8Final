@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_BodyType
@@ -102,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_LinearDrag
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 495244950375589484, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Interpolate
@@ -193,17 +193,18 @@ MonoBehaviour:
   lastAttackTime: 0
   lastPosition: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
-  movementSpeed: 1.5
+  movementSpeed: 1.75
   sightRange: 3.5
   sightOffsetX: 0
-  sightOffsetY: 0.3
+  sightOffsetY: 0.35
   damage: 8
-  attackRange: 0.5
-  attackCooldown: 2.5
+  attackRange: 0.7
+  attackCooldown: 1.5
   health: 100
   healthBar: {fileID: 5259668532567627047}
   gameHandler: {fileID: 0}
   playerHealthBar: {fileID: 0}
+  deathSprite: {fileID: 21300000, guid: d2b66cc7e497f4269808114c2a1c9ab8, type: 3}
   hitsBeforeSpin: 3
   spinDamage: 13
   spinDuration: 0.5
