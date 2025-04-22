@@ -27,6 +27,8 @@ public class ElephantEnemy : EnemyParent
         {
             GameHandler.playerHealth -= damage;
             lastAttackTime = Time.time;
+            TriggerAttackEffect();
+            playerHealthBar.UpdateHealthBar();
         }
 
         bool isMoving = (transform.position != lastPosition);

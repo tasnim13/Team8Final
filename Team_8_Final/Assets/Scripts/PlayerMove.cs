@@ -10,11 +10,20 @@ public class PlayerMove : MonoBehaviour
     private Animator anim;
     private Renderer rend;
     private bool isAlive = true;
+    [Header("Poison Settings")]
+    public Material poisonMat;
+    private Material originalMat;
+    private bool isPoisoned = false;
+    private Coroutine poisonRoutine;
+    public float poisonDuration = 5f;
+    public float poisonSpeedMultiplier = 0.5f;
+
 
     void Start() {
         anim = GetComponentInChildren<Animator>();
         rend = GetComponentInChildren<Renderer>();
         rb2d = GetComponent<Rigidbody2D>();
+        originalMat = rend.material;
     }
 
     void Update() {
@@ -74,4 +83,30 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         rend.material.color = Color.white;
     }
+
+    public void ApplyPoison() {
+        if (poisonRoutine != null) {
+            StopCoroutine(poisonRoutine);
+        }
+        poisonRoutine = StartCoroutine(HandlePoison());
+    }
+
+    private IEnumerator HandlePoison() {
+        isPoisoned = true;
+
+        //Change material and slow movement
+        rend.material = poisonMat;
+        float originalSpeed = moveSpeed;
+        moveSpeed *= poisonSpeedMultiplier;
+
+        yield return new WaitForSeconds(poisonDuration);
+
+        //Restore values
+        rend.material = originalMat;
+        moveSpeed = originalSpeed;
+        isPoisoned = false;
+        poisonRoutine = null;
+    }
+
+
 }

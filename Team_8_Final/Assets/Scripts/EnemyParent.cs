@@ -38,6 +38,11 @@ public class EnemyParent : MonoBehaviour {
     [Header("Death Art")]
     public Sprite deathSprite;
 
+    [Header("Attack Visual Effect")]
+    public GameObject attackEffect;
+    public float attackEffectDistance = 0.5f;
+    private SpriteRenderer attackEffectRenderer;
+
     public virtual void Start() {
         enemyCollider = GetComponent<CircleCollider2D>();
         enemyCollider.radius = attackRange;
@@ -55,6 +60,14 @@ public class EnemyParent : MonoBehaviour {
         playerHealthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar").GetComponent<PlayerHealthBar>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalColor = spriteRenderer.color;
+
+        //Cache attack effect
+        if (attackEffect != null) {
+            attackEffectRenderer = attackEffect.GetComponent<SpriteRenderer>();
+            Color c = attackEffectRenderer.color;
+            c.a = 0f;
+            attackEffectRenderer.color = c;
+        }
     }
 
     public virtual void Update() {
@@ -64,6 +77,7 @@ public class EnemyParent : MonoBehaviour {
             lastAttackTime = Time.time;
             gameHandler.playerGetHit(damage);
             playerHealthBar.UpdateHealthBar();
+            TriggerAttackEffect();
         }
     }
 
@@ -184,5 +198,31 @@ public class EnemyParent : MonoBehaviour {
         Gizmos.DrawWireSphere(transform.position + offset, sightRange);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position + offset, attackRange);
+    }
+
+    //Show visual attack effect and fade it out
+    public void TriggerAttackEffect() {
+        if (attackEffectRenderer == null) return;
+
+        //Face direction and position offset
+        if (target != null) {
+            Vector2 dir = (target.position - transform.position).normalized;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+            attackEffect.transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
+            attackEffect.transform.position = transform.position + (Vector3)(dir * attackEffectDistance);
+        }
+
+        //Make fully visible
+        Color c = attackEffectRenderer.color;
+        c.a = 1f;
+        attackEffectRenderer.color = c;
+
+        //Fade out
+        LeanTween.value(attackEffect, 1f, 0f, 1f).setOnUpdate((float a) => {
+            Color fade = attackEffectRenderer.color;
+            fade.a = a;
+            attackEffectRenderer.color = fade;
+        }).setEase(LeanTweenType.linear);
     }
 }

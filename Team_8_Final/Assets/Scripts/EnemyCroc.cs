@@ -51,6 +51,7 @@ public class EnemyCroc : EnemyParent {
             } else {
                 GameHandler.playerHealth -= damage;
                 hits++;
+                TriggerAttackEffect();
             }
 
             playerHealthBar.UpdateHealthBar();
