@@ -7085,10 +7085,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 36ea48ebd22d54efdb766e719ff7d392, type: 3}
   - {fileID: 21300000, guid: c9273c5d3a1044aa3a29a45d3ced093d, type: 3}
   - {fileID: 21300000, guid: e6183dae6e2524de39576d8f04e1579f, type: 3}
-  isUnlockedCobra: 0
-  isUnlockedRam: 0
-  isUnlockedFalcon: 0
-  isUnlockedLioness: 0
   ramIcon: {fileID: 1689073054}
   cobraIcon: {fileID: 1689073053}
   falconIcon: {fileID: 1689073052}
@@ -7575,11 +7571,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6246753547471829311, guid: 8644c5c6b7b1f45c8a8c589697e4863b, type: 3}
       propertyPath: m_Mass
-      value: 1000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6246753547471829311, guid: 8644c5c6b7b1f45c8a8c589697e4863b, type: 3}
       propertyPath: m_BodyType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

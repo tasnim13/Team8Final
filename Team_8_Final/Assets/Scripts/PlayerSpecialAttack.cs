@@ -9,6 +9,7 @@ public class PlayerSpecialAttack : MonoBehaviour
     public Transform firePoint;
     public float projectileSpeed = 10f;
     // public float projectileSpeed = 0f;
+    public bool canSpecial = true;
 
     // Update is called once per frame
     // TODO: restrict to form
@@ -21,7 +22,11 @@ public class PlayerSpecialAttack : MonoBehaviour
 
 
     public void roarAttack() {
-        basicAttack(8);
+        if (canSpecial) {
+            projectileSpeed = 10f;
+            basicAttack(8);
+            canSpecial = false;
+        }
     }
 
 

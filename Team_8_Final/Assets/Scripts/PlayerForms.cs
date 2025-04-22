@@ -1,23 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// using UnityEditor.animations;
 
 public class PlayerForms : MonoBehaviour
 {
     public int currForm;
-    public bool shouldChangeSprite = false;
-    private SpriteRenderer spriteRenderer;
+    public bool shouldChangeSprite = true;
+    // public bool whatever = false;
+    // private SpriteRenderer spriteRenderer;
     public Sprite[] formSprites;
+    public RuntimeAnimatorController[] formAnims;
+
     private PlayerMove playermove;
     private PlayerSpecialAttack spatk;
 
     private GameHandler gh;
-    private float cooldownTime;
-    private bool cooldownOver;
     private float baseSpeed;
 
-    public AmuletIcon ramIcon;
     public AmuletIcon cobraIcon;
+    public AmuletIcon ramIcon;
     public AmuletIcon falconIcon;
     public AmuletIcon lionessIcon;
 
@@ -28,10 +30,10 @@ public class PlayerForms : MonoBehaviour
         spatk = GetComponent<PlayerSpecialAttack>();
         gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         baseSpeed = playermove.moveSpeed;
-        spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
+        // spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
 
-        cooldownTime = 1f;
-        cooldownOver = true;
+        GameHandler.transformCooldownTime = 1f;
+        GameHandler.transformCooldownOver = true;
     }
 
     public void unlock(int id) {
@@ -64,23 +66,23 @@ public class PlayerForms : MonoBehaviour
     }
 
     IEnumerator ChangeFormWithCooldown(int id) {
-        cooldownOver = false;
+        GameHandler.transformCooldownOver = false;
         ChangeForm(id);
-        yield return new WaitForSeconds(cooldownTime);
-        cooldownOver = true;
+        yield return new WaitForSeconds(GameHandler.transformCooldownTime);
+        GameHandler.transformCooldownOver = true;
     }
 
     void Update()
     {
-        if (cooldownOver) {
-            if (GameHandler.formUnlocked[2] && Input.GetKeyDown("1")) {
-                StartCoroutine(ChangeFormWithCooldown(3));
-            } else if (GameHandler.formUnlocked[3] && Input.GetKeyDown("2")) {
-                StartCoroutine(ChangeFormWithCooldown(4));
-            } else if (GameHandler.formUnlocked[0] && Input.GetKeyDown("3")) {
+        if (GameHandler.transformCooldownOver) {
+            if (GameHandler.formUnlocked[0] && Input.GetKeyDown("1")) {
                 StartCoroutine(ChangeFormWithCooldown(1));
-            } else if (GameHandler.formUnlocked[1] && Input.GetKeyDown("4")) {
+            } else if (GameHandler.formUnlocked[1] && Input.GetKeyDown("2")) {
                 StartCoroutine(ChangeFormWithCooldown(2));
+            } else if (GameHandler.formUnlocked[2] && Input.GetKeyDown("3")) {
+                StartCoroutine(ChangeFormWithCooldown(3));
+            } else if (GameHandler.formUnlocked[3] && Input.GetKeyDown("4")) {
+                StartCoroutine(ChangeFormWithCooldown(4));
             }
         }
 
@@ -102,21 +104,23 @@ public class PlayerForms : MonoBehaviour
         }
     }
 
-    private void ChangeSprite(Sprite newSprite)
-    {
-        spriteRenderer.sprite = newSprite; 
-    }
+    // private void ChangeSprite(Sprite newSprite)
+    // {
+    //     spriteRenderer.sprite = newSprite; 
+    // }
 
     public void ChangeForm(int id) {
         if (0 <= id && id <= 4) {
             if (shouldChangeSprite) {
-                ChangeSprite(formSprites[id]);
+                // ChangeSprite(formSprites[id]);
+                // TODO: call playermove
+                playermove.changePlayerSprite(formSprites[id], formAnims[id]);
             }
 
-            ramIcon.select(id);
-            cobraIcon.select(id);
-            falconIcon.select(id);
-            lionessIcon.select(id);
+            // cobraIcon.select(id);
+            // ramIcon.select(id);
+            // falconIcon.select(id);
+            // lionessIcon.select(id);
 
             currForm = id;
             switch (id) {

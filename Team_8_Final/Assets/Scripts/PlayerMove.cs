@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// using UnityEditor.animations;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -8,7 +9,17 @@ public class PlayerMove : MonoBehaviour
     private Vector3 change;//player movement direction
     private Rigidbody2D rb2d;
     private Animator anim;
+
     private Renderer rend;
+    // private Renderer rendRam;
+    // private Renderer rendCobra;
+    // private Renderer rendFalcon;
+    // private Renderer rendLioness;
+
+    // private Renderer[] rendarr;
+
+    private SpriteRenderer sprend;
+
     private bool isAlive = true;
     [Header("Poison Settings")]
     public Material poisonMat;
@@ -22,6 +33,17 @@ public class PlayerMove : MonoBehaviour
     void Start() {
         anim = GetComponentInChildren<Animator>();
         rend = GetComponentInChildren<Renderer>();
+
+        // rendarr = GetComponentsInChildren<Renderer>();
+        // rend = rendarr[0];
+        sprend = GetComponentInChildren<SpriteRenderer>();
+        Debug.Log(anim.name);
+        Debug.Log(anim.runtimeAnimatorController.name);
+        // rendRam = rendarr[0];
+        // rendCobra = rendarr[0];
+        // rendFalcon = rendarr[0];
+
+
         rb2d = GetComponent<Rigidbody2D>();
         originalMat = rend.material;
     }
@@ -60,6 +82,11 @@ public class PlayerMove : MonoBehaviour
         } else {
             anim.SetBool("Walk", false);
         }
+    }
+
+    public void changePlayerSprite(Sprite formSprite, RuntimeAnimatorController formAnim) {
+        sprend.sprite = formSprite;
+        anim.runtimeAnimatorController = formAnim;
     }
 
     public void playerHit() {
