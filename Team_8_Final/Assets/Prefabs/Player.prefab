@@ -53,6 +53,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 80
+  poisonMat: {fileID: 0}
+  poisonDuration: 5
+  poisonSpeedMultiplier: 0.5
 --- !u!114 &131332532908662273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,10 +103,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currForm: 0
-  shouldChangeSprite: 0
-  formSprites: []
-  ramIcon: {fileID: 0}
+  shouldChangeSprite: 1
+  formSprites:
+  - {fileID: 2103498312, guid: 5948675b780a544de89e6e6a5867c490, type: 3}
+  - {fileID: -1376050189, guid: d03c9767bcab0416e8f9696f1d2355ef, type: 3}
+  - {fileID: -154325612, guid: a28381c3082f24c6aac39eb2c509232d, type: 3}
+  - {fileID: -710924724, guid: 74c0930a01c8141b880fb9f523d1b5dd, type: 3}
+  - {fileID: -1190972794, guid: 77477d2d63e8840abb77753cb1636ebe, type: 3}
+  formAnims:
+  - {fileID: 9100000, guid: 461be1b59fe04440ea81fcb2849b5690, type: 2}
+  - {fileID: 9100000, guid: a37b435ca0ff9496b9fb90128c3971e5, type: 2}
+  - {fileID: 9100000, guid: 8e2f34bf646fc46768d9002071bf7509, type: 2}
+  - {fileID: 9100000, guid: b92a85ae42ab24973abf3aa4de9f6ab5, type: 2}
+  - {fileID: 9100000, guid: 7eed557ce93bc432bbdc9de2fe87e858, type: 2}
   cobraIcon: {fileID: 0}
+  ramIcon: {fileID: 0}
   falconIcon: {fileID: 0}
   lionessIcon: {fileID: 0}
 --- !u!50 &6246753547471829311
@@ -118,7 +132,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 10
   m_LinearDrag: 20
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -183,6 +197,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5996418074758868140, guid: e50cc14fb7bf04b9590bbb67454b7242, type: 3}
   firePoint: {fileID: 6596713787023982096}
   projectileSpeed: 10
+  canSpecial: 1
 --- !u!1 &8243314648862392833
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,8 @@ public class GameHandler : MonoBehaviour
 
 
     public static bool[] formUnlocked = new bool[4];
+    public static bool transformCooldownOver = true;
+    public static float transformCooldownTime = 1f;
 
     [Header("Enemies to Defeat")]
     public GameObject[] enemiesToDefeat;

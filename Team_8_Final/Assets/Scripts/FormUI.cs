@@ -35,7 +35,7 @@ public class FormUI : MonoBehaviour
     {
         for (int i = 0; i < forms.Length; i++)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i) )
             {
                 if (GameHandler.formUnlocked[i])
                 {
@@ -66,6 +66,8 @@ public class FormUI : MonoBehaviour
 
     void HandleSelection(int newIndex)
     {
+        // if (!GameHandler.transformCooldownOver) { return; }
+
         if (newIndex == currentIndex)
         {
             glows[newIndex].SetActive(false);

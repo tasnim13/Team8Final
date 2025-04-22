@@ -1180,7 +1180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6246753547471829311, guid: 8644c5c6b7b1f45c8a8c589697e4863b, type: 3}
       propertyPath: m_AngularDrag
-      value: 12.04
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
