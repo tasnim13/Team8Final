@@ -1683,7 +1683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &879175793
 Transform:
   m_ObjectHideFlags: 0
@@ -2095,87 +2095,7 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 879175801}
-    m_ColliderPaths:
-    - - X: 1051790
-        Y: 6754760
-      - X: 1066
-        Y: 6754760
-      - X: 1066
-        Y: -112862256
-      - X: 1051790
-        Y: -112862256
-  - m_Collider: {fileID: 879175800}
-    m_ColliderPaths:
-    - - X: 1100130
-        Y: 6701765
-      - X: -108949320
-        Y: 6701765
-      - X: -108949320
-        Y: 5777828
-      - X: 1100130
-        Y: 5777828
-  - m_Collider: {fileID: 879175799}
-    m_ColliderPaths:
-    - - X: -108039376
-        Y: 6335530
-      - X: -109072400
-        Y: 6335530
-      - X: -109072400
-        Y: -44108840
-      - X: -108039376
-        Y: -44108840
-  - m_Collider: {fileID: 879175798}
-    m_ColliderPaths:
-    - - X: -108264104
-        Y: -43175708
-      - X: -139153360
-        Y: -43175708
-      - X: -139153360
-        Y: -44164592
-      - X: -108264104
-        Y: -44164592
-  - m_Collider: {fileID: 879175797}
-    m_ColliderPaths:
-    - - X: -138070544
-        Y: -43132536
-      - X: -139039632
-        Y: -43132536
-      - X: -139039632
-        Y: -63319024
-      - X: -138070544
-        Y: -63319024
-  - m_Collider: {fileID: 879175796}
-    m_ColliderPaths:
-    - - X: 940876
-        Y: -112268032
-      - X: -109025768
-        Y: -112268032
-      - X: -109025768
-        Y: -113480584
-      - X: 940876
-        Y: -113480584
-  - m_Collider: {fileID: 879175795}
-    m_ColliderPaths:
-    - - X: -108071312
-        Y: -62277640
-      - X: -109144512
-        Y: -62277640
-      - X: -109144512
-        Y: -113196904
-      - X: -108071312
-        Y: -113196904
-  - m_Collider: {fileID: 879175794}
-    m_ColliderPaths:
-    - - X: -108350296
-        Y: -62286740
-      - X: -139153696
-        Y: -62286740
-      - X: -139153696
-        Y: -63201256
-      - X: -108350296
-        Y: -63201256
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 0.0940583, y: -11.348059}
@@ -3159,6 +3079,7 @@ GameObject:
   - component: {fileID: 1115753133}
   - component: {fileID: 1115753134}
   - component: {fileID: 1115753135}
+  - component: {fileID: 1115753136}
   m_Layer: 0
   m_Name: level3
   m_TagString: Untagged
@@ -3240,7 +3161,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115753132}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -3348,6 +3269,52 @@ PolygonCollider2D:
       - {x: -6.0899997, y: -0.82}
       - {x: -6.08, y: -0.82}
   m_UseDelaunayMesh: 0
+--- !u!68 &1115753136
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115753132}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.28455746, y: 2.8347173}
+  - {x: -6.1506886, y: -0.20602444}
+  - {x: -6.1458015, y: -0.89972675}
+  - {x: -0.18763486, y: -4.0518026}
+  - {x: 6.1116347, y: -0.6116372}
+  - {x: 6.0984793, y: 0.07606605}
+  - {x: 0.36137065, y: 2.8001397}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1159094912
 GameObject:
   m_ObjectHideFlags: 0
@@ -7085,8 +7052,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 36ea48ebd22d54efdb766e719ff7d392, type: 3}
   - {fileID: 21300000, guid: c9273c5d3a1044aa3a29a45d3ced093d, type: 3}
   - {fileID: 21300000, guid: e6183dae6e2524de39576d8f04e1579f, type: 3}
-  ramIcon: {fileID: 1689073054}
+  formAnims: []
   cobraIcon: {fileID: 1689073053}
+  ramIcon: {fileID: 1689073054}
   falconIcon: {fileID: 1689073052}
   lionessIcon: {fileID: 1689073050}
 --- !u!114 &1909361070
@@ -7519,7 +7487,7 @@ PrefabInstance:
       objectReference: {fileID: 1689073050}
     - target: {fileID: 207589960713128813, guid: 8644c5c6b7b1f45c8a8c589697e4863b, type: 3}
       propertyPath: moveSpeed
-      value: 20
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4549346513664009381, guid: 8644c5c6b7b1f45c8a8c589697e4863b, type: 3}
       propertyPath: m_RootOrder
@@ -8015,6 +7983,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f8ba3f653d4413db8f705b13111ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextLevel: EndWin
+  NextLevel: Level4_1
   msgPressE: {fileID: 1533860599}
   canPressE: 0
