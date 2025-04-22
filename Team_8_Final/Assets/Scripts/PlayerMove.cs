@@ -51,6 +51,14 @@ public class PlayerMove : MonoBehaviour
     void Update() {
         if (!isAlive) return;
 
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            anim.SetTrigger("Attack");
+        }
+    }
+
+    void FixedUpdate() {
+        if (!isAlive) return;
+
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
@@ -66,18 +74,14 @@ public class PlayerMove : MonoBehaviour
             if (newScale.x > 0) newScale.x *= -1;
             transform.localScale = newScale;
         }
-
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            anim.SetTrigger("Attack");
-        }
     }
 
     void UpdateAnimationAndMove() {
         if (!isAlive) return;
 
         if (change != Vector3.zero) {
-            Vector2 moveDelta = change.normalized * moveSpeed * Time.deltaTime;
-            rb2d.MovePosition(rb2d.position + moveDelta);
+            Vector3 moveDelta = change.normalized * moveSpeed * Time.deltaTime;
+            rb2d.MovePosition(transform.position + moveDelta);
             anim.SetBool("Walk", true);
         } else {
             anim.SetBool("Walk", false);

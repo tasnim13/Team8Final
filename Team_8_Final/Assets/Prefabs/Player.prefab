@@ -52,7 +52,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75bb35e36b1a84e999e0a362fa51e199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   moveSpeed: 80
+=======
+  moveSpeed: 5
+>>>>>>> Stashed changes
   poisonMat: {fileID: 0}
   poisonDuration: 5
   poisonSpeedMultiplier: 0.5
