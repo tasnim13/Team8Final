@@ -18,10 +18,10 @@ public class PlayerForms : MonoBehaviour
     private GameHandler gh;
     private float baseSpeed;
 
-    public AmuletIcon cobraIcon;
-    public AmuletIcon ramIcon;
-    public AmuletIcon falconIcon;
-    public AmuletIcon lionessIcon;
+    // public AmuletIcon cobraIcon;
+    // public AmuletIcon ramIcon;
+    // public AmuletIcon falconIcon;
+    // public AmuletIcon lionessIcon;
 
     void Start()
     {
@@ -44,25 +44,25 @@ public class PlayerForms : MonoBehaviour
 
         GameHandler.formUnlocked[id - 1] = true;
 
-        switch (id) {
-            case 1:
-                cobraIcon.unlock();
-                break;
-            case 2:
-                ramIcon.unlock();
-                break;
-            case 3:
-                falconIcon.unlock();
-                break;
-            case 4:
-                lionessIcon.unlock();
-                break;
-        }
+        // switch (id) {
+        //     case 1:
+        //         cobraIcon.unlock();
+        //         break;
+        //     case 2:
+        //         ramIcon.unlock();
+        //         break;
+        //     case 3:
+        //         falconIcon.unlock();
+        //         break;
+        //     case 4:
+        //         lionessIcon.unlock();
+        //         break;
+        // }
 
-        ramIcon.select(id);
-        cobraIcon.select(id);
-        falconIcon.select(id);
-        lionessIcon.select(id);
+        // ramIcon.select(id);
+        // cobraIcon.select(id);
+        // falconIcon.select(id);
+        // lionessIcon.select(id);
     }
 
     IEnumerator ChangeFormWithCooldown(int id) {
