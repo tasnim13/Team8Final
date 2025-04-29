@@ -924,7 +924,7 @@ GameObject:
   - component: {fileID: 2784645964828549242}
   m_Layer: 5
   m_Name: PlayerForms
-  m_TagString: Untagged
+  m_TagString: PlayerFormsUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

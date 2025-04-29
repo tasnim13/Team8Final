@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class PlayerForms : MonoBehaviour
 {
-    public int currForm;
+    // public int currForm;
     public bool shouldChangeSprite = true;
-    // public bool whatever = false;
-    // private SpriteRenderer spriteRenderer;
     public Sprite[] formSprites;
     public RuntimeAnimatorController[] formAnims;
 
@@ -18,19 +16,17 @@ public class PlayerForms : MonoBehaviour
     private GameHandler gh;
     private float baseSpeed;
 
-    // public AmuletIcon cobraIcon;
-    // public AmuletIcon ramIcon;
-    // public AmuletIcon falconIcon;
-    // public AmuletIcon lionessIcon;
-
     void Start()
     {
-        currForm = 0;
         playermove = GetComponent<PlayerMove>();
         spatk = GetComponent<PlayerSpecialAttack>();
         gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         baseSpeed = playermove.moveSpeed;
-        // spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
+
+        if (gh.currForm != 0) {
+            ChangeForm(gh.currForm);
+            gh.formUI.HandleSelection(gh.currForm - 1);
+        }
 
         GameHandler.transformCooldownTime = 1f;
         GameHandler.transformCooldownOver = true;
@@ -43,6 +39,7 @@ public class PlayerForms : MonoBehaviour
         }
 
         GameHandler.formUnlocked[id - 1] = true;
+        gh.formUI.HandleSelection(id - 1);
 
         // switch (id) {
         //     case 1:
@@ -87,7 +84,7 @@ public class PlayerForms : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.F)) {
-            switch (currForm) {
+            switch (gh.currForm) {
                 case 1:
                     spatk.snakeAttack();
                     break;
@@ -122,7 +119,7 @@ public class PlayerForms : MonoBehaviour
             // falconIcon.select(id);
             // lionessIcon.select(id);
 
-            currForm = id;
+            gh.currForm = id;
             switch (id) {
                 case 0:
                     Debug.Log("TRANSFORMING: GENERIC");

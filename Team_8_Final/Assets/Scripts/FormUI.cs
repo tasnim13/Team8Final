@@ -64,7 +64,7 @@ public class FormUI : MonoBehaviour
         }
     }
 
-    void HandleSelection(int newIndex)
+    public void HandleSelection(int newIndex)
     {
         // if (!GameHandler.transformCooldownOver) { return; }
 

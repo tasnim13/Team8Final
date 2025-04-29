@@ -22,6 +22,9 @@ public class GameHandler : MonoBehaviour
 
     public bool isLastLevel = false;
 
+    public FormUI formUI;
+    public int currForm = 0;
+
 
     public static bool[] formUnlocked = new bool[4];
     public static bool transformCooldownOver = true;
@@ -47,6 +50,9 @@ public class GameHandler : MonoBehaviour
         {
             playerHealth = StartPlayerHealth;
         }
+
+        
+        formUI = GameObject.FindWithTag("PlayerFormsUI").GetComponent<FormUI>();
 
         updateStatsDisplay();
     }
