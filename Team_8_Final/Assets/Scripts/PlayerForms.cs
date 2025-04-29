@@ -23,9 +23,10 @@ public class PlayerForms : MonoBehaviour
         gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         baseSpeed = playermove.moveSpeed;
 
-        if (gh.currForm != 0) {
-            ChangeForm(gh.currForm);
-            gh.formUI.HandleSelection(gh.currForm - 1);
+        if (GameHandler.currForm != 0) {
+            Debug.Log("CURRENT FORM IS: " + GameHandler.currForm);
+            ChangeForm(GameHandler.currForm);
+            gh.formUI.HandleSelection(GameHandler.currForm - 1);
         }
 
         GameHandler.transformCooldownTime = 1f;
@@ -84,7 +85,7 @@ public class PlayerForms : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.F)) {
-            switch (gh.currForm) {
+            switch (GameHandler.currForm) {
                 case 1:
                     spatk.snakeAttack();
                     break;
@@ -119,7 +120,7 @@ public class PlayerForms : MonoBehaviour
             // falconIcon.select(id);
             // lionessIcon.select(id);
 
-            gh.currForm = id;
+            GameHandler.currForm = id;
             switch (id) {
                 case 0:
                     Debug.Log("TRANSFORMING: GENERIC");

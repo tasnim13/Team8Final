@@ -1634,11 +1634,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 690990456851873094, guid: d25fbe9a2a3864af898b1f50532fec0b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.62
+      value: -7.77
       objectReference: {fileID: 0}
     - target: {fileID: 690990456851873094, guid: d25fbe9a2a3864af898b1f50532fec0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.53
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 690990456851873094, guid: d25fbe9a2a3864af898b1f50532fec0b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1679,7 +1679,7 @@ PrefabInstance:
     - target: {fileID: 1199464001335264802, guid: d25fbe9a2a3864af898b1f50532fec0b, type: 3}
       propertyPath: gameHandler
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 671069955}
     - target: {fileID: 3102749811337115300, guid: d25fbe9a2a3864af898b1f50532fec0b, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1698,11 +1698,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8610965931880658244, guid: d25fbe9a2a3864af898b1f50532fec0b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8610965931880658244, guid: d25fbe9a2a3864af898b1f50532fec0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.64
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7093,7 +7093,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea24751596cb408189928c21a5e1f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currForm: 0
   shouldChangeSprite: 0
   formSprites:
   - {fileID: 21300000, guid: c3441518e606a452ab7ae4d5a2c3a466, type: 3}

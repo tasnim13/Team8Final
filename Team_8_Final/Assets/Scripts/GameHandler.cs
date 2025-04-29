@@ -23,7 +23,7 @@ public class GameHandler : MonoBehaviour
     public bool isLastLevel = false;
 
     public FormUI formUI;
-    public int currForm = 0;
+    public static int currForm = 0;
 
 
     public static bool[] formUnlocked = new bool[4];
@@ -52,7 +52,9 @@ public class GameHandler : MonoBehaviour
         }
 
         
-        formUI = GameObject.FindWithTag("PlayerFormsUI").GetComponent<FormUI>();
+        if (GameObject.FindWithTag("PlayerFormsUI") != null) {
+            formUI = GameObject.FindWithTag("PlayerFormsUI").GetComponent<FormUI>();
+        }
 
         updateStatsDisplay();
     }
