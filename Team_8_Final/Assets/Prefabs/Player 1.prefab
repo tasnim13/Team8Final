@@ -103,7 +103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea24751596cb408189928c21a5e1f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currForm: 0
   shouldChangeSprite: 1
   formSprites:
   - {fileID: 2103498312, guid: 5948675b780a544de89e6e6a5867c490, type: 3}
@@ -176,8 +175,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.118946254, y: -0.57177305}
-  m_Size: {x: 0.88553894, y: 2.072904}
+  m_Offset: {x: 0.118946254, y: -0.34408975}
+  m_Size: {x: 0.88553894, y: 2.5282707}
   m_Direction: 0
 --- !u!114 &6000770911437657072
 MonoBehaviour:
