@@ -16,18 +16,14 @@ public class PlayerForms : MonoBehaviour
     private GameHandler gh;
     private float baseSpeed;
 
+    private bool startBS = false;
+
     void Start()
     {
         playermove = GetComponent<PlayerMove>();
         spatk = GetComponent<PlayerSpecialAttack>();
         gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         baseSpeed = playermove.moveSpeed;
-
-        if (GameHandler.currForm != 0) {
-            Debug.Log("CURRENT FORM IS: " + GameHandler.currForm);
-            ChangeForm(GameHandler.currForm);
-            gh.formUI.HandleSelection(GameHandler.currForm - 1);
-        }
 
         GameHandler.transformCooldownTime = 1f;
         GameHandler.transformCooldownOver = true;
@@ -72,6 +68,15 @@ public class PlayerForms : MonoBehaviour
 
     void Update()
     {
+        if (!startBS) {
+            if (GameHandler.currForm != 0) {
+                Debug.Log("CURRENT FORM IS: " + GameHandler.currForm);
+                ChangeForm(GameHandler.currForm);
+                gh.formUI.HandleSelection(GameHandler.currForm - 1);
+            }
+            startBS = true;
+        }
+
         if (GameHandler.transformCooldownOver) {
             if (GameHandler.formUnlocked[0] && Input.GetKeyDown("1")) {
                 StartCoroutine(ChangeFormWithCooldown(1));

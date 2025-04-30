@@ -37,6 +37,9 @@ public class PlayerMove : MonoBehaviour
         // rendarr = GetComponentsInChildren<Renderer>();
         // rend = rendarr[0];
         sprend = GetComponentInChildren<SpriteRenderer>();
+        if (sprend == null) {
+            Debug.Log("UH OH! sprend is null!");
+        }
         // Debug.Log(anim.name);
         // Debug.Log(anim.runtimeAnimatorController.name);
         // rendRam = rendarr[0];
@@ -90,7 +93,15 @@ public class PlayerMove : MonoBehaviour
     }
 
     public void changePlayerSprite(Sprite formSprite, RuntimeAnimatorController formAnim) {
+        sprend = GetComponentInChildren<SpriteRenderer>();
+        // if (sprend == null) {
+        //     Debug.Log("UH OH! sprend.sprite is null");
+        // }
+        // if (formSprite == null) {
+        //     Debug.Log("UH OH! formSprite is null");
+        // }
         sprend.sprite = formSprite;
+        anim = GetComponentInChildren<Animator>();
         anim.runtimeAnimatorController = formAnim;
     }
 
