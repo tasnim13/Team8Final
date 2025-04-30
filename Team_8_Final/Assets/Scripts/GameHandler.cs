@@ -11,8 +11,13 @@ public class GameHandler : MonoBehaviour
     public int StartPlayerHealth = 100;
     public GameObject healthText;
 
+    public static int numLives = 3;
+    public int startNumLives = 3;
+
     public static int gotTokens = 0;
     public GameObject tokensText;
+
+    public GameObject[] ankhIcons;
 
     public bool isDefending = false;
 
@@ -95,13 +100,25 @@ public class GameHandler : MonoBehaviour
     {
         player.GetComponent<PlayerHurt>().playerDead();
         lastLevelDied = sceneName;
+        numLives -= 1;
+
+// TODO: what is this
+        // ankhIcons[numLives].enabled = false;
+
+
+        // TODO: update stuff
         StartCoroutine(DeathPause());
     }
 
     IEnumerator DeathPause()
     {
         yield return new WaitForSeconds(1.0f);
-        SceneManager.LoadScene("EndLose");
+
+        if (numLives == 0) {
+            SceneManager.LoadScene("EndLose");
+        } else {
+            ReplayLastLevel();
+        }
     }
 
     public void CheckEnemiesStatus()
