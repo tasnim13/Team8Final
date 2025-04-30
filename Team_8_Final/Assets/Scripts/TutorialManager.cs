@@ -8,54 +8,60 @@ public class TutorialManager : MonoBehaviour {
 
     public GameObject tutorialUI;
     public TextMeshProUGUI messageText;
-    public GameObject nextButton;
-    public float typeSpeed = 0.03f;
+    public Button nextButton;
 
-    private string fullMessage;
+    public Image extraImage;//assign this in Inspector
+
+    private string currentMessage;
     private bool isTyping = false;
-    private bool hasFinishedTyping = false;
+    private bool hasTyped = false;
 
     private void Awake() {
-        if (Instance == null) {
-            Instance = this;
-        } else {
-            Destroy(gameObject);
-        }
+        Instance = this;
     }
 
     private void Start() {
         tutorialUI.SetActive(false);
+        extraImage.gameObject.SetActive(false);//hide artwork initially
     }
 
-    public void ShowMessage(string message) {
+    public void StartTutorial(string message, Sprite optionalArt) {
         Time.timeScale = 0f;
-        fullMessage = message;
-        messageText.text = "";
         tutorialUI.SetActive(true);
-        nextButton.SetActive(true);
-        StartCoroutine(TypeMessage());
-    }
+        messageText.text = "";
+        currentMessage = message;
+        StartCoroutine(TypeText(message));
 
-    IEnumerator TypeMessage() {
-        isTyping = true;
-        hasFinishedTyping = false;
-        foreach (char c in fullMessage) {
-            messageText.text += c;
-            yield return new WaitForSecondsRealtime(typeSpeed);
+        if (optionalArt != null) {
+            extraImage.sprite = optionalArt;
+            extraImage.gameObject.SetActive(true);
+        } else {
+            extraImage.gameObject.SetActive(false);
         }
-        isTyping = false;
-        hasFinishedTyping = true;
+
+        hasTyped = false;
     }
 
-    public void OnNextButtonClicked() {
-        if (isTyping) {
+    public void OnNextPressed() {
+        if (!hasTyped) {
             StopAllCoroutines();
-            messageText.text = fullMessage;
-            isTyping = false;
-            hasFinishedTyping = true;
-        } else if (hasFinishedTyping) {
+            messageText.text = currentMessage;
+            hasTyped = true;
+        } else {
             tutorialUI.SetActive(false);
+            extraImage.gameObject.SetActive(false);
             Time.timeScale = 1f;
         }
+    }
+
+    private IEnumerator TypeText(string message) {
+        isTyping = true;
+        messageText.text = "";
+        foreach (char c in message.ToCharArray()) {
+            messageText.text += c;
+            yield return new WaitForSecondsRealtime(0.02f);
+        }
+        isTyping = false;
+        hasTyped = true;
     }
 }
