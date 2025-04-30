@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 175
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cd3d74f62db1481484bd89e90c964bf
-      internalID: -1907829717
+      spriteID: 1cd29c822f417469f880f12798f23283
+      internalID: -151942139
       vertices: []
       indices: 
       edges: []
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 356f5dadb98d746eaa035d499534d904
-      internalID: -147308089
+      spriteID: 2e1fa6233491d47939afa694e7db10e8
+      internalID: -631449600
       vertices: []
       indices: 
       edges: []
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92e412a3bb39348eaa7285ad262f31c7
-      internalID: -1794768210
+      spriteID: 40802e60e139d40e09448f7e26c2928e
+      internalID: 1804957288
       vertices: []
       indices: 
       edges: []
@@ -196,9 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Pillar_0: -1907829717
-      Pillar_1: -147308089
-      Pillar_2: -1794768210
+      Pillar_0: -151942139
+      Pillar_1: -631449600
+      Pillar_2: 1804957288
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
