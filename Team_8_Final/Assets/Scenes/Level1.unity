@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &33116711
 Transform:
   m_ObjectHideFlags: 0
@@ -1277,7 +1277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &879175793
 Transform:
   m_ObjectHideFlags: 0
@@ -1689,87 +1689,7 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 879175800}
-    m_ColliderPaths:
-    - - X: 1100130
-        Y: 5777828
-      - X: 1100130
-        Y: 6701765
-      - X: -108949320
-        Y: 6701762
-      - X: -108949320
-        Y: 5777825
-  - m_Collider: {fileID: 879175799}
-    m_ColliderPaths:
-    - - X: -108039376
-        Y: 6335527
-      - X: -109072400
-        Y: 6335527
-      - X: -109072400
-        Y: -44108844
-      - X: -108039376
-        Y: -44108844
-  - m_Collider: {fileID: 879175798}
-    m_ColliderPaths:
-    - - X: -108264104
-        Y: -43175712
-      - X: -139153360
-        Y: -43175712
-      - X: -139153360
-        Y: -44164596
-      - X: -108264104
-        Y: -44164596
-  - m_Collider: {fileID: 879175797}
-    m_ColliderPaths:
-    - - X: -138070544
-        Y: -43132540
-      - X: -139039632
-        Y: -43132540
-      - X: -139039632
-        Y: -63319028
-      - X: -138070544
-        Y: -63319028
-  - m_Collider: {fileID: 879175796}
-    m_ColliderPaths:
-    - - X: 940873
-        Y: -112268032
-      - X: -109025768
-        Y: -112268032
-      - X: -109025768
-        Y: -113480584
-      - X: 940873
-        Y: -113480584
-  - m_Collider: {fileID: 879175795}
-    m_ColliderPaths:
-    - - X: -108071312
-        Y: -62277648
-      - X: -109144512
-        Y: -62277648
-      - X: -109144512
-        Y: -113196904
-      - X: -108071312
-        Y: -113196904
-  - m_Collider: {fileID: 879175794}
-    m_ColliderPaths:
-    - - X: -108350296
-        Y: -62286744
-      - X: -139153696
-        Y: -62286744
-      - X: -139153696
-        Y: -63201260
-      - X: -108350296
-        Y: -63201260
-  - m_Collider: {fileID: 879175801}
-    m_ColliderPaths:
-    - - X: 1051790
-        Y: 6754760
-      - X: 1067
-        Y: 6754760
-      - X: 1064
-        Y: -112862256
-      - X: 1051787
-        Y: -112862256
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 0.094058, y: -11.348059}
@@ -1883,6 +1803,117 @@ Transform:
   m_Father: {fileID: 1321402926}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &920877102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 920877103}
+  - component: {fileID: 920877105}
+  - component: {fileID: 920877104}
+  m_Layer: 0
+  m_Name: NewWallBoundaries
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &920877103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920877102}
+  m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: -0.3, y: 10.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1321402926}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &920877104
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920877102}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -13.321978, y: 2.1709154}
+  - {x: -0.94612193, y: -1.8592026}
+  - {x: 2.9157388, y: -13.318654}
+  - {x: 2.1250427, y: -14.101857}
+  - {x: -10.495923, y: -9.887931}
+  - {x: -11.310813, y: -6.480223}
+  - {x: -14.094781, y: -5.461628}
+  - {x: -14.815576, y: -3.580082}
+  - {x: -13.025233, y: -4.2694383}
+  - {x: -12.117392, y: -3.3808255}
+  - {x: -14.027642, y: 1.4759203}
+  - {x: -13.034307, y: 2.6797225}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!50 &920877105
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920877102}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &929307940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2136,11 +2167,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4549346513664009381, guid: c4a5eaa83cc2e40d1aa973ce848fcdab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.79
+      value: 1.03
       objectReference: {fileID: 0}
     - target: {fileID: 4549346513664009381, guid: c4a5eaa83cc2e40d1aa973ce848fcdab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.53
+      value: 5.62
       objectReference: {fileID: 0}
     - target: {fileID: 4549346513664009381, guid: c4a5eaa83cc2e40d1aa973ce848fcdab, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2592,6 +2623,7 @@ Transform:
   - {fileID: 449474374}
   - {fileID: 1655437059}
   - {fileID: 683093527}
+  - {fileID: 920877103}
   - {fileID: 879175793}
   m_Father: {fileID: 0}
   m_RootOrder: 3

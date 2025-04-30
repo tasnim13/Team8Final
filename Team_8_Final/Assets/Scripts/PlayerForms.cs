@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class PlayerForms : MonoBehaviour
 {
-    public int currForm;
+    // public int currForm;
     public bool shouldChangeSprite = true;
-    // public bool whatever = false;
-    // private SpriteRenderer spriteRenderer;
     public Sprite[] formSprites;
     public RuntimeAnimatorController[] formAnims;
 
@@ -18,19 +16,14 @@ public class PlayerForms : MonoBehaviour
     private GameHandler gh;
     private float baseSpeed;
 
-    // public AmuletIcon cobraIcon;
-    // public AmuletIcon ramIcon;
-    // public AmuletIcon falconIcon;
-    // public AmuletIcon lionessIcon;
+    private bool startBS = false;
 
     void Start()
     {
-        currForm = 0;
         playermove = GetComponent<PlayerMove>();
         spatk = GetComponent<PlayerSpecialAttack>();
         gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         baseSpeed = playermove.moveSpeed;
-        // spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
 
         GameHandler.transformCooldownTime = 1f;
         GameHandler.transformCooldownOver = true;
@@ -43,6 +36,7 @@ public class PlayerForms : MonoBehaviour
         }
 
         GameHandler.formUnlocked[id - 1] = true;
+        gh.formUI.HandleSelection(id - 1);
 
         // switch (id) {
         //     case 1:
@@ -74,6 +68,15 @@ public class PlayerForms : MonoBehaviour
 
     void Update()
     {
+        if (!startBS) {
+            if (GameHandler.currForm != 0) {
+                Debug.Log("CURRENT FORM IS: " + GameHandler.currForm);
+                ChangeForm(GameHandler.currForm);
+                gh.formUI.HandleSelection(GameHandler.currForm - 1);
+            }
+            startBS = true;
+        }
+
         if (GameHandler.transformCooldownOver) {
             if (GameHandler.formUnlocked[0] && Input.GetKeyDown("1")) {
                 StartCoroutine(ChangeFormWithCooldown(1));
@@ -87,7 +90,7 @@ public class PlayerForms : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.F)) {
-            switch (currForm) {
+            switch (GameHandler.currForm) {
                 case 1:
                     spatk.snakeAttack();
                     break;
@@ -122,7 +125,7 @@ public class PlayerForms : MonoBehaviour
             // falconIcon.select(id);
             // lionessIcon.select(id);
 
-            currForm = id;
+            GameHandler.currForm = id;
             switch (id) {
                 case 0:
                     Debug.Log("TRANSFORMING: GENERIC");

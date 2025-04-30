@@ -12,6 +12,7 @@ TagManager:
   - Projectile
   - PlayerHealthBar
   - PauseMenuUI
+  - PlayerFormsUI
   layers:
   - Default
   - TransparentFX

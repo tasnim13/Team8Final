@@ -31,24 +31,35 @@ public class FormUI : MonoBehaviour
         }
     }
 
-    void Update()
-    {
+    void Update() {
+        // Continuously check for unlocks
         for (int i = 0; i < forms.Length; i++)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1 + i) )
+            bool unlocked = GameHandler.formUnlocked[i];
+
+            // If unlocked, make sure correct art is shown
+            if (unlocked && formsDisabled[i].activeSelf)
             {
-                if (GameHandler.formUnlocked[i])
+                forms[i].SetActive(true);
+                formsDisabled[i].SetActive(false);
+            }
+
+            // Handle input for selecting
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+            {
+                if (unlocked)
                 {
                     HandleSelection(i);
-                } else {
-                    // Shake the disabled icon horizontally
+                }
+                else
+                {
+                    // Shake the disabled icon
                     RectTransform disabledRect = formsDisabled[i].GetComponent<RectTransform>();
                     if (disabledRect != null)
                     {
                         LeanTween.cancel(disabledRect);
                         Vector3 originalPos = disabledRect.anchoredPosition;
 
-                        // Wiggle back and forth
                         float shakeAmount = 5f;
                         float shakeDuration = 0.3f;
 
@@ -59,12 +70,11 @@ public class FormUI : MonoBehaviour
                             });
                     }
                 }
-
             }
         }
     }
 
-    void HandleSelection(int newIndex)
+    public void HandleSelection(int newIndex)
     {
         // if (!GameHandler.transformCooldownOver) { return; }
 
