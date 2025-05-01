@@ -49,9 +49,7 @@ public class EnemyBeetle : EnemyParent {
     }
 
     public override void Update() {
-        if (isDead) return;
-
-        base.Update();//Handles attack logic
+        base.Update(); //Handles attack logic
 
         if (!isJumping && Time.time >= lastJumpTime + jumpCooldown) {
             TryJump();

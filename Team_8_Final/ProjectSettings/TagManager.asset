@@ -13,6 +13,7 @@ TagManager:
   - PlayerHealthBar
   - PauseMenuUI
   - PlayerFormsUI
+  - TutorialUI
   layers:
   - Default
   - TransparentFX

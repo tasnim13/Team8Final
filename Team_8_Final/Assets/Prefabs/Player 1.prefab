@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6246753547471829311}
   - component: {fileID: 9043898785142481987}
   - component: {fileID: 6000770911437657072}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
-  weaponDamages: 050000000500000005000000
+  weaponDamages: 05000000
   weaponSprites: []
   weaponRenderer: {fileID: 0}
 --- !u!114 &348677604638894250
@@ -175,8 +175,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.118946254, y: -0.34408975}
-  m_Size: {x: 0.88553894, y: 2.5282707}
+  m_Offset: {x: 0.118946254, y: -0.3311088}
+  m_Size: {x: 0.88553894, y: 2.5542326}
   m_Direction: 0
 --- !u!114 &6000770911437657072
 MonoBehaviour:
