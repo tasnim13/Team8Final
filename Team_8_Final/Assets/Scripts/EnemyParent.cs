@@ -29,7 +29,8 @@ public class EnemyParent : MonoBehaviour {
 
     private float scaleX;
     private Color originalColor;
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer; // ignore this
+    public GameObject enemyShadow;
     protected bool isDead = false;
 
     public GameHandler gameHandler;
@@ -56,7 +57,10 @@ public class EnemyParent : MonoBehaviour {
         currHealth = health;
         healthBar.Initialize();
 
-        anim = GetComponent<Animator>();
+        enemyShadow.SetActive(true);
+
+
+        anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         playerHealthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar").GetComponent<PlayerHealthBar>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -141,6 +145,8 @@ public class EnemyParent : MonoBehaviour {
         if (deathSprite != null) {
             spriteRenderer.sprite = deathSprite;
         }
+        enemyShadow.SetActive(false);
+
 
         transform.rotation = Quaternion.identity;
 

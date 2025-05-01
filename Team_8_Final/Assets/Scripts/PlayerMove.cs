@@ -18,7 +18,7 @@ public class PlayerMove : MonoBehaviour
 
     // private Renderer[] rendarr;
 
-    private SpriteRenderer sprend;
+    public SpriteRenderer sprend;
 
     private bool isAlive = true;
     [Header("Poison Settings")]
@@ -36,7 +36,7 @@ public class PlayerMove : MonoBehaviour
 
         // rendarr = GetComponentsInChildren<Renderer>();
         // rend = rendarr[0];
-        sprend = GetComponentInChildren<SpriteRenderer>();
+        //sprend = GetComponentInChildren<SpriteRenderer>();
         if (sprend == null) {
             Debug.Log("UH OH! sprend is null!");
         }

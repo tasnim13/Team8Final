@@ -314,6 +314,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 875093692000740140, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 875093692000740140, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6cff1bfa063ff4964918d3118d8d8dc7, type: 2}
     - target: {fileID: 1601208832716351989, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Radius
       value: 0.5
@@ -321,6 +329,22 @@ PrefabInstance:
     - target: {fileID: 1601208832716351989, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Offset.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678521376740246657, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1238489270, guid: 2538be4728d9345ed97e616ba4ca45f7, type: 3}
+    - target: {fileID: 3213223561511986315, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213223561511986315, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213223561511986315, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 8755140187916156277, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Sprite
@@ -343,7 +367,7 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 559315200632849054, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 283710929326130265, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
@@ -359,10 +383,44 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 725940972760891837, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8868818183451575929}
+    - targetCorrespondingSourceObject: {fileID: 6481677798190959656, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6836970791974764919}
   m_SourcePrefab: {fileID: 100100000, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+--- !u!1 &1134036671660181091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6481677798190959656, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+  m_PrefabInstance: {fileID: 6219299310415579723}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6836970791974764919
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134036671660181091}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 048d9d85851314169bf626196fa4fdcb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!224 &6170092378104679954 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 283710929326130265, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+  m_PrefabInstance: {fileID: 6219299310415579723}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6215652435116271786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3673677581427425, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
   m_PrefabInstance: {fileID: 6219299310415579723}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6655313863060720630 stripped
@@ -397,9 +455,11 @@ MonoBehaviour:
   attackCooldown: 6
   health: 10
   healthBar: {fileID: 7958836701241481236}
+  enemyShadow: {fileID: 6215652435116271786}
   gameHandler: {fileID: 0}
   playerHealthBar: {fileID: 0}
   deathSprite: {fileID: 21300000, guid: d2b66cc7e497f4269808114c2a1c9ab8, type: 3}
+  deathParticlesPrefab: {fileID: 0}
   attackEffect: {fileID: 2896594688399769345}
   attackEffectDistance: 0.25
   poisonMat: {fileID: 2100000, guid: 6fd4812a8ed7c42819928b70ee3df34a, type: 2}
