@@ -9,7 +9,7 @@ public class GameHandler : MonoBehaviour
     private GameObject player;
     public static int playerHealth = 100;
     public int StartPlayerHealth = 100;
-    public GameObject healthText;
+
 
     public static int numLives = 3;
     public int startNumLives = 3;
@@ -30,6 +30,7 @@ public class GameHandler : MonoBehaviour
     public FormUI formUI;
     public static int currForm = 0;
 
+    public PlayerHealthBar playerHealthBar;
 
     public static bool[] formUnlocked = new bool[4];
     public static bool transformCooldownOver = true;
@@ -60,40 +61,28 @@ public class GameHandler : MonoBehaviour
         if (GameObject.FindWithTag("PlayerFormsUI") != null) {
             formUI = GameObject.FindWithTag("PlayerFormsUI").GetComponent<FormUI>();
         }
-
-        updateStatsDisplay();
     }
 
     public void playerGetTokens(int newTokens)
     {
         gotTokens += newTokens;
-        updateStatsDisplay();
     }
 
     public void playerGetHit(int damage)
     {
         playerHealth -= damage;
-        if (playerHealth >= 0)
-        {
-            updateStatsDisplay();
-        }
         /*if (damage > 0)
         {
             player.GetComponent<PlayerHurt>().playerHit();
         }*/
 
+        playerHealthBar.UpdateHealthBar();
+
         if (playerHealth <= 0)
         {
             playerHealth = 0;
-            updateStatsDisplay();
             playerDies();
         }
-    }
-
-    public void updateStatsDisplay()
-    {
-        Text healthTextTemp = healthText.GetComponent<Text>();
-        healthTextTemp.text = "Player Health: " + playerHealth;
     }
 
     public void playerDies()

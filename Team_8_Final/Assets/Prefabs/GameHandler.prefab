@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2530668179022041205
 MonoBehaviour:
@@ -47,8 +47,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartPlayerHealth: 100
   healthText: {fileID: 0}
+  startNumLives: 3
   tokensText: {fileID: 0}
+  ankhIcons: []
   isDefending: 0
+  isLastLevel: 0
+  formUI: {fileID: 0}
+  playerHealthBar: {fileID: 4575063029312613678, guid: 7019a1727748642259ff943cf41baf11, type: 3}
+  enemiesToDefeat: []
 --- !u!114 &-1374926896474140559
 MonoBehaviour:
   m_ObjectHideFlags: 0
