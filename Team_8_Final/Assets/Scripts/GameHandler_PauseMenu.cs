@@ -57,7 +57,12 @@ public class GameHandler_PauseMenu : MonoBehaviour {
                 if (!GameisPaused) {
                         pauseMenuUI.SetActive(true);
                         Debug.Log("pauseMenuUI activeSelf: " + pauseMenuUI.activeSelf);
-                        Debug.Log("pauseMenuUI canvas enabled: " + pauseMenuUI.GetComponent<Canvas>().enabled);
+                        Canvas canvas = pauseMenuUI.GetComponent<Canvas>();
+                        if (canvas != null) {
+                                Debug.Log("pauseMenuUI canvas enabled: " + canvas.enabled);
+                        } else {
+                                Debug.Log("pauseMenuUI has no Canvas component.");
+                        }
                         Time.timeScale = 0f;
                         GameisPaused = true;
                 } else {

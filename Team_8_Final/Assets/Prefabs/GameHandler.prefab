@@ -66,5 +66,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ffe296bcf5ed4503b2f4290aca3ede9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 7395008335827508169, guid: 0e4c38c84b71f4c749a6e98889d72cf8, type: 3}
+  pauseMenuUI: {fileID: 1235573725820917350, guid: 4f8b993992e0948afa28f52cfc6f6c43, type: 3}
   mixer: {fileID: 0}

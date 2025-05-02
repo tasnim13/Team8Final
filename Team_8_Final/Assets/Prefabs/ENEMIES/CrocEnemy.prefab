@@ -335,7 +335,7 @@ MonoBehaviour:
   deathSprite: {fileID: 21300000, guid: d2b66cc7e497f4269808114c2a1c9ab8, type: 3}
   deathParticlesPrefab: {fileID: 2651303751460814054, guid: b60267eb062e440cd99cdb288cd687e4, type: 3}
   attackEffect: {fileID: 5655432449006677151}
-  attackEffectDistance: 0.5
+  attackEffectDistance: 0.75
   hitsBeforeSpin: 2
   spinDamage: 13
   spinDuration: 0.5
