@@ -5,7 +5,7 @@
 			<value>3</value>
 		</property>
 		<property name="quality">
-			<value>37</value>
+			<value>25</value>
 		</property>
 		<relationship name="platform">
 			<destination>{378140c5-e3c6-4af7-a535-961870b1cbe4}</destination>

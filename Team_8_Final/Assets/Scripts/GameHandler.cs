@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 public class GameHandler : MonoBehaviour
 {
@@ -91,7 +92,9 @@ public class GameHandler : MonoBehaviour
         lastLevelDied = sceneName;
         numLives -= 1;
 
-// TODO: what is this
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isCombat", 0f, true); // reset any music layering that may have been happening
+
+        // TODO: what is this
         // ankhIcons[numLives].enabled = false;
 
 
