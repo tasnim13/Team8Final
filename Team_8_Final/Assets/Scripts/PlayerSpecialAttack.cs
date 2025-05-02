@@ -26,6 +26,8 @@ public class PlayerSpecialAttack : MonoBehaviour
             projectileSpeed = 10f;
             basicAttack(8);
             canSpecial = false;
+            canSpecial = true;
+            // TODO: delay
         }
     }
 

@@ -37,6 +37,7 @@ public class EnemyParent : MonoBehaviour {
 
     [Header("Death Art")]
     public Sprite deathSprite;
+    public GameObject deathParticlesPrefab;
 
     [Header("Attack Visual Effect")]
     public GameObject attackEffect;
@@ -157,6 +158,14 @@ public class EnemyParent : MonoBehaviour {
             })
             .setOnComplete(() => Destroy(gameObject))
             .setEase(LeanTweenType.easeInOutQuad);
+
+        if (deathParticlesPrefab != null) {
+            Vector3 spawnPos = transform.position + new Vector3(0f, -0.2f, 0f);
+            GameObject particles = Instantiate(deathParticlesPrefab, spawnPos, deathParticlesPrefab.transform.rotation);
+
+            ParticleSystem ps = particles.GetComponent<ParticleSystem>();
+            ps.Play();
+        }
 
         GameHandler handler = FindObjectOfType<GameHandler>();
         if (handler != null) {

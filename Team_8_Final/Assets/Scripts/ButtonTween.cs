@@ -10,6 +10,10 @@ public class ButtonTween : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public float durationIn;
     public float durationOut;
 
+    void OnEnable() {
+        transform.localScale = Vector3.one;
+    }
+
     public void OnPointerEnter(PointerEventData eventData) {
         LeanTween.scale(gameObject, transform.localScale * scale, durationIn).setEase(easeType);
     }

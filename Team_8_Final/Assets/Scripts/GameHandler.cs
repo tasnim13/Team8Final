@@ -9,10 +9,15 @@ public class GameHandler : MonoBehaviour
     private GameObject player;
     public static int playerHealth = 100;
     public int StartPlayerHealth = 100;
-    public GameObject healthText;
+
+
+    public static int numLives = 3;
+    public int startNumLives = 3;
 
     public static int gotTokens = 0;
     public GameObject tokensText;
+
+    public GameObject[] ankhIcons;
 
     public bool isDefending = false;
 
@@ -22,6 +27,10 @@ public class GameHandler : MonoBehaviour
 
     public bool isLastLevel = false;
 
+    public FormUI formUI;
+    public static int currForm = 0;
+
+    public PlayerHealthBar playerHealthBar;
 
     public static bool[] formUnlocked = new bool[4];
     public static bool transformCooldownOver = true;
@@ -48,52 +57,57 @@ public class GameHandler : MonoBehaviour
             playerHealth = StartPlayerHealth;
         }
 
-        updateStatsDisplay();
+        
+        if (GameObject.FindWithTag("PlayerFormsUI") != null) {
+            formUI = GameObject.FindWithTag("PlayerFormsUI").GetComponent<FormUI>();
+        }
     }
 
     public void playerGetTokens(int newTokens)
     {
         gotTokens += newTokens;
-        updateStatsDisplay();
     }
 
     public void playerGetHit(int damage)
     {
         playerHealth -= damage;
-        if (playerHealth >= 0)
-        {
-            updateStatsDisplay();
-        }
         /*if (damage > 0)
         {
             player.GetComponent<PlayerHurt>().playerHit();
         }*/
 
+        playerHealthBar.UpdateHealthBar();
+
         if (playerHealth <= 0)
         {
             playerHealth = 0;
-            updateStatsDisplay();
             playerDies();
         }
-    }
-
-    public void updateStatsDisplay()
-    {
-        Text healthTextTemp = healthText.GetComponent<Text>();
-        healthTextTemp.text = "Player Health: " + playerHealth;
     }
 
     public void playerDies()
     {
         player.GetComponent<PlayerHurt>().playerDead();
         lastLevelDied = sceneName;
+        numLives -= 1;
+
+// TODO: what is this
+        // ankhIcons[numLives].enabled = false;
+
+
+        // TODO: update stuff
         StartCoroutine(DeathPause());
     }
 
     IEnumerator DeathPause()
     {
         yield return new WaitForSeconds(1.0f);
-        SceneManager.LoadScene("EndLose");
+
+        if (numLives == 0) {
+            SceneManager.LoadScene("EndLose");
+        } else {
+            ReplayLastLevel();
+        }
     }
 
     public void CheckEnemiesStatus()
