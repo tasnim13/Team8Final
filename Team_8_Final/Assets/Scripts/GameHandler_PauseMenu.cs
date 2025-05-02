@@ -13,15 +13,21 @@ public class GameHandler_PauseMenu : MonoBehaviour {
         private Slider sliderVolumeCtrl;
 
         void Awake(){
-                pauseMenuUI.SetActive(true); // so slider can be set
-                SetLevel (volumeLevel);
+                if (pauseMenuUI == null) {
+                        Debug.LogWarning("pauseMenuUI was not assigned in the Inspector.");
+                } else {
+                        pauseMenuUI.SetActive(true); // Activate once to configure slider
+                }
+
+                SetLevel(volumeLevel);
+
                 GameObject sliderTemp = GameObject.FindWithTag("PauseMenuSlider");
                 if (sliderTemp != null){
                         sliderVolumeCtrl = sliderTemp.GetComponent<Slider>();
                         sliderVolumeCtrl.value = volumeLevel;
                 }
-                pauseMenuUI = GameObject.FindWithTag("PauseMenuUI");
         }
+
 
         void Start(){
                 pauseMenuUI.SetActive(false);
@@ -39,14 +45,27 @@ public class GameHandler_PauseMenu : MonoBehaviour {
                 }
         }
 
-        public void Pause(){
-              if (!GameisPaused){
-                pauseMenuUI.SetActive(true);
-                Time.timeScale = 0f;
-                GameisPaused = true;}
-             else{ Resume ();}
-             //NOTE: This added conditional is for a pause button
+        public void PauseButton() {
+                if (GameisPaused) {
+                        Resume();
+                } else {
+                        Pause();
+                }
         }
+
+        public void Pause() {
+                if (!GameisPaused) {
+                        pauseMenuUI.SetActive(true);
+                        Debug.Log("pauseMenuUI activeSelf: " + pauseMenuUI.activeSelf);
+                        Debug.Log("pauseMenuUI canvas enabled: " + pauseMenuUI.GetComponent<Canvas>().enabled);
+                        Time.timeScale = 0f;
+                        GameisPaused = true;
+                } else {
+                        Resume();
+                }
+        }
+
+
 
         public void Resume(){
                 pauseMenuUI.SetActive(false);

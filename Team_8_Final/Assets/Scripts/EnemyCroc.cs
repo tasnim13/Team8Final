@@ -43,6 +43,7 @@ public class EnemyCroc : EnemyParent {
 
         if (isAttacking && Time.time >= lastAttackTime + attackCooldown) {
             lastAttackTime = Time.time;
+            hits++; // Increment on every attack attempt
 
             if (hits >= hitsBeforeSpin) {
                 GameHandler.playerHealth -= spinDamage;
@@ -50,7 +51,6 @@ public class EnemyCroc : EnemyParent {
                 hits = 0;
             } else {
                 GameHandler.playerHealth -= damage;
-                hits++;
                 TriggerAttackEffect();
             }
 

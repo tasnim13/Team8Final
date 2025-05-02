@@ -87,7 +87,7 @@ public class EnemyParent : MonoBehaviour {
     }
 
     public virtual void FixedUpdate() {
-        if (isDead) return;
+        if (isDead || isAttacking) return;
 
         float distToPlayer = Vector3.Distance(transform.position, target.position);
         Vector2 moveDirection = Vector2.zero;

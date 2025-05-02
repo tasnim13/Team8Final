@@ -107,7 +107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 283710929326130265, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 283710929326130265, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_AnchorMax.x
@@ -321,12 +321,12 @@ MonoBehaviour:
   lastPosition: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
   movementSpeed: 1.75
-  sightRange: 3.5
+  sightRange: 3.75
   sightOffsetX: 0
   sightOffsetY: 0.35
   damage: 8
   attackRange: 0.7
-  attackCooldown: 1.5
+  attackCooldown: 0.75
   health: 100
   healthBar: {fileID: 5259668532567627047}
   enemyShadow: {fileID: 3109709309720754460}
@@ -335,8 +335,8 @@ MonoBehaviour:
   deathSprite: {fileID: 21300000, guid: d2b66cc7e497f4269808114c2a1c9ab8, type: 3}
   deathParticlesPrefab: {fileID: 2651303751460814054, guid: b60267eb062e440cd99cdb288cd687e4, type: 3}
   attackEffect: {fileID: 5655432449006677151}
-  attackEffectDistance: 1.25
-  hitsBeforeSpin: 3
+  attackEffectDistance: 0.5
+  hitsBeforeSpin: 2
   spinDamage: 13
   spinDuration: 0.5
 --- !u!70 &4655780278679632998
