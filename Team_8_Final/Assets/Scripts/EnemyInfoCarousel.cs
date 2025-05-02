@@ -2,53 +2,73 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyInfoCarousel : MonoBehaviour
-{
-    [Header("Assign in Inspector")]
+public class EnemyInfoCarousel : MonoBehaviour {
+    [Header("Panels & Displays")]
     public GameObject enemyInfoPanel;
-    public Image enemyImageDisplay;
-    public List<Sprite> enemyCards; // List of enemy info images
+    public GameObject categoryPanel;         // Holds the 3 category buttons
+    public GameObject carouselPanel;         // Holds the image, left/right buttons, etc.
+    public Image cardImageDisplay;
+
+    [Header("Card Data")]
+    public List<Sprite> enemyCards;
+    public List<Sprite> formCards;
+    public List<Sprite> controlCards;
+
+    [Header("Buttons")]
     public Button leftButton;
     public Button rightButton;
     public Button closeButton;
+    public Button enemyButton;
+    public Button formButton;
+    public Button controlButton;
 
+    private List<Sprite> currentCards;
     private int currentIndex = 0;
 
-    void Start()
-    {
-        enemyInfoPanel.SetActive(false); // Start hidden
-
+    void Start() {
+        enemyInfoPanel.SetActive(false);
         leftButton.onClick.AddListener(ShowPrevious);
         rightButton.onClick.AddListener(ShowNext);
         closeButton.onClick.AddListener(ClosePanel);
+        enemyButton.onClick.AddListener(() => OpenCategory(enemyCards));
+        formButton.onClick.AddListener(() => OpenCategory(formCards));
+        controlButton.onClick.AddListener(() => OpenCategory(controlCards));
     }
 
-    public void OpenPanel()
-    {
+    public void OpenPanel() {
         enemyInfoPanel.SetActive(true);
-        currentIndex = 0;
-        UpdateDisplay();
+        categoryPanel.SetActive(true);
+        carouselPanel.SetActive(false);
     }
 
-    public void ClosePanel()
-    {
+    public void ClosePanel() {
         enemyInfoPanel.SetActive(false);
+        categoryPanel.SetActive(false);
+        carouselPanel.SetActive(false);
     }
 
-    void ShowPrevious()
-    {
-        currentIndex = (currentIndex - 1 + enemyCards.Count) % enemyCards.Count;
+    private void OpenCategory(List<Sprite> cards) {
+        currentCards = cards;
+        currentIndex = 0;
+        categoryPanel.SetActive(false);
+        carouselPanel.SetActive(true);
         UpdateDisplay();
     }
 
-    void ShowNext()
-    {
-        currentIndex = (currentIndex + 1) % enemyCards.Count;
+    void ShowPrevious() {
+        if (currentCards == null || currentCards.Count == 0) return;
+        currentIndex = (currentIndex - 1 + currentCards.Count) % currentCards.Count;
         UpdateDisplay();
     }
 
-    void UpdateDisplay()
-    {
-        enemyImageDisplay.sprite = enemyCards[currentIndex];
+    void ShowNext() {
+        if (currentCards == null || currentCards.Count == 0) return;
+        currentIndex = (currentIndex + 1) % currentCards.Count;
+        UpdateDisplay();
+    }
+
+    void UpdateDisplay() {
+        if (currentCards == null || currentCards.Count == 0) return;
+        cardImageDisplay.sprite = currentCards[currentIndex];
     }
 }
