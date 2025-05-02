@@ -203,8 +203,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3d67055456900436b88ee0a2c5572d3c, type: 3}
   - {fileID: 21300000, guid: 5b83cd61047b54752a0d5784c9edaf96, type: 3}
   formCards:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 16934bbc45ba1418fb38c2433b7a0b80, type: 3}
+  - {fileID: 21300000, guid: 2a020b89331eb4a1085de77aec7b3b76, type: 3}
+  - {fileID: 21300000, guid: 7f1243cdfe11e43d9bbec69c5be70051, type: 3}
   controlCards:
   - {fileID: 0}
   - {fileID: 0}
