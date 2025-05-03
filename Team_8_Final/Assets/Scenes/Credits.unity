@@ -503,8 +503,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 29, y: -41}
-  m_SizeDelta: {x: 500, y: 300}
+  m_AnchoredPosition: {x: 0, y: -117}
+  m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1344748705
 MonoBehaviour:
@@ -527,7 +527,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 49ba76f32aa8643439e7a55e32308887, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -539,21 +539,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Game created by:
-
-    Tasnim Hossain
-
-    Raymond Rosales
-
-    Ben Stratton
-
-    Yuying
-    Wang
-
-
-    Music by:
-
-    Skylar Hale'
+  m_Text: "Programming:\nRaymond Rosales & Ben Stratton\n\nArt:\nTasnim Hossain &
+    Yuying Wang \n\nMusic and SFX:\nSkylar Hale"
 --- !u!222 &1344748706
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -734,7 +721,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 24, y: 155}
+  m_AnchoredPosition: {x: 0, y: 225}
   m_SizeDelta: {x: 700, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1606960612
@@ -758,7 +745,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 49ba76f32aa8643439e7a55e32308887, type: 3}
     m_FontSize: 66
     m_FontStyle: 3
     m_BestFit: 0
@@ -1205,11 +1192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5953966447063734184, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5953966447063734184, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -233
+      value: -283
       objectReference: {fileID: 0}
     - target: {fileID: 5953966447063734184, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

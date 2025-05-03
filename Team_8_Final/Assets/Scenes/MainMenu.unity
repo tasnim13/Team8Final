@@ -1725,7 +1725,7 @@ PrefabInstance:
       objectReference: {fileID: 1636671174}
     - target: {fileID: 5289557972417862156, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartGame
+      value: OpeningCutScene
       objectReference: {fileID: 0}
     - target: {fileID: 5289557972417862156, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
