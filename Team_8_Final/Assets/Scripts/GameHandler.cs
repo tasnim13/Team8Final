@@ -10,7 +10,7 @@ public class GameHandler : MonoBehaviour
     private GameObject player;
     public static int playerHealth = 100;
     public int StartPlayerHealth = 100;
-
+    public int numLives = 3;
 
     public static int gotTokens = 0;
     public GameObject tokensText;
@@ -69,6 +69,9 @@ public class GameHandler : MonoBehaviour
     public void playerGetHit(int damage)
     {
         playerHealth -= damage;
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Take_Damage"); // play damage sound
+
         /*if (damage > 0)
         {
             player.GetComponent<PlayerHurt>().playerHit();
@@ -127,7 +130,8 @@ public class GameHandler : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Level1");
+        //SceneManager.LoadScene("Level1"); this is what was here on the audio branch, adding a path to Level_1_Final for the purposes of testing audio
+        SceneManager.LoadScene("Level_1_Final");
     }
 
     public void RestartGame()

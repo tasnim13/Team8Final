@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class EnemyCroc : EnemyParent {
     [Header("Croc-Specific Stats")]
@@ -55,6 +56,7 @@ public class EnemyCroc : EnemyParent {
                 GameHandler.playerHealth -= damage;
                 TriggerAttackEffect();
             }
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Take_Damage"); // play damage sound
 
             playerHealthBar.UpdateHealthBar();
         }

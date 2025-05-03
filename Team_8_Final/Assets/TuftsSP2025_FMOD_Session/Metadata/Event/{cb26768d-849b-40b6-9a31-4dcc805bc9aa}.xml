@@ -56,10 +56,14 @@
 			<destination>{a4ec6782-6a31-47c5-ac36-415cf494ef69}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{4b548c99-a617-483a-93cf-3f1e730c5d78}</destination>
+			<destination>{36b7fdfa-7c99-4116-ac67-c63432637ad4}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{0958c1ef-ff25-4ca2-b724-f06f453eec0e}" />
+	<object class="EventAutomatableProperties" id="{0958c1ef-ff25-4ca2-b724-f06f453eec0e}">
+		<property name="maxVoices">
+			<value>5</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{fdaa8a06-51bf-41b3-80c9-2a71b86775ac}" />
 	<object class="Timeline" id="{47d149fb-a4d7-4fa0-8166-ed61cd19f2cc}">
 		<property name="isProxyEnabled">
@@ -161,6 +165,9 @@
 	<object class="SingleSound" id="{00c4e2b7-26d6-4eca-b021-cd3ba2ce3f95}">
 		<property name="startOffset">
 			<value>12</value>
+		</property>
+		<property name="volume">
+			<value>4</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{ced38c26-7788-4664-86ac-22ffb29fdd66}</destination>

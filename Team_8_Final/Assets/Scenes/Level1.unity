@@ -2494,7 +2494,7 @@ RectTransform:
   - {fileID: 2009832543}
   - {fileID: 1797860564}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4447,6 +4447,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1460894346034717935, guid: ce496122bb74b46b9af7a2a106d31fd7, type: 3}
+      propertyPath: musicEvent.Path
+      value: event:/MX/Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460894346034717935, guid: ce496122bb74b46b9af7a2a106d31fd7, type: 3}
+      propertyPath: musicEvent.Guid.Data1
+      value: 337922486
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460894346034717935, guid: ce496122bb74b46b9af7a2a106d31fd7, type: 3}
+      propertyPath: musicEvent.Guid.Data2
+      value: 1176748854
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460894346034717935, guid: ce496122bb74b46b9af7a2a106d31fd7, type: 3}
+      propertyPath: musicEvent.Guid.Data3
+      value: -2004916074
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460894346034717935, guid: ce496122bb74b46b9af7a2a106d31fd7, type: 3}
+      propertyPath: musicEvent.Guid.Data4
+      value: 288438035
+      objectReference: {fileID: 0}
     - target: {fileID: 5843146788183640170, guid: ce496122bb74b46b9af7a2a106d31fd7, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -4807,7 +4827,7 @@ PrefabInstance:
       objectReference: {fileID: 2049807504}
     - target: {fileID: 7765390623950902247, guid: 659d01a80e8464ee494696a122eb8ba8, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7765390623950902247, guid: 659d01a80e8464ee494696a122eb8ba8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4859,11 +4879,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1952030257}
   m_SourcePrefab: {fileID: 100100000, guid: 659d01a80e8464ee494696a122eb8ba8, type: 3}
---- !u!4 &1952030255 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7765390623950902247, guid: 659d01a80e8464ee494696a122eb8ba8, type: 3}
-  m_PrefabInstance: {fileID: 1952030254}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1952030256 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2411837034261423378, guid: 659d01a80e8464ee494696a122eb8ba8, type: 3}

@@ -274,8 +274,47 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5843146788183640170, guid: ce496122bb74b46b9af7a2a106d31fd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 124997388}
   m_SourcePrefab: {fileID: 100100000, guid: ce496122bb74b46b9af7a2a106d31fd7, type: 3}
+--- !u!1 &124997387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5843146788183640170, guid: ce496122bb74b46b9af7a2a106d31fd7, type: 3}
+  m_PrefabInstance: {fileID: 124997386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &124997388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124997387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1221223267
+      Data2: 1132252362
+      Data3: 2010827446
+      Data4: 1599628858
+    Path: event:/SFX/Achievement_Earned
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &248906864
 GameObject:
   m_ObjectHideFlags: 0
