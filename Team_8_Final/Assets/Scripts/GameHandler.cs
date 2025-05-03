@@ -9,6 +9,7 @@ public class GameHandler : MonoBehaviour
     private GameObject player;
     public static int playerHealth = 100;
     public int StartPlayerHealth = 100;
+    public static bool hasKey = false;
 
 
     public static int gotTokens = 0;

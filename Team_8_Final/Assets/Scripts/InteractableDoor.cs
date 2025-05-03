@@ -1,40 +1,77 @@
-using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class InteractableDoor : MonoBehaviour{
+public class InteractableDoor : MonoBehaviour
+{
+    public string NextLevel = "MainMenu";
+    public GameObject msgPressE;
+    public GameObject msgNeedKey;
+    public bool canPressE = false;
 
-        public string NextLevel = "MainMenu";
-        public GameObject msgPressE;
-        public bool canPressE =false;
+    private float msgTimer = 0f;
+    private float msgDuration = 2f; 
 
-       void Start(){
-              msgPressE.SetActive(false);
+    void Start()
+    {
+        msgPressE.SetActive(false);
+        msgNeedKey.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (canPressE && Input.GetKeyDown(KeyCode.E))
+        {
+            if (GameHandler.hasKey)
+            {
+                EnterDoor();
+            }
+            else
+            {
+                ShowNeedKeyMessage();
+            }
         }
 
-       void Update(){
-              if ((canPressE == true) && (Input.GetKeyDown(KeyCode.E))){
-                     EnterDoor();
-              }
+        // Timer to hide the "Need Key" message
+        if (msgNeedKey.activeSelf)
+        {
+            msgTimer += Time.deltaTime;
+            if (msgTimer > msgDuration)
+            {
+                msgNeedKey.SetActive(false);
+                msgTimer = 0f;
+            }
         }
+    }
 
-        void OnTriggerEnter2D(Collider2D other){
-              if (other.gameObject.tag == "Player"){ ;
-                     msgPressE.SetActive(true);
-                     canPressE =true;
-              }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            msgPressE.SetActive(true);
+            canPressE = true;
         }
+    }
 
-        void OnTriggerExit2D(Collider2D other){
-              if (other.gameObject.tag == "Player"){
-                     msgPressE.SetActive(false);
-                     canPressE = false;
-              }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            msgPressE.SetActive(false);
+            canPressE = false;
+            msgNeedKey.SetActive(false);
+            msgTimer = 0f;
         }
+    }
 
-      public void EnterDoor(){
-            SceneManager.LoadScene (NextLevel);
-      }
+    void ShowNeedKeyMessage()
+    {
+        msgNeedKey.SetActive(true);
+        msgTimer = 0f;
+    }
 
+    public void EnterDoor()
+    {
+        SceneManager.LoadScene(NextLevel);
+    }
 }
