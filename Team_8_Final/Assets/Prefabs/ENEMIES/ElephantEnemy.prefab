@@ -185,7 +185,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 101
-  m_Sprite: {fileID: 21300000, guid: 9a29bf57c908f447794b854a45e4a824, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 86a8c191c6ebe41669f5a0c34b7f154c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -376,10 +376,11 @@ PrefabInstance:
     - {fileID: 559315200632849054, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
     - {fileID: 8755140187916156277, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
     - {fileID: 598878460716135806, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6481677798190959656, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 283710929326130265, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
-      insertIndex: -1
+      insertIndex: 0
       addedObject: {fileID: 6572119070243573770}
     - targetCorrespondingSourceObject: {fileID: 283710929326130265, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       insertIndex: -1
@@ -428,7 +429,7 @@ MonoBehaviour:
   gameHandler: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
   playerHealthBar: {fileID: 4575063029312613678, guid: 7019a1727748642259ff943cf41baf11, type: 3}
   deathSprite: {fileID: 21300000, guid: d2b66cc7e497f4269808114c2a1c9ab8, type: 3}
-  deathParticlesPrefab: {fileID: 0}
+  deathParticlesPrefab: {fileID: 2651303751460814054, guid: b60267eb062e440cd99cdb288cd687e4, type: 3}
   attackEffect: {fileID: 9204582505926484638}
   attackEffectDistance: 1.25
   visionWidth: 1
