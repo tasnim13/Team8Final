@@ -163,7 +163,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 101
-  m_Sprite: {fileID: -829979952, guid: a3f6129cbf15b450185c23f0d77f2c1c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bffed6fa026b54f21aafd8f67663a02a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -565,7 +565,8 @@ MonoBehaviour:
   gameHandler: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
   playerHealthBar: {fileID: 4575063029312613678, guid: 7019a1727748642259ff943cf41baf11, type: 3}
   deathSprite: {fileID: 21300000, guid: d2b66cc7e497f4269808114c2a1c9ab8, type: 3}
-  deathParticlesPrefab: {fileID: 0}
+  deathArtScale: {x: 0.4, y: 0.4, z: 1}
+  deathParticlesPrefab: {fileID: 2651303751460814054, guid: b60267eb062e440cd99cdb288cd687e4, type: 3}
   attackEffect: {fileID: 1200712764703156404}
   attackEffectDistance: 0.25
   jumpDistance: 1.6
