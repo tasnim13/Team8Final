@@ -138,6 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 156641381}
   - component: {fileID: 156641382}
+  - component: {fileID: 156641383}
   m_Layer: 0
   m_Name: Lock (3)
   m_TagString: Untagged
@@ -152,12 +153,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156641380}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 313, y: -25, z: 0}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalRotation: {x: -0, y: -0, z: 0.08985285, w: 0.99595505}
+  m_LocalPosition: {x: -0.32673016, y: 0.16643181, z: 90}
+  m_LocalScale: {x: 0.5555556, y: 0.5555556, z: 0.5555556}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 667479912}
+  m_Father: {fileID: 1917522744}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &156641382
@@ -212,6 +213,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &156641383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156641380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8bae24aa6f8740c49a51ea60e82be92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amuletsRequiredToUnlock: 1
+  lockedSprite: {fileID: 21300000, guid: c76620c6bae8240abb2e8c36886dd4cb, type: 3}
+  unlockedSprite: {fileID: 21300000, guid: 30e3a00c673524193b13eb19fbf0c83a, type: 3}
 --- !u!1 &304778902
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +288,8 @@ Transform:
   m_LocalPosition: {x: -507, y: 194, z: 0}
   m_LocalScale: {x: 85, y: 85, z: 85}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1930815394}
   m_Father: {fileID: 667479912}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -539,18 +556,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1927401363}
   - {fileID: 65327001}
-  - {fileID: 1486470430}
   - {fileID: 822088580}
   - {fileID: 427826224}
   - {fileID: 1092928573}
   - {fileID: 1849185892}
   - {fileID: 2033009642}
-  - {fileID: 1622453352}
-  - {fileID: 1930815394}
   - {fileID: 1917522744}
-  - {fileID: 156641381}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -678,7 +690,8 @@ Transform:
   m_LocalPosition: {x: -83, y: 262, z: 0}
   m_LocalScale: {x: 85, y: 85, z: 85}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1622453352}
   m_Father: {fileID: 667479912}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -912,7 +925,8 @@ Transform:
   m_LocalPosition: {x: -254, y: -20, z: 0}
   m_LocalScale: {x: 85, y: 85, z: 85}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1927401363}
   m_Father: {fileID: 667479912}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1054,6 +1068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1486470430}
   - component: {fileID: 1486470431}
+  - component: {fileID: 1486470432}
   m_Layer: 5
   m_Name: Unlock
   m_TagString: Untagged
@@ -1068,12 +1083,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486470429}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 304, y: -253, z: 0}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.02352941, y: -0.16470587, z: 0}
+  m_LocalScale: {x: 0.47058827, y: 0.47058827, z: 0.47058827}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 667479912}
+  m_Father: {fileID: 1849185892}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1486470431
@@ -1128,6 +1143,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1486470432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486470429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8bae24aa6f8740c49a51ea60e82be92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amuletsRequiredToUnlock: 0
+  lockedSprite: {fileID: 21300000, guid: c76620c6bae8240abb2e8c36886dd4cb, type: 3}
+  unlockedSprite: {fileID: 21300000, guid: 30e3a00c673524193b13eb19fbf0c83a, type: 3}
 --- !u!1 &1541612169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1622453352}
   - component: {fileID: 1622453353}
+  - component: {fileID: 1622453354}
   m_Layer: 0
   m_Name: Lock (1)
   m_TagString: Untagged
@@ -1275,12 +1306,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622453351}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -81, y: 268, z: 0}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.02352941, y: 0.07058823, z: 0}
+  m_LocalScale: {x: 0.47058827, y: 0.47058827, z: 0.47058827}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 667479912}
+  m_Father: {fileID: 822088580}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1622453353
@@ -1335,6 +1366,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1622453354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622453351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8bae24aa6f8740c49a51ea60e82be92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amuletsRequiredToUnlock: 3
+  lockedSprite: {fileID: 21300000, guid: c76620c6bae8240abb2e8c36886dd4cb, type: 3}
+  unlockedSprite: {fileID: 21300000, guid: 30e3a00c673524193b13eb19fbf0c83a, type: 3}
 --- !u!1 &1849185891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1364,7 +1410,8 @@ Transform:
   m_LocalPosition: {x: 302, y: -239, z: 0}
   m_LocalScale: {x: 85, y: 85, z: 85}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1486470430}
   m_Father: {fileID: 667479912}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1569,7 +1616,8 @@ Transform:
   m_LocalPosition: {x: 334, y: -41, z: -6480}
   m_LocalScale: {x: 72, y: 72, z: 72}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 156641381}
   m_Father: {fileID: 667479912}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -10.31}
@@ -1635,6 +1683,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1927401363}
   - component: {fileID: 1927401364}
+  - component: {fileID: 1927401365}
   m_Layer: 0
   m_Name: Lock
   m_TagString: Untagged
@@ -1649,12 +1698,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927401362}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -252, y: -16, z: 0}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.02352941, y: 0.04705882, z: 0}
+  m_LocalScale: {x: 0.47058827, y: 0.47058827, z: 0.47058827}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 667479912}
+  m_Father: {fileID: 1092928573}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1927401364
@@ -1709,6 +1758,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1927401365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927401362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8bae24aa6f8740c49a51ea60e82be92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amuletsRequiredToUnlock: 1
+  lockedSprite: {fileID: 21300000, guid: c76620c6bae8240abb2e8c36886dd4cb, type: 3}
+  unlockedSprite: {fileID: 21300000, guid: 30e3a00c673524193b13eb19fbf0c83a, type: 3}
 --- !u!1 &1930815393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,6 +1783,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1930815394}
   - component: {fileID: 1930815395}
+  - component: {fileID: 1930815396}
   m_Layer: 0
   m_Name: Lock (2)
   m_TagString: Untagged
@@ -1733,12 +1798,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930815393}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -505, y: 200, z: 0}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.02352941, y: 0.07058841, z: 0}
+  m_LocalScale: {x: 0.47058827, y: 0.47058827, z: 0.47058827}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 667479912}
+  m_Father: {fileID: 427826224}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1930815395
@@ -1793,6 +1858,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1930815396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930815393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8bae24aa6f8740c49a51ea60e82be92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amuletsRequiredToUnlock: 2
+  lockedSprite: {fileID: 21300000, guid: c76620c6bae8240abb2e8c36886dd4cb, type: 3}
+  unlockedSprite: {fileID: 21300000, guid: 30e3a00c673524193b13eb19fbf0c83a, type: 3}
 --- !u!1 &2033009641
 GameObject:
   m_ObjectHideFlags: 0
