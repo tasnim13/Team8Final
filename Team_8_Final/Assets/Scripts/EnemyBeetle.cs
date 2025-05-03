@@ -21,7 +21,7 @@ public class EnemyBeetle : EnemyParent {
     public LayerMask obstacleMask;
 
     public override void FixedUpdate() {
-        if (isDead || isJumping || target == null) return;
+        if (isDead || isJumping || isAttacking || target == null) return;
 
         Vector2 moveDirection = Vector2.zero;
         float distToPlayer = Vector3.Distance(transform.position, target.position);
@@ -58,7 +58,6 @@ public class EnemyBeetle : EnemyParent {
             anim.SetBool("isFlying", true);
             lastJumpTime = Time.time;
             jumpCooldown = Random.Range(jumpTimeMin, jumpTimeMax);
-            Debug.Log("Jump cooldown is " + jumpCooldown);
         }
 
         if (isJumping) {

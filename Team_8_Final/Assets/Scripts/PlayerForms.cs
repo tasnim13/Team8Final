@@ -68,6 +68,7 @@ public class PlayerForms : MonoBehaviour
 
     void Update()
     {
+        // Moved from Start(), now with this "run once" framework
         if (!startBS) {
             if (GameHandler.currForm != 0) {
                 Debug.Log("CURRENT FORM IS: " + GameHandler.currForm);

@@ -607,7 +607,7 @@ PrefabInstance:
     - target: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
       propertyPath: healthText
       value: 
-      objectReference: {fileID: 646309097}
+      objectReference: {fileID: 0}
     - target: {fileID: 7389188714961838909, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -844,7 +844,7 @@ PrefabInstance:
     - target: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
       propertyPath: healthText
       value: 
-      objectReference: {fileID: 646309097}
+      objectReference: {fileID: 0}
     - target: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
       propertyPath: tokensText
       value: 
@@ -1149,11 +1149,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2994667043524115295, guid: fcbcb1667f5d94d118f16082fb633ee3, type: 3}
   m_PrefabInstance: {fileID: 1914002943}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &646309097 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3434736284038684666, guid: 86eebb5ce7b82480b9f474917e212d0d, type: 3}
-  m_PrefabInstance: {fileID: 963047778441149269}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &654704348
 PrefabInstance:

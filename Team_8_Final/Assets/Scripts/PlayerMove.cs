@@ -18,7 +18,7 @@ public class PlayerMove : MonoBehaviour
 
     // private Renderer[] rendarr;
 
-    private SpriteRenderer sprend;
+    public SpriteRenderer sprend;
 
     private bool isAlive = true;
     [Header("Poison Settings")]
@@ -27,7 +27,9 @@ public class PlayerMove : MonoBehaviour
     private bool isPoisoned = false;
     private Coroutine poisonRoutine;
     public float poisonDuration = 5f;
-    public float poisonSpeedMultiplier = 0.5f;
+    public float poisonSpeedMultiplier = 0.1f;
+    private float poisonEffectMultiplier = 1f;
+
 
 
     void Start() {
@@ -36,7 +38,7 @@ public class PlayerMove : MonoBehaviour
 
         // rendarr = GetComponentsInChildren<Renderer>();
         // rend = rendarr[0];
-        sprend = GetComponentInChildren<SpriteRenderer>();
+        //sprend = GetComponentInChildren<SpriteRenderer>();
         if (sprend == null) {
             Debug.Log("UH OH! sprend is null!");
         }
@@ -84,7 +86,7 @@ public class PlayerMove : MonoBehaviour
         if (!isAlive) return;
 
         if (change != Vector3.zero) {
-            Vector3 moveDelta = change.normalized * moveSpeed * Time.deltaTime;
+            Vector3 moveDelta = change.normalized * moveSpeed * poisonEffectMultiplier * Time.deltaTime;
             rb2d.MovePosition(transform.position + moveDelta);
             anim.SetBool("Walk", true);
         } else {
@@ -128,6 +130,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     public void ApplyPoison() {
+        Debug.Log(">>> ApplyPoison() called");
         if (poisonRoutine != null) {
             StopCoroutine(poisonRoutine);
         }
@@ -137,19 +140,17 @@ public class PlayerMove : MonoBehaviour
     private IEnumerator HandlePoison() {
         isPoisoned = true;
 
-        //Change material and slow movement
         rend.material = poisonMat;
-        float originalSpeed = moveSpeed;
-        moveSpeed *= poisonSpeedMultiplier;
+        poisonEffectMultiplier = poisonSpeedMultiplier;
+        Debug.Log("Speed multiplier set to: " + poisonEffectMultiplier);
 
         yield return new WaitForSeconds(poisonDuration);
 
-        //Restore values
         rend.material = originalMat;
-        moveSpeed = originalSpeed;
+        poisonEffectMultiplier = 1f;
+        Debug.Log("Poison ended. Speed reset to normal.");
         isPoisoned = false;
         poisonRoutine = null;
     }
-
 
 }

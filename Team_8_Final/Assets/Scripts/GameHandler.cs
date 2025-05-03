@@ -12,9 +12,6 @@ public class GameHandler : MonoBehaviour
     public int StartPlayerHealth = 100;
 
 
-    public static int numLives = 3;
-    public int startNumLives = 3;
-
     public static int gotTokens = 0;
     public GameObject tokensText;
 
@@ -106,11 +103,7 @@ public class GameHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
 
-        if (numLives == 0) {
-            SceneManager.LoadScene("EndLose");
-        } else {
-            ReplayLastLevel();
-        }
+        SceneManager.LoadScene("EndLose");
     }
 
     public void CheckEnemiesStatus()

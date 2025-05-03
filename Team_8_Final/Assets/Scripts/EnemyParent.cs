@@ -30,7 +30,8 @@ public class EnemyParent : MonoBehaviour {
 
     private float scaleX;
     private Color originalColor;
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer; // ignore this
+    public GameObject enemyShadow;
     protected bool isDead = false;
 
     public GameHandler gameHandler;
@@ -38,6 +39,7 @@ public class EnemyParent : MonoBehaviour {
 
     [Header("Death Art")]
     public Sprite deathSprite;
+    public Vector3 deathArtScale = Vector3.one;
     public GameObject deathParticlesPrefab;
 
     [Header("Attack Visual Effect")]
@@ -60,7 +62,10 @@ public class EnemyParent : MonoBehaviour {
         currHealth = health;
         healthBar.Initialize();
 
-        anim = GetComponent<Animator>();
+        enemyShadow.SetActive(true);
+
+
+        anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         playerHealthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar").GetComponent<PlayerHealthBar>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -87,7 +92,7 @@ public class EnemyParent : MonoBehaviour {
     }
 
     public virtual void FixedUpdate() {
-        if (isDead) return;
+        if (isDead || isAttacking) return;
 
         float distToPlayer = Vector3.Distance(transform.position, target.position);
         Vector2 moveDirection = Vector2.zero;
@@ -146,9 +151,12 @@ public class EnemyParent : MonoBehaviour {
 
         anim.enabled = false;
 
-        if (deathSprite != null) {
+        if(deathSprite != null){
             spriteRenderer.sprite = deathSprite;
+            transform.localScale = deathArtScale;
         }
+        enemyShadow.SetActive(false);
+
 
         transform.rotation = Quaternion.identity;
 
