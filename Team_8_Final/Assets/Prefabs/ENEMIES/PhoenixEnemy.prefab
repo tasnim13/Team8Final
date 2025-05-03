@@ -33,7 +33,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2}
+  m_AnchoredPosition: {x: -0.14, y: -0.47}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &6213861137193728633
@@ -66,11 +66,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5703480352641235854, guid: 0203ab8b7027a4f85b751ca5f40ece2e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5703480352641235854, guid: 0203ab8b7027a4f85b751ca5f40ece2e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5703480352641235854, guid: 0203ab8b7027a4f85b751ca5f40ece2e, type: 3}
       propertyPath: m_LocalScale.z
@@ -301,6 +301,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 6798219581335902438, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798219581335902438, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798219581335902438, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798219581335902438, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798219581335902438, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8755140187916156277, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -413,7 +433,8 @@ MonoBehaviour:
   gameHandler: {fileID: 0}
   playerHealthBar: {fileID: 0}
   deathSprite: {fileID: 21300000, guid: d2b66cc7e497f4269808114c2a1c9ab8, type: 3}
-  deathParticlesPrefab: {fileID: 0}
+  deathArtScale: {x: 2, y: 2, z: 1}
+  deathParticlesPrefab: {fileID: 2651303751460814054, guid: b60267eb062e440cd99cdb288cd687e4, type: 3}
   attackEffect: {fileID: 0}
   attackEffectDistance: 0.5
   fireballPrefab: {fileID: 1738675151584067049, guid: 77d0a941f251945fe80407eb3520379c, type: 3}
@@ -454,6 +475,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0077590942, y: 0.092695475}
-  m_Size: {x: 2.8830757, y: 2.8830757}
+  m_Offset: {x: -0.07553601, y: -0.5003562}
+  m_Size: {x: 1.2564197, y: 3.1202965}
   m_Direction: 0

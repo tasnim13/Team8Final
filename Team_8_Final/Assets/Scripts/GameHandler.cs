@@ -12,9 +12,6 @@ public class GameHandler : MonoBehaviour
     public static bool hasKey = false;
 
 
-    public static int numLives = 3;
-    public int startNumLives = 3;
-
     public static int gotTokens = 0;
     public GameObject tokensText;
 
@@ -30,6 +27,7 @@ public class GameHandler : MonoBehaviour
 
     public FormUI formUI;
     public static int currForm = 0;
+    public static int totalAmuletsCollected = 0;
 
     public PlayerHealthBar playerHealthBar;
 
@@ -90,13 +88,6 @@ public class GameHandler : MonoBehaviour
     {
         player.GetComponent<PlayerHurt>().playerDead();
         lastLevelDied = sceneName;
-        numLives -= 1;
-
-// TODO: what is this
-        // ankhIcons[numLives].enabled = false;
-
-
-        // TODO: update stuff
         StartCoroutine(DeathPause());
     }
 
@@ -104,11 +95,7 @@ public class GameHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
 
-        if (numLives == 0) {
-            SceneManager.LoadScene("EndLose");
-        } else {
-            ReplayLastLevel();
-        }
+        SceneManager.LoadScene("EndLose");
     }
 
     public void CheckEnemiesStatus()
@@ -133,6 +120,11 @@ public class GameHandler : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("Level1");
+    }
+
+    public void OpeningCutScene()
+    {
+        SceneManager.LoadScene("OpeningCutScene");
     }
 
     public void RestartGame()
