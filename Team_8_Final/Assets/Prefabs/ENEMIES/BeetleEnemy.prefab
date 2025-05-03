@@ -415,7 +415,7 @@ PrefabInstance:
     - target: {fileID: 1678521376740246657, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 180d8f1a633c847cbbd23f3737a14210, type: 3}
+      objectReference: {fileID: 974686562, guid: 9eda7e542aa5f45aaac9682f79c1c058, type: 3}
     - target: {fileID: 1678521376740246657, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -440,14 +440,30 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 3213223561511986315, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.134
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213223561511986315, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.134
+      objectReference: {fileID: 0}
     - target: {fileID: 6758624270544751419, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 180d8f1a633c847cbbd23f3737a14210, type: 3}
+    - target: {fileID: 6798219581335902438, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.105
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798219581335902438, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.102
+      objectReference: {fileID: 0}
     - target: {fileID: 8023881594730016620, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 180d8f1a633c847cbbd23f3737a14210, type: 3}
+      objectReference: {fileID: 974686562, guid: 9eda7e542aa5f45aaac9682f79c1c058, type: 3}
     - target: {fileID: 8248132581737124502, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_Sprite
       value: 
