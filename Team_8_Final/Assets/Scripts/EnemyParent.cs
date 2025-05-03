@@ -240,4 +240,8 @@ public class EnemyParent : MonoBehaviour {
             attackEffectRenderer.color = fade;
         }).setEase(LeanTweenType.linear);
     }
+
+    public bool IsDead() {
+            return isDead;
+        }
 }
