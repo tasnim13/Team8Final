@@ -207,8 +207,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2a020b89331eb4a1085de77aec7b3b76, type: 3}
   - {fileID: 21300000, guid: 7f1243cdfe11e43d9bbec69c5be70051, type: 3}
   controlCards:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: b0f2815a64ff34f00bce30c4a41dd30c, type: 3}
+  - {fileID: 21300000, guid: a4559ac3cf8bc4fa3b966c080684cdb3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   leftButton: {fileID: 9204453894124181623}
