@@ -805,7 +805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: Greetings! I am Khnum, the ram god of the Nile River. You must explor
-    and find the amulet. Use WASD or <^> to move.
+    and find the amulet. Use WASD or arrow keys to move.
   extraArtwork: {fileID: 0}
 --- !u!1 &378402215
 GameObject:
@@ -897,8 +897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573744d5a14094107ae7c1e70af34cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialText: A scarab beetle! While they may look small you had best not let them
-    under your skin. Press space to attack.
+  tutorialText: A scarab beetle up ahead! While they may look small you had best
+    not let them under your skin. Press space to attack.
   extraArtwork: {fileID: 0}
 --- !u!1 &418613826
 GameObject:
@@ -1700,7 +1700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1016852452
 Transform:
   m_ObjectHideFlags: 0
@@ -2141,8 +2141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573744d5a14094107ae7c1e70af34cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialText: Find more information about the enemeis you encounter in the pause
-    menu.
+  tutorialText: Stay in range of your enemies for too long and they'll attack. Discover
+    more information about the enemies you encounter in the pause menu.
   extraArtwork: {fileID: 21300000, guid: 33b7be8787fe147a2ae1d75f887ebe45, type: 3}
 --- !u!4 &1523205187 stripped
 Transform:

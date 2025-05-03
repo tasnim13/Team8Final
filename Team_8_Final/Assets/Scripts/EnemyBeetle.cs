@@ -56,7 +56,6 @@ public class EnemyBeetle : EnemyParent {
             anim.SetBool("isFlying", true);
             lastJumpTime = Time.time;
             jumpCooldown = Random.Range(jumpTimeMin, jumpTimeMax);
-            Debug.Log("Jump cooldown is " + jumpCooldown);
         }
 
         if (isJumping) {

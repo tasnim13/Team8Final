@@ -7,6 +7,13 @@ public class EnemyPhoenix : EnemyParent {
     public float projectileSpeed = 10f;
     public float rotationSpeed = 180f;
 
+    //For movement pause
+    private float idleTimer = 0f;
+    private bool isInIdlePhase = false;
+    private float idleDuration = 2f;
+    private float idleCycle = 4f;
+    private Quaternion savedRotation;
+
     [Header("Phoenix Spiral Attack")]
     public int shotsBeforeSpiral = 3;
     public int spiralFireballCount = 8;
@@ -14,6 +21,33 @@ public class EnemyPhoenix : EnemyParent {
 
     public override void FixedUpdate() {
         if (isDead || target == null) return;
+
+        //Update idle timer
+        idleTimer += Time.fixedDeltaTime;
+
+        //Start idle phase every 5 seconds
+        if (!isInIdlePhase && idleTimer >= idleCycle) {
+            isInIdlePhase = true;
+            savedRotation = transform.rotation; //Save current rotation
+            transform.rotation = Quaternion.identity;
+            idleTimer = 0f;
+        }
+
+        //If idle phase is active, remain idle
+        if (isInIdlePhase) {
+            anim.SetBool("isMoving", false);
+            anim.SetFloat("inputX", 0f);
+            anim.SetFloat("inputY", 0f);
+            rb.velocity = Vector2.zero;
+
+            if (idleTimer >= idleDuration) {
+                isInIdlePhase = false;
+                transform.rotation = savedRotation; //Restore rotation
+                idleTimer = 0f;
+            }
+
+            return;
+        }
 
         float distToPlayer = Vector3.Distance(transform.position, target.position);
         Vector2 moveDirection = Vector2.zero;
@@ -25,8 +59,8 @@ public class EnemyPhoenix : EnemyParent {
             rb.MovePosition(newPosition);
 
             float targetAngle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-            Quaternion desiredRotation = Quaternion.Euler(0f, 0f, targetAngle - 90f);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, rotationSpeed * Time.fixedDeltaTime);
+            Quaternion desiredRotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0f, 0f, targetAngle - 90f), rotationSpeed * Time.fixedDeltaTime);
+            transform.rotation = desiredRotation;
         }
 
         anim.SetFloat("inputX", moveDirection.x);
@@ -41,6 +75,7 @@ public class EnemyPhoenix : EnemyParent {
         anim.SetBool("isMoving", isMoving);
         lastPosition = transform.position;
     }
+
 
     public override void Update() {
         if (isDead) return;
