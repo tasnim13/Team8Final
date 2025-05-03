@@ -26,6 +26,7 @@ public class GameHandler : MonoBehaviour
 
     public FormUI formUI;
     public static int currForm = 0;
+    public static int totalAmuletsCollected = 0;
 
     public PlayerHealthBar playerHealthBar;
 
@@ -118,6 +119,11 @@ public class GameHandler : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("Level1");
+    }
+
+    public void OpeningCutScene()
+    {
+        SceneManager.LoadScene("OpeningCutScene");
     }
 
     public void RestartGame()
