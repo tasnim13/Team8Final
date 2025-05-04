@@ -191,12 +191,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea24751596cb408189928c21a5e1f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  falconSpdMult: 1
-  lionessSpdMult: 1
-  falconAtk: 18
-  lionessAtk: 6
+  falconSpdMult: 0.8
+  lionessSpdMult: 1.2
+  falconAtk: 0
+  lionessAtk: 4
   falconRng: 0
-  lionessRng: 3
+  lionessRng: 2
   formSprites:
   - {fileID: 2103498312, guid: 5948675b780a544de89e6e6a5867c490, type: 3}
   - {fileID: -1376050189, guid: d03c9767bcab0416e8f9696f1d2355ef, type: 3}
