@@ -287,7 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 5996418074758868140, guid: e50cc14fb7bf04b9590bbb67454b7242, type: 3}
   firePoint: {fileID: 6596713787023982096}
-  projectileSpeed: 10
+  projectileSpeed: 6
   canSpecial: 1
 --- !u!1 &8243314648862392833
 GameObject:

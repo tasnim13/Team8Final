@@ -20,28 +20,22 @@ public class PlayerSpecialAttack : MonoBehaviour
         // }
     }
 
-
-    public void roarAttack() {
+    public void defaultSpatk() {
         if (canSpecial) {
-            projectileSpeed = 10f;
-            basicAttack(8);
-            canSpecial = false;
-            canSpecial = true;
-            // TODO: delay
+            Debug.Log("Default Special");
         }
     }
 
-
-    public void ramAttack() {
-        basicAttack(4);
+    public void lionessSpatk() {
+        if (canSpecial) {
+            StartCoroutine(multiRoar());
+        }
     }
 
-    public void snakeAttack() {
-        basicAttack(3);
-    }
-
-    public void falconAttack() {
-        basicAttack(16);
+    public void falconSpatk() {
+        if (canSpecial) {
+            Debug.Log("Falcon Special");
+        }
     }
 
     private void basicAttack(int num) {
@@ -66,4 +60,11 @@ public class PlayerSpecialAttack : MonoBehaviour
         }
     }
 
+    IEnumerator multiRoar() {
+        basicAttack(8);
+        yield return new WaitForSeconds(0.15f);
+        basicAttack(8);
+        yield return new WaitForSeconds(0.15f);
+        basicAttack(8);
+    }
 }

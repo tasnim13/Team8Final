@@ -5,7 +5,8 @@ using UnityEngine;
 // for now we are manually setting the weapons. we need to decide if thats how we want to keep it or if we want a do a random weapon kind of situation.
 public class PlayerAttack : MonoBehaviour
 {
-    private AudioSource audioSource;   
+    private AudioSource audioSource;
+    private PlayerSpecialAttack spatk;
 
     [Header("Attack Stats")]
     public float attackRange = 1f;          
@@ -32,6 +33,7 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        spatk = GetComponent<PlayerSpecialAttack>();
     }
 
     void Update()
@@ -44,6 +46,10 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Attack();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E)) {
+            SpecialAttack();
         }
     }
 
@@ -97,6 +103,13 @@ public class PlayerAttack : MonoBehaviour
         }
 
         lastFalconShotTime = Time.time;
+    }
+
+    void SpecialAttack() {
+        if (GameHandler.currForm == 0) spatk.defaultSpatk();
+        else if (GameHandler.currForm == 3) spatk.falconSpatk();
+        else if (GameHandler.currForm == 4) spatk.lionessSpatk();
+        else return;
     }
 
     /* void SwitchWeapon()

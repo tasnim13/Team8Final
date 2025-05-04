@@ -35,7 +35,6 @@ public class PlayerForms : MonoBehaviour {
 
     void Start() {
         playermove = GetComponent<PlayerMove>();
-        spatk = GetComponent<PlayerSpecialAttack>();
         //gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         baseSpeed = playermove.moveSpeed;
         baseAttack = 10;
@@ -87,7 +86,7 @@ public class PlayerForms : MonoBehaviour {
             } else if (GameHandler.formUnlocked[3] && Input.GetKeyDown("4")) {
                 StartCoroutine(ChangeFormWithCooldown(4, true));
             }
-        } */
+        }
 
         if (Input.GetKeyDown(KeyCode.F)) {
             switch (GameHandler.currForm) {
@@ -104,7 +103,7 @@ public class PlayerForms : MonoBehaviour {
                     spatk.roarAttack();
                     break;
             }
-        }
+        } */
     }
 
     //Changes the form and handles sprite + speed
