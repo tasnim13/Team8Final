@@ -23,8 +23,16 @@ public class PlayerMove : MonoBehaviour
     public float poisonSpeedMultiplier = 0.1f;
     private float poisonEffectMultiplier = 1f;
 
+<<<<<<< Updated upstream
     void Start()
     {
+=======
+    //Tracks the last direction the player moved in
+    private Vector2 lastDirection = Vector2.right;
+    public Vector2 LastDirection => lastDirection;
+
+    void Start() {
+>>>>>>> Stashed changes
         anim = GetComponentInChildren<Animator>();
         rend = GetComponentInChildren<Renderer>();
 
@@ -68,6 +76,10 @@ public class PlayerMove : MonoBehaviour
             Vector3 newScale = transform.localScale;
             if (newScale.x > 0) newScale.x *= -1;
             transform.localScale = newScale;
+        }
+
+        if (change != Vector3.zero) {
+            lastDirection = change.normalized;
         }
     }
 
