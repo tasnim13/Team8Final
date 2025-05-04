@@ -9,6 +9,7 @@ public class GameHandler : MonoBehaviour
     private GameObject player;
     public static int playerHealth = 100;
     public int StartPlayerHealth = 100;
+    public static bool hasKey = false;
 
 
     public static int gotTokens = 0;
@@ -26,6 +27,7 @@ public class GameHandler : MonoBehaviour
 
     public FormUI formUI;
     public static int currForm = 0;
+    public static int totalAmuletsCollected = 0;
 
     public PlayerHealthBar playerHealthBar;
 
@@ -58,6 +60,7 @@ public class GameHandler : MonoBehaviour
         if (GameObject.FindWithTag("PlayerFormsUI") != null) {
             formUI = GameObject.FindWithTag("PlayerFormsUI").GetComponent<FormUI>();
         }
+        
     }
 
     public void playerGetTokens(int newTokens)
@@ -117,7 +120,13 @@ public class GameHandler : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Level1");
+        // SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level_1_Final");
+    }
+
+    public void OpeningCutScene()
+    {
+        SceneManager.LoadScene("OpeningCutScene");
     }
 
     public void RestartGame()

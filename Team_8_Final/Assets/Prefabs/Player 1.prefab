@@ -189,6 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea24751596cb408189928c21a5e1f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  falconSpd: 0.8
+  lionessSpd: 1.3
   shouldChangeSprite: 1
   formSprites:
   - {fileID: 2103498312, guid: 5948675b780a544de89e6e6a5867c490, type: 3}

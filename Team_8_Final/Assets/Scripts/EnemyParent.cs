@@ -38,6 +38,7 @@ public class EnemyParent : MonoBehaviour {
 
     [Header("Death Art")]
     public Sprite deathSprite;
+    public Vector3 deathArtScale = Vector3.one;
     public GameObject deathParticlesPrefab;
 
     [Header("Attack Visual Effect")]
@@ -142,8 +143,9 @@ public class EnemyParent : MonoBehaviour {
 
         anim.enabled = false;
 
-        if (deathSprite != null) {
+        if(deathSprite != null){
             spriteRenderer.sprite = deathSprite;
+            transform.localScale = deathArtScale;
         }
         enemyShadow.SetActive(false);
 
@@ -240,4 +242,8 @@ public class EnemyParent : MonoBehaviour {
             attackEffectRenderer.color = fade;
         }).setEase(LeanTweenType.linear);
     }
+
+    public bool IsDead() {
+            return isDead;
+        }
 }

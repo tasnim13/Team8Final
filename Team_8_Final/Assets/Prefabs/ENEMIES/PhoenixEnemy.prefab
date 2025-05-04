@@ -433,7 +433,8 @@ MonoBehaviour:
   gameHandler: {fileID: 0}
   playerHealthBar: {fileID: 0}
   deathSprite: {fileID: 21300000, guid: d2b66cc7e497f4269808114c2a1c9ab8, type: 3}
-  deathParticlesPrefab: {fileID: 0}
+  deathArtScale: {x: 2, y: 2, z: 1}
+  deathParticlesPrefab: {fileID: 2651303751460814054, guid: b60267eb062e440cd99cdb288cd687e4, type: 3}
   attackEffect: {fileID: 0}
   attackEffectDistance: 0.5
   fireballPrefab: {fileID: 1738675151584067049, guid: 77d0a941f251945fe80407eb3520379c, type: 3}
