@@ -60,6 +60,7 @@ public class GameHandler : MonoBehaviour
         if (GameObject.FindWithTag("PlayerFormsUI") != null) {
             formUI = GameObject.FindWithTag("PlayerFormsUI").GetComponent<FormUI>();
         }
+        
     }
 
     public void playerGetTokens(int newTokens)
