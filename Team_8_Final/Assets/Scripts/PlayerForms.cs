@@ -66,7 +66,7 @@ public class PlayerForms : MonoBehaviour {
             startBS = true;
         }
 
-        if (GameHandler.transformCooldownOver) {
+        /* if (GameHandler.transformCooldownOver) {
             if (GameHandler.formUnlocked[0] && Input.GetKeyDown("1")) {
                 StartCoroutine(ChangeFormWithCooldown(1, true));
             } else if (GameHandler.formUnlocked[1] && Input.GetKeyDown("2")) {
@@ -76,7 +76,7 @@ public class PlayerForms : MonoBehaviour {
             } else if (GameHandler.formUnlocked[3] && Input.GetKeyDown("4")) {
                 StartCoroutine(ChangeFormWithCooldown(4, true));
             }
-        }
+        } */
 
         if (Input.GetKeyDown(KeyCode.F)) {
             switch (GameHandler.currForm) {
@@ -98,10 +98,11 @@ public class PlayerForms : MonoBehaviour {
 
     //Changes the form and handles sprite + speed
     public void ChangeForm(int id, bool allowToggle = true) {
-        if (3 <= id && id <= 4) {
-            if (allowToggle && GameHandler.currForm == id) {
+        Debug.Log("Change form called for form #: " + id);
+        if (id == 0 || id == 3 || id == 4) {
+            /* if (allowToggle && GameHandler.currForm == id) {
                 id = 0;
-            }
+            } */
 
             if (shouldChangeSprite) {
                 playermove.changePlayerSprite(formSprites[id], formAnims[id]);
