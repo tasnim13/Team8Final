@@ -84,7 +84,7 @@ public class PlayerAttack : MonoBehaviour
         //Get last movement direction
         Vector2 direction = GetComponent<PlayerMove>().LastDirection;
 
-        //Don't fire if no valid direction
+        //Fire right if no valid direction
         if (direction == Vector2.zero) {
             direction = new Vector2(1, 0);
         }

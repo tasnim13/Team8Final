@@ -285,10 +285,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446174d36dc6c4fb08c48011cc1ecaf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 5996418074758868140, guid: e50cc14fb7bf04b9590bbb67454b7242, type: 3}
+  roarProjectile: {fileID: 5996418074758868140, guid: e50cc14fb7bf04b9590bbb67454b7242, type: 3}
+  falconProjectile: {fileID: 538935619384581268, guid: d68ead86cdd0342f18239b3ad47a68a8, type: 3}
   firePoint: {fileID: 6596713787023982096}
   projectileSpeed: 6
+  flaconProjSpd: 10
   canSpecial: 1
+  useSpecial: 0
 --- !u!1 &8243314648862392833
 GameObject:
   m_ObjectHideFlags: 0

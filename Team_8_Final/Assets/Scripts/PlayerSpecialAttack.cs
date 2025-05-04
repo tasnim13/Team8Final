@@ -5,11 +5,15 @@ using UnityEngine;
 public class PlayerSpecialAttack : MonoBehaviour
 {
 
-    public GameObject projectilePrefab;
+    public GameObject roarProjectile;
+    public GameObject falconProjectile;
     public Transform firePoint;
     public float projectileSpeed = 10f;
+    public float flaconProjSpd = 10f;
     // public float projectileSpeed = 0f;
     public bool canSpecial = true;
+    public bool useSpecial;
+    private float lastFalconShotTime = -Mathf.Infinity;
 
     // Update is called once per frame
     // TODO: restrict to form
@@ -22,7 +26,8 @@ public class PlayerSpecialAttack : MonoBehaviour
 
     public void defaultSpatk() {
         if (canSpecial) {
-            Debug.Log("Default Special");
+            //Lets the cat interaction know it can take place
+            useSpecial = true;
         }
     }
 
@@ -34,7 +39,7 @@ public class PlayerSpecialAttack : MonoBehaviour
 
     public void falconSpatk() {
         if (canSpecial) {
-            Debug.Log("Falcon Special");
+            falconSpecial();
         }
     }
 
@@ -52,7 +57,7 @@ public class PlayerSpecialAttack : MonoBehaviour
             Vector3 fwd3 = fwd;
             // GameObject projectile = Instantiate(projectilePrefab, firePoint.position + fwd3, Quaternion.identity);
             // Start at center?
-            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+            GameObject projectile = Instantiate(roarProjectile, firePoint.position, Quaternion.identity);
 
             projectile.GetComponent<Rigidbody2D>().AddForce(fwd * projectileSpeed, ForceMode2D.Impulse); 
             projectile.GetComponentInChildren<SpriteRenderer>().transform.Rotate(orb_placement);
@@ -66,5 +71,30 @@ public class PlayerSpecialAttack : MonoBehaviour
         basicAttack(8);
         yield return new WaitForSeconds(0.15f);
         basicAttack(8);
+    }
+
+    void falconSpecial() {
+        //Get last movement direction
+        Vector2 direction = GetComponent<PlayerMove>().LastDirection;
+
+        //Fire right if no valid direction
+        if (direction == Vector2.zero) {
+            direction = new Vector2(1, 0);
+        }
+
+        //Calculate rotation to match direction
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rot = Quaternion.Euler(0, 0, angle);
+
+        //Spawn projectile at attack point with rotation
+        GameObject proj = Instantiate(falconProjectile, firePoint.position, rot);
+
+        //Set direction of projectile
+        Rigidbody2D projRb = proj.GetComponent<Rigidbody2D>();
+        if (projRb != null) {
+            projRb.velocity = direction.normalized * flaconProjSpd;
+        }
+
+        lastFalconShotTime = Time.time;
     }
 }
