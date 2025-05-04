@@ -14,6 +14,7 @@ TagManager:
   - PauseMenuUI
   - PlayerFormsUI
   - TutorialUI
+  - Cat
   layers:
   - Default
   - TransparentFX
