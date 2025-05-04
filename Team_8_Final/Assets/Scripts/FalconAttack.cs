@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class FalconAttack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int damage = 10;
+    public float lifetime = 3f;
+
+    private void Start()
     {
-        
+        Destroy(gameObject, lifetime);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<EnemyParent>()?.TakeDamage(damage);
+            Destroy(gameObject);
+        }
     }
 }

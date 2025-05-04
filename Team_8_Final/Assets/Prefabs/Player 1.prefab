@@ -140,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   sprend: {fileID: 4487763593263428923}
+  isPetting: 0
   poisonMat: {fileID: 0}
   poisonDuration: 5
   poisonSpeedMultiplier: 0.5
@@ -163,6 +164,8 @@ MonoBehaviour:
     m_Bits: 512
   attackSoundHit: {fileID: 0}
   attackSoundMiss: {fileID: 0}
+  falconProjectile: {fileID: 9190939234013033023, guid: 9527522394e904a78afe25a960a4d9ea, type: 3}
+  projectileSpd: 10
 --- !u!114 &348677604638894250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +195,8 @@ MonoBehaviour:
   lionessSpdMult: 1
   falconAtk: 18
   lionessAtk: 6
+  falconRng: 0
+  lionessRng: 3
   formSprites:
   - {fileID: 2103498312, guid: 5948675b780a544de89e6e6a5867c490, type: 3}
   - {fileID: -1376050189, guid: d03c9767bcab0416e8f9696f1d2355ef, type: 3}
@@ -205,6 +210,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: b92a85ae42ab24973abf3aa4de9f6ab5, type: 2}
   - {fileID: 9100000, guid: 7eed557ce93bc432bbdc9de2fe87e858, type: 2}
   formUnlockedPreviously: 00000000
+  startBS: 0
 --- !u!50 &6246753547471829311
 Rigidbody2D:
   serializedVersion: 4

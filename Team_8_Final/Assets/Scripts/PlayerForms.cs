@@ -7,7 +7,8 @@ public class PlayerForms : MonoBehaviour {
     [Header("Forms Stat Multipliers")]
     public float falconSpdMult = 1f;
     public float lionessSpdMult = 1f;
-    public int falconAtk = 17;
+    //Attack assigned in FalconAttack prefab
+    public int falconAtk = 0;
     public int lionessAtk = 7;
     public int falconRng = 0;
     public int lionessRng = 3;

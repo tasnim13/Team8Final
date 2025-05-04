@@ -83,8 +83,12 @@ public class PlayerAttack : MonoBehaviour
             direction = new Vector2(1, 0);
         }
 
-        //Spawn projectile at attack point
-        GameObject proj = Instantiate(falconProjectile, attackPoint.position, Quaternion.identity);
+        //Calculate rotation to match direction
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rot = Quaternion.Euler(0, 0, angle);
+
+        //Spawn projectile at attack point with rotation
+        GameObject proj = Instantiate(falconProjectile, attackPoint.position, rot);
 
         //Set direction of projectile
         Rigidbody2D projRb = proj.GetComponent<Rigidbody2D>();
