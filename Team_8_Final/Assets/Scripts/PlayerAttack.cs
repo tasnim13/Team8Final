@@ -15,7 +15,13 @@ public class PlayerAttack : MonoBehaviour
     public AudioClip attackSoundHit;
     public AudioClip attackSoundMiss;
 
-    private GameHandler gh;
+    [Header("Falcon Attack")]
+    public GameObject falconProjectile;
+    public float projectileSpd = 10f;
+    private float falconCooldown = 1f;
+    private float lastFalconShotTime = -Mathf.Infinity;
+
+    //private GameHandler gh;
 
     //private int currentWeaponIndex = 0;
 
@@ -43,6 +49,11 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
+        if (GameHandler.currForm == 3) {
+            FalconAttack();
+            return;
+        }
+
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
         Debug.Log($"Enemies in range: {hitEnemies.Length}");
@@ -58,6 +69,30 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log($"Hit enemy: {enemy.name}");
             enemy.GetComponent<EnemyParent>()?.TakeDamage(attackDamage);
         }
+    }
+
+    void FalconAttack() {
+        //Check cooldown
+        if (Time.time < lastFalconShotTime + falconCooldown) return;
+
+        //Get last movement direction
+        Vector2 direction = GetComponent<PlayerMove>().LastDirection;
+
+        //Don't fire if no valid direction
+        if (direction == Vector2.zero) {
+            direction = new Vector2(1, 0);
+        }
+
+        //Spawn projectile at attack point
+        GameObject proj = Instantiate(falconProjectile, attackPoint.position, Quaternion.identity);
+
+        //Set direction of projectile
+        Rigidbody2D projRb = proj.GetComponent<Rigidbody2D>();
+        if (projRb != null) {
+            projRb.velocity = direction.normalized * projectileSpd;
+        }
+
+        lastFalconShotTime = Time.time;
     }
 
     /* void SwitchWeapon()
