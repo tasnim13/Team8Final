@@ -80,7 +80,7 @@ public class PlayerAttack : MonoBehaviour
 
         //Don't fire if no valid direction
         if (direction == Vector2.zero) {
-            Vector2 direction = new Vector2(1, 0);
+            direction = new Vector2(1, 0);
         }
 
         //Spawn projectile at attack point
