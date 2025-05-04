@@ -70,26 +70,46 @@ public class FormUI : MonoBehaviour {
             glows[uiIndex].SetActive(true);
             AnimateFormUp(uiIndex);
             currentIndex = uiIndex;
+            isFormUp[uiIndex] = true;
         }
     }
 
     void Update() {
+        //Only run this once to restore form state on load
+        if (!playerForms.startBS) {
+            if (GameHandler.currForm != 0) {
+                playerForms.ChangeForm(GameHandler.currForm, false);
+                AnimateFormUp(GameHandler.currForm - 1);
+            }
+            playerForms.startBS = true;
+        }
+
         for (int i = 2; i < forms.Length; i++) {
             bool unlocked = GameHandler.formUnlocked[i];
             bool wasPreviouslyUnlocked = playerForms.formUnlockedPreviously[i - 2];
 
             //On unlock: enable and animate upward
             if (unlocked && !wasPreviouslyUnlocked) {
+                //Enable form visually
                 forms[i].SetActive(true);
+                glows[i].SetActive(true);
                 formsDisabled[i].SetActive(false);
-                ToggleFormTween(i); //Tween up
+                //Tween up
+                AnimateFormUp(i);
                 playerForms.formUnlockedPreviously[i - 2] = true;
-
+                //Tween other form down (should only ever unlock falcon after lioness)
+                if (i == 2) {
+                    glows[3].SetActive(false);
+                    AnimateFormDown(3);
+                }
+                currentIndex = i;
+                playerForms.ChangeForm(i + 1, false);
             }
 
-            //Key input toggle
+            //Was 3 or 4 pressed
             if (Input.GetKeyDown(KeyCode.Alpha1 + i)) {
                 if (unlocked && wasPreviouslyUnlocked) {
+                    //Passed i == 2 or i ==3
                     HandleSelection(i);
                 } else {
                     //Shake disabled icon
@@ -108,40 +128,45 @@ public class FormUI : MonoBehaviour {
                     }
                 }
             }
+            Debug.Log("currentIndex: " + currentIndex + ", newIndex: " + i);
         }
     }
 
     //Handles form selection/deselection and UI animation
+    //newIndex == 2 or newIndex == 3
     public void HandleSelection(int newIndex) {
         if (!GameHandler.transformCooldownOver) return;
 
-        if (newIndex == currentIndex) {
+        //Select the same form again (deselect)
+        if (currentIndex == newIndex) {
             glows[newIndex].SetActive(false);
-            ToggleFormTween(newIndex); //Tween down
+            AnimateFormDown(newIndex); //Tween down
             currentIndex = -1;
             playerForms.ChangeForm(0, false);
+        //Switching to a different form
         } else {
+            //Tween down previous selection if any
             if (currentIndex != -1) {
                 glows[currentIndex].SetActive(false);
-                ToggleFormTween(currentIndex); //Tween down
+                AnimateFormDown(currentIndex);
             }
-
+            //Tween up new selection
             glows[newIndex].SetActive(true);
-            ToggleFormTween(newIndex); //Tween up
+            AnimateFormUp(newIndex);
             currentIndex = newIndex;
             playerForms.ChangeForm(newIndex + 1, false);
         }
     }
 
-    //Toggles the tween state of a form icon (up ↔ down)
-    void ToggleFormTween(int index) {
+    //Toggles the tween state of a form icon (up & down)
+    /* void ToggleFormTween(int index) {
         if (isFormUp[index]) {
             AnimateFormDown(index);
         } else {
             AnimateFormUp(index);
         }
         isFormUp[index] = !isFormUp[index];
-    }
+    } */
 
     void AnimateFormUp(int index) {
         RectTransform formRect = forms[index].GetComponent<RectTransform>();

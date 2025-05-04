@@ -810,15 +810,15 @@ PrefabInstance:
     - target: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
       propertyPath: ankhIcons.Array.data[0]
       value: 
-      objectReference: {fileID: 1940595200}
+      objectReference: {fileID: 0}
     - target: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
       propertyPath: ankhIcons.Array.data[1]
       value: 
-      objectReference: {fileID: 1940595199}
+      objectReference: {fileID: 0}
     - target: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
       propertyPath: ankhIcons.Array.data[2]
       value: 
-      objectReference: {fileID: 1940595198}
+      objectReference: {fileID: 0}
     - target: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
       propertyPath: enemiesToDefeat.Array.size
       value: 1
@@ -984,6 +984,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &799975353 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5555161265310194314, guid: 3717f026a8f5840b6937c1d447d1a95c, type: 3}
+  m_PrefabInstance: {fileID: 1781807757518253451}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &837890959
 GameObject:
   m_ObjectHideFlags: 0
@@ -4906,21 +4911,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86eebb5ce7b82480b9f474917e212d0d, type: 3}
---- !u!1 &1940595198 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9206242552543165384, guid: 86eebb5ce7b82480b9f474917e212d0d, type: 3}
-  m_PrefabInstance: {fileID: 1940595197}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1940595199 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 101689005906888654, guid: 86eebb5ce7b82480b9f474917e212d0d, type: 3}
-  m_PrefabInstance: {fileID: 1940595197}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1940595200 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 339407369514561158, guid: 86eebb5ce7b82480b9f474917e212d0d, type: 3}
-  m_PrefabInstance: {fileID: 1940595197}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2009832543 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5828472142660850302, guid: 88f0d7ae09e844ba5ae05dd00811b468, type: 3}
@@ -5203,6 +5193,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interactable_Door
       objectReference: {fileID: 0}
+    - target: {fileID: 6521647173446490794, guid: 3717f026a8f5840b6937c1d447d1a95c, type: 3}
+      propertyPath: msgNeedKey
+      value: 
+      objectReference: {fileID: 799975353}
     - target: {fileID: 7465486144165860655, guid: 3717f026a8f5840b6937c1d447d1a95c, type: 3}
       propertyPath: m_RootOrder
       value: 7

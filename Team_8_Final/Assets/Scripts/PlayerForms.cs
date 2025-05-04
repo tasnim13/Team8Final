@@ -4,30 +4,40 @@ using UnityEngine;
 
 public class PlayerForms : MonoBehaviour {
 
-    [Header("Forms Speed Multipliers")]
-    public float falconSpd = 1f;
-    public float lionessSpd = 1f;
-    public bool shouldChangeSprite = true;
+    [Header("Forms Stat Multipliers")]
+    public float falconSpdMult = 1f;
+    public float lionessSpdMult = 1f;
+    public int falconAtk = 17;
+    public int lionessAtk = 7;
+    public int falconRng = 0;
+    public int lionessRng = 3;
+
+    [Header("Form Art")]
+    private bool shouldChangeSprite = true;
     public Sprite[] formSprites;
     public RuntimeAnimatorController[] formAnims;
 
     //Tracks which forms were previously unlocked to detect new unlocks
     [HideInInspector]
     public bool[] formUnlockedPreviously = new bool[4];
+    public bool startBS = false;
 
     private PlayerMove playermove;
     private PlayerSpecialAttack spatk;
     private PlayerAttack playerAttack;
 
-    private GameHandler gh;
+    //private GameHandler gh;
     private float baseSpeed;
-    private bool startBS = false;
+    private int baseAttack;
+    private int baseRange = 1;
+    
 
     void Start() {
         playermove = GetComponent<PlayerMove>();
         spatk = GetComponent<PlayerSpecialAttack>();
-        gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
+        //gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         baseSpeed = playermove.moveSpeed;
+        baseAttack = 10;
         playerAttack = GetComponent<PlayerAttack>();
 
         GameHandler.transformCooldownTime = 1f;
@@ -66,7 +76,7 @@ public class PlayerForms : MonoBehaviour {
             startBS = true;
         }
 
-        if (GameHandler.transformCooldownOver) {
+        /* if (GameHandler.transformCooldownOver) {
             if (GameHandler.formUnlocked[0] && Input.GetKeyDown("1")) {
                 StartCoroutine(ChangeFormWithCooldown(1, true));
             } else if (GameHandler.formUnlocked[1] && Input.GetKeyDown("2")) {
@@ -76,7 +86,7 @@ public class PlayerForms : MonoBehaviour {
             } else if (GameHandler.formUnlocked[3] && Input.GetKeyDown("4")) {
                 StartCoroutine(ChangeFormWithCooldown(4, true));
             }
-        }
+        } */
 
         if (Input.GetKeyDown(KeyCode.F)) {
             switch (GameHandler.currForm) {
@@ -98,10 +108,11 @@ public class PlayerForms : MonoBehaviour {
 
     //Changes the form and handles sprite + speed
     public void ChangeForm(int id, bool allowToggle = true) {
-        if (3 <= id && id <= 4) {
-            if (allowToggle && GameHandler.currForm == id) {
+        Debug.Log("Change form called for form #: " + id);
+        if (id == 0 || id == 3 || id == 4) {
+            /* if (allowToggle && GameHandler.currForm == id) {
                 id = 0;
-            }
+            } */
 
             if (shouldChangeSprite) {
                 playermove.changePlayerSprite(formSprites[id], formAnims[id]);
@@ -112,12 +123,18 @@ public class PlayerForms : MonoBehaviour {
             switch (id) {
                 case 0:
                     playermove.moveSpeed = baseSpeed;
+                    playerAttack.attackDamage = baseAttack;
+                    playerAttack.attackRange = baseRange;
                     break;
                 case 3:
-                    playermove.moveSpeed = baseSpeed * falconSpd;
+                    playermove.moveSpeed = baseSpeed * falconSpdMult;
+                    playerAttack.attackDamage = falconAtk;
+                    playerAttack.attackRange = falconRng;
                     break;
                 case 4:
-                    playermove.moveSpeed = baseSpeed * lionessSpd;
+                    playermove.moveSpeed = baseSpeed * lionessSpdMult;
+                    playerAttack.attackDamage = lionessAtk;
+                    playerAttack.attackRange = lionessRng;
                     break;
             }
         } else {

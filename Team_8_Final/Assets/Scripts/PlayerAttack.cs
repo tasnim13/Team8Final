@@ -5,36 +5,62 @@ using UnityEngine;
 // for now we are manually setting the weapons. we need to decide if thats how we want to keep it or if we want a do a random weapon kind of situation.
 public class PlayerAttack : MonoBehaviour
 {
-    public AudioClip weaponSwitchClip;           // Sound to play on weapon switch
-    private AudioSource audioSource;     
-    public Transform attackPoint;              // point of origin of attack... move aorund in scene to adjust
-    public float attackRange = 1f;             // attack radius... can be editied in inspector
-    public LayerMask enemyLayers;              // designate enemy layer
+    private AudioSource audioSource;   
 
-    private int currentWeaponIndex = 0;
+    [Header("Attack Stats")]
+    public float attackRange = 1f;          
+    public int attackDamage = 10;
+    public Transform attackPoint; 
+    public LayerMask enemyLayers;  
+    public AudioClip attackSoundHit;
+    public AudioClip attackSoundMiss;
 
-    public int[] weaponDamages = { 10, 20, 35 };       // damage array for each sprite... can be editied in inspector
-    public Sprite[] weaponSprites;                     // sprite array for different weapons
-    public SpriteRenderer weaponRenderer;              
+    private GameHandler gh;
+
+    //private int currentWeaponIndex = 0;
+
+    //public int[] weaponDamages = { 10, 20, 35 };       // damage array for each sprite... can be editied in inspector
+    //public Sprite[] weaponSprites;                     // sprite array for different weapons
+    //public SpriteRenderer weaponRenderer;              
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        /* if (Input.GetKeyDown(KeyCode.L))
         {
             SwitchWeapon();
-        }
+        } */
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Attack();
         }
     }
-void Start()
+
+    void Attack()
     {
-        audioSource = GetComponent<AudioSource>();
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        Debug.Log($"Enemies in range: {hitEnemies.Length}");
+
+        if (hitEnemies.Length == 0) {
+            audioSource.PlayOneShot(attackSoundMiss);
+        } else {
+            audioSource.PlayOneShot(attackSoundHit);
+        }
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            Debug.Log($"Hit enemy: {enemy.name}");
+            enemy.GetComponent<EnemyParent>()?.TakeDamage(attackDamage);
+        }
     }
 
-    void SwitchWeapon()
+    /* void SwitchWeapon()
     {
         currentWeaponIndex = (currentWeaponIndex + 1) % weaponDamages.Length;
 
@@ -65,24 +91,5 @@ void Start()
         {
             audioSource.PlayOneShot(weaponSwitchClip);
         }
-    }
-
-
-    void Attack()
-    {
-        int attackDamage = weaponDamages[currentWeaponIndex];
-        Debug.Log($"Attacking with weapon {currentWeaponIndex}, Damage: {attackDamage}");
-
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-
-        Debug.Log($"Enemies in range: {hitEnemies.Length}");
-
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            Debug.Log($"Hit enemy: {enemy.name}");
-            enemy.GetComponent<EnemyHealth>()?.TakeDamage(attackDamage);
-            enemy.GetComponent<EnemyParent>()?.TakeDamage(attackDamage);
-        }
-    }
-
+    } */
 }
