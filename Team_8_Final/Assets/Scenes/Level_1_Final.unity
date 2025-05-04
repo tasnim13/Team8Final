@@ -1582,6 +1582,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7451241325089523951, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
       insertIndex: -1
       addedObject: {fileID: 717230028}
+    - targetCorrespondingSourceObject: {fileID: 7451241325089523951, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 717230029}
   m_SourcePrefab: {fileID: 100100000, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
 --- !u!1 &717230027 stripped
 GameObject:
@@ -1684,6 +1687,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &717230029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717230027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 932ec21f584564362adf3949ef4af9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalAmuletsCollected: 0
 --- !u!224 &814978695 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2937776884106305444, guid: 600d79a403ce84cc3a118b4254ffc985, type: 3}

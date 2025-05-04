@@ -411,8 +411,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2427803539892685094, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_Text
-      value: Lorem ipsum and whatever. Important backstory or lore or stuff like
-        that.
+      value: "You must defend the pharaoh\u2019s life, for without the amulets the
+        pharaoh is powerless and vulnerable. "
       objectReference: {fileID: 0}
     - target: {fileID: 4766608373817286688, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_Name
@@ -496,7 +496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5953966447063734184, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5953966447063734184, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -806,8 +806,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2427803539892685094, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_Text
-      value: Lorem ipsum and whatever. Important backstory or lore or stuff like
-        that.
+      value: Can you recover the amulets to save the kingdom? Or will this be the
+        pharaoh's last night?
       objectReference: {fileID: 0}
     - target: {fileID: 4766608373817286688, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_Name
@@ -891,7 +891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5953966447063734184, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -160
+      value: -181
       objectReference: {fileID: 0}
     - target: {fileID: 5953966447063734184, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1001,8 +1001,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2427803539892685094, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_Text
-      value: Lorem ipsum and whatever. Important backstory or lore or stuff like
-        that.
+      value: "The year is 1450 BCE and chaos has spread through Egypt. Evil enemies
+        have stolen the pharoah\u2019s godly amulets and overtaken the pyramid temples."
       objectReference: {fileID: 0}
     - target: {fileID: 4766608373817286688, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_Name
@@ -1086,7 +1086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5953966447063734184, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 150
+      value: 191
       objectReference: {fileID: 0}
     - target: {fileID: 5953966447063734184, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1099,6 +1099,10 @@ PrefabInstance:
     - target: {fileID: 5953966447063734184, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8453045828150978459, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1276,8 +1280,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1675835441}
   - {fileID: 323437553}
+  - {fileID: 1675835441}
   - {fileID: 689074536}
   - {fileID: 1143314449}
   - {fileID: 38258037}
