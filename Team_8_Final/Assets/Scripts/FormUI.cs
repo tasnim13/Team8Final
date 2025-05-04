@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FormUI : MonoBehaviour {
+
     public GameObject[] glows;
     public GameObject[] forms;
     public GameObject[] formsDisabled;
@@ -16,24 +17,29 @@ public class FormUI : MonoBehaviour {
     private Vector2[] glowBasePositions;
     private Vector2[] disabledBasePositions;
 
+    private PlayerForms playerForms;
+
+    //Tracks if each form is currently tweened "up"
+    private bool[] isFormUp;
+
     void Awake() {
         //Cache base positions before anything moves
         formBasePositions = new Vector2[forms.Length];
         glowBasePositions = new Vector2[glows.Length];
         disabledBasePositions = new Vector2[formsDisabled.Length];
+        isFormUp = new bool[forms.Length];
 
         for (int i = 0; i < forms.Length; i++) {
-            RectTransform formRect = forms[i].GetComponent<RectTransform>();
-            RectTransform glowRect = glows[i].GetComponent<RectTransform>();
-            RectTransform disabledRect = formsDisabled[i].GetComponent<RectTransform>();
-
-            formBasePositions[i] = formRect.anchoredPosition;
-            glowBasePositions[i] = glowRect.anchoredPosition;
-            disabledBasePositions[i] = disabledRect.anchoredPosition;
+            formBasePositions[i] = forms[i].GetComponent<RectTransform>().anchoredPosition;
+            glowBasePositions[i] = glows[i].GetComponent<RectTransform>().anchoredPosition;
+            disabledBasePositions[i] = formsDisabled[i].GetComponent<RectTransform>().anchoredPosition;
+            isFormUp[i] = false;
         }
     }
 
     void Start() {
+        playerForms = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerForms>();
+
         //Reset transforms to base positions
         for (int i = 0; i < forms.Length; i++) {
             forms[i].GetComponent<RectTransform>().anchoredPosition = formBasePositions[i];
@@ -46,7 +52,7 @@ public class FormUI : MonoBehaviour {
             glows[i].SetActive(false);
         }
 
-        //Enable only forms 2 and 3 (indices 2 and 3)
+        //Enable forms based on unlock state
         for (int i = 0; i < forms.Length; i++) {
             if (i < 2) {
                 forms[i].SetActive(false);
@@ -57,29 +63,40 @@ public class FormUI : MonoBehaviour {
                 formsDisabled[i].SetActive(!unlocked);
             }
         }
+
+        //If a form was auto-selected on pickup, animate UI up and track it
+        if (GameHandler.currForm >= 3 && GameHandler.currForm <= 4) {
+            int uiIndex = GameHandler.currForm - 1;
+            glows[uiIndex].SetActive(true);
+            AnimateFormUp(uiIndex);
+            currentIndex = uiIndex;
+        }
     }
 
     void Update() {
-        //Only check forms 2 and 3 (keys 3 and 4)
         for (int i = 2; i < forms.Length; i++) {
             bool unlocked = GameHandler.formUnlocked[i];
+            bool wasPreviouslyUnlocked = playerForms.formUnlockedPreviously[i - 2];
 
-            //Update UI when a form is unlocked mid-game
-            if (unlocked && formsDisabled[i].activeSelf) {
+            //On unlock: enable and animate upward
+            if (unlocked && !wasPreviouslyUnlocked) {
                 forms[i].SetActive(true);
                 formsDisabled[i].SetActive(false);
+                ToggleFormTween(i); //Tween up
+                playerForms.formUnlockedPreviously[i - 2] = true;
+
             }
 
+            //Key input toggle
             if (Input.GetKeyDown(KeyCode.Alpha1 + i)) {
-                if (unlocked) {
+                if (unlocked && wasPreviouslyUnlocked) {
                     HandleSelection(i);
                 } else {
-                    //Shake the disabled icon
+                    //Shake disabled icon
                     RectTransform disabledRect = formsDisabled[i].GetComponent<RectTransform>();
                     if (disabledRect != null) {
                         LeanTween.cancel(disabledRect);
                         Vector3 basePos = disabledBasePositions[i];
-
                         float shakeAmount = 5f;
                         float shakeDuration = 0.3f;
 
@@ -94,21 +111,36 @@ public class FormUI : MonoBehaviour {
         }
     }
 
+    //Handles form selection/deselection and UI animation
     public void HandleSelection(int newIndex) {
+        if (!GameHandler.transformCooldownOver) return;
+
         if (newIndex == currentIndex) {
             glows[newIndex].SetActive(false);
-            AnimateFormDown(newIndex);
+            ToggleFormTween(newIndex); //Tween down
             currentIndex = -1;
+            playerForms.ChangeForm(0, false);
         } else {
             if (currentIndex != -1) {
                 glows[currentIndex].SetActive(false);
-                AnimateFormDown(currentIndex);
+                ToggleFormTween(currentIndex); //Tween down
             }
 
             glows[newIndex].SetActive(true);
-            AnimateFormUp(newIndex);
+            ToggleFormTween(newIndex); //Tween up
             currentIndex = newIndex;
+            playerForms.ChangeForm(newIndex + 1, false);
         }
+    }
+
+    //Toggles the tween state of a form icon (up ↔ down)
+    void ToggleFormTween(int index) {
+        if (isFormUp[index]) {
+            AnimateFormDown(index);
+        } else {
+            AnimateFormUp(index);
+        }
+        isFormUp[index] = !isFormUp[index];
     }
 
     void AnimateFormUp(int index) {

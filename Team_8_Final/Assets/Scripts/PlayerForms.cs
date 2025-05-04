@@ -1,34 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// using UnityEditor.animations;
 
-public class PlayerForms : MonoBehaviour
-{
-    // public int currForm;
+public class PlayerForms : MonoBehaviour {
+
+    [Header("Forms Speed Multipliers")]
+    public float falconSpd = 1f;
+    public float lionessSpd = 1f;
     public bool shouldChangeSprite = true;
     public Sprite[] formSprites;
     public RuntimeAnimatorController[] formAnims;
 
+    //Tracks which forms were previously unlocked to detect new unlocks
+    [HideInInspector]
+    public bool[] formUnlockedPreviously = new bool[4];
+
     private PlayerMove playermove;
     private PlayerSpecialAttack spatk;
+    private PlayerAttack playerAttack;
 
     private GameHandler gh;
     private float baseSpeed;
-
     private bool startBS = false;
 
-    void Start()
-    {
+    void Start() {
         playermove = GetComponent<PlayerMove>();
         spatk = GetComponent<PlayerSpecialAttack>();
         gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         baseSpeed = playermove.moveSpeed;
+        playerAttack = GetComponent<PlayerAttack>();
 
         GameHandler.transformCooldownTime = 1f;
         GameHandler.transformCooldownOver = true;
+
+        //Initialize previous unlocks to false
+        for (int i = 0; i < 4; i++) {
+            formUnlockedPreviously[i] = false;
+        }
+
     }
 
+    //Unlocks a form without activating it
     public void unlock(int id) {
         if (id < 1 || id > 4) {
             Debug.Log("Uh OH! unlock error");
@@ -36,57 +48,33 @@ public class PlayerForms : MonoBehaviour
         }
 
         GameHandler.formUnlocked[id - 1] = true;
-        gh.formUI.HandleSelection(id - 1);
-
-        // switch (id) {
-        //     case 1:
-        //         cobraIcon.unlock();
-        //         break;
-        //     case 2:
-        //         ramIcon.unlock();
-        //         break;
-        //     case 3:
-        //         falconIcon.unlock();
-        //         break;
-        //     case 4:
-        //         lionessIcon.unlock();
-        //         break;
-        // }
-
-        // ramIcon.select(id);
-        // cobraIcon.select(id);
-        // falconIcon.select(id);
-        // lionessIcon.select(id);
     }
 
-    IEnumerator ChangeFormWithCooldown(int id) {
+    IEnumerator ChangeFormWithCooldown(int id, bool allowToggle = false) {
         GameHandler.transformCooldownOver = false;
-        ChangeForm(id);
+        ChangeForm(id, allowToggle);
         yield return new WaitForSeconds(GameHandler.transformCooldownTime);
         GameHandler.transformCooldownOver = true;
     }
 
-    void Update()
-    {
-        // Moved from Start(), now with this "run once" framework
+    void Update() {
+        //Only run this once to restore form state on load
         if (!startBS) {
             if (GameHandler.currForm != 0) {
-                Debug.Log("CURRENT FORM IS: " + GameHandler.currForm);
-                ChangeForm(GameHandler.currForm);
-                gh.formUI.HandleSelection(GameHandler.currForm - 1);
+                ChangeForm(GameHandler.currForm, false);
             }
             startBS = true;
         }
 
         if (GameHandler.transformCooldownOver) {
             if (GameHandler.formUnlocked[0] && Input.GetKeyDown("1")) {
-                StartCoroutine(ChangeFormWithCooldown(1));
+                StartCoroutine(ChangeFormWithCooldown(1, true));
             } else if (GameHandler.formUnlocked[1] && Input.GetKeyDown("2")) {
-                StartCoroutine(ChangeFormWithCooldown(2));
+                StartCoroutine(ChangeFormWithCooldown(2, true));
             } else if (GameHandler.formUnlocked[2] && Input.GetKeyDown("3")) {
-                StartCoroutine(ChangeFormWithCooldown(3));
+                StartCoroutine(ChangeFormWithCooldown(3, true));
             } else if (GameHandler.formUnlocked[3] && Input.GetKeyDown("4")) {
-                StartCoroutine(ChangeFormWithCooldown(4));
+                StartCoroutine(ChangeFormWithCooldown(4, true));
             }
         }
 
@@ -108,49 +96,32 @@ public class PlayerForms : MonoBehaviour
         }
     }
 
-    // private void ChangeSprite(Sprite newSprite)
-    // {
-    //     spriteRenderer.sprite = newSprite; 
-    // }
+    //Changes the form and handles sprite + speed
+    public void ChangeForm(int id, bool allowToggle = true) {
+        if (3 <= id && id <= 4) {
+            if (allowToggle && GameHandler.currForm == id) {
+                id = 0;
+            }
 
-    public void ChangeForm(int id) {
-        if (0 <= id && id <= 4) {
             if (shouldChangeSprite) {
-                // ChangeSprite(formSprites[id]);
-                // TODO: call playermove
                 playermove.changePlayerSprite(formSprites[id], formAnims[id]);
             }
 
-            // cobraIcon.select(id);
-            // ramIcon.select(id);
-            // falconIcon.select(id);
-            // lionessIcon.select(id);
-
             GameHandler.currForm = id;
+
             switch (id) {
                 case 0:
-                    Debug.Log("TRANSFORMING: GENERIC");
                     playermove.moveSpeed = baseSpeed;
-                    break;
-                case 1:
-                    Debug.Log("TRANSFORMING: Cobra");
-                    playermove.moveSpeed = baseSpeed;
-                    break;
-                case 2:
-                    Debug.Log("TRANSFORMING: Ram");
-                    playermove.moveSpeed = baseSpeed * 1.5f;
                     break;
                 case 3:
-                    Debug.Log("TRANSFORMING: Falcon");
-                    playermove.moveSpeed = baseSpeed / 3f;
+                    playermove.moveSpeed = baseSpeed * falconSpd;
                     break;
                 case 4:
-                    Debug.Log("TRANSFORMING: Lioness");
-                    playermove.moveSpeed = baseSpeed * 2f;
+                    playermove.moveSpeed = baseSpeed * lionessSpd;
                     break;
             }
         } else {
             Debug.Log("Uh oh! Unknown form ID");
         }
     }
-}
+} 

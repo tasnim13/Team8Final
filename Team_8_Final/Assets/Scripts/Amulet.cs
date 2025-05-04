@@ -49,12 +49,12 @@ public class Amulet : MonoBehaviour{
                         break;
                     case 3:
                         forms.unlock(3);
-                        forms.ChangeForm(3);
+                        forms.ChangeForm(3, false);
                         // Debug.Log("Picked up Amulet of Horus");
                         break;
                     case 4:
                         forms.unlock(4);
-                        forms.ChangeForm(4);
+                        forms.ChangeForm(4, false);
                         // Debug.Log("Picked up Amulet of Sekhmet!");
                         break;
                     default:
