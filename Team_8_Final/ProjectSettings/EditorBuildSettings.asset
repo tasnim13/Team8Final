@@ -21,18 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/EndWin.unity
     guid: a778897ec209f4fe493fdd2145a8b829
   - enabled: 1
-    path: Assets/Scenes/OLD/Level1.unity
-    guid: 07b428156fd99479399002dff169c24b
-  - enabled: 1
-    path: Assets/Scenes/OLD/Level2.unity
-    guid: 90ab012de9fb140f19000ade0cd58e4f
-  - enabled: 1
-    path: Assets/Scenes/OLD/Level4_1.unity
-    guid: fd856117e0801474cacbfb944870e015
-  - enabled: 1
-    path: Assets/Scenes/OLD/Level4_2.unity
-    guid: d9352062585424d7ea812cfdf0a8f311
-  - enabled: 1
     path: Assets/Scenes/Level_1_Final.unity
     guid: c3bd63145a2fe4fa49a2160ab9ee4fd3
   - enabled: 1
@@ -41,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_3_Final.unity
     guid: 0eda17992f8dd470e9fcd766016ba7bb
+  - enabled: 1
+    path: Assets/Scenes/Level_4_Final.unity
+    guid: ae80efec64f0945938cea223c74eff4a
+  - enabled: 1
+    path: Assets/Scenes/OverworldMap.unity
+    guid: 53bae3ce5eb514c77a9b080627cfd104
   m_configObjects: {}

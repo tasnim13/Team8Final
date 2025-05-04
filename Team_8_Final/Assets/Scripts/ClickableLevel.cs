@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelSelectClickable : MonoBehaviour
+public class ClickableLevel : MonoBehaviour
 {
     public string sceneToLoad = "Level1";
 
@@ -34,6 +34,8 @@ public class LevelSelectClickable : MonoBehaviour
 
     void OnMouseDown()
     {
+        // Debug.Log(sceneToLoad);
+        // return;
         if (!string.IsNullOrEmpty(sceneToLoad))
         {
             Debug.Log("Loading scene: " + sceneToLoad);

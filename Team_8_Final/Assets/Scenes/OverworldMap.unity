@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 427826224}
   - component: {fileID: 427826225}
   - component: {fileID: 427826226}
+  - component: {fileID: 427826227}
   m_Layer: 0
   m_Name: Small Pyramind (1)
   m_TagString: Untagged
@@ -422,6 +423,20 @@ PolygonCollider2D:
       - {x: 1.3299999, y: -0.55}
       - {x: 1.3299999, y: -0.48999998}
   m_UseDelaunayMesh: 0
+--- !u!114 &427826227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427826223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0e9daba6cda413c8c833ba2f63246d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Level_4_Final
+  highlightObject: {fileID: 1188558982}
 --- !u!1 &667479906
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932ec21f584564362adf3949ef4af9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalAmuletsCollected: 0
+  totalAmuletsCollected: 2
 --- !u!4 &678401891
 Transform:
   m_ObjectHideFlags: 0
@@ -673,6 +688,7 @@ GameObject:
   - component: {fileID: 822088580}
   - component: {fileID: 822088581}
   - component: {fileID: 822088582}
+  - component: {fileID: 822088583}
   m_Layer: 0
   m_Name: Small Pyramind
   m_TagString: Untagged
@@ -825,6 +841,20 @@ PolygonCollider2D:
       - {x: 1.3299999, y: -0.55}
       - {x: 1.3299999, y: -0.48999998}
   m_UseDelaunayMesh: 0
+--- !u!114 &822088583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822088579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0e9daba6cda413c8c833ba2f63246d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Level_3_Final
+  highlightObject: {fileID: 1955758532}
 --- !u!1001 &836492431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -885,6 +915,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6225063006445170039, guid: c4a5eaa83cc2e40d1aa973ce848fcdab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8243314648862392833, guid: c4a5eaa83cc2e40d1aa973ce848fcdab, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -909,6 +943,7 @@ GameObject:
   - component: {fileID: 1092928573}
   - component: {fileID: 1092928574}
   - component: {fileID: 1092928575}
+  - component: {fileID: 1092928576}
   m_Layer: 0
   m_Name: Small Pyramind (2)
   m_TagString: Untagged
@@ -1061,6 +1096,20 @@ PolygonCollider2D:
       - {x: 1.3299999, y: -0.55}
       - {x: 1.3299999, y: -0.48999998}
   m_UseDelaunayMesh: 0
+--- !u!114 &1092928576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092928572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0e9daba6cda413c8c833ba2f63246d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Level_2_Final
+  highlightObject: {fileID: 2028001664}
 --- !u!1 &1188558982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,7 +1120,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1188558983}
   - component: {fileID: 1188558984}
-  - component: {fileID: 1188558985}
   m_Layer: 0
   m_Name: HighlightPyramid (2)
   m_TagString: Untagged
@@ -1146,20 +1194,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1188558985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188558982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad0e9daba6cda413c8c833ba2f63246d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToLoad: Level
-  highlightObject: {fileID: 427826223}
 --- !u!1 &1206688527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,7 +1204,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1206688528}
   - component: {fileID: 1206688530}
-  - component: {fileID: 1206688529}
   m_Layer: 0
   m_Name: LargePyramidHighlight
   m_TagString: Untagged
@@ -1193,20 +1226,6 @@ Transform:
   m_Father: {fileID: 1849185892}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1206688529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206688527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad0e9daba6cda413c8c833ba2f63246d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToLoad: Level1
-  highlightObject: {fileID: 1849185891}
 --- !u!212 &1206688530
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1593,6 +1612,7 @@ GameObject:
   - component: {fileID: 1849185892}
   - component: {fileID: 1849185893}
   - component: {fileID: 1849185894}
+  - component: {fileID: 1849185895}
   m_Layer: 0
   m_Name: Large Pyramid
   m_TagString: Untagged
@@ -1790,6 +1810,20 @@ PolygonCollider2D:
       - {x: -3.0449998, y: 1.1949999}
       - {x: -3.0449998, y: 1.255}
   m_UseDelaunayMesh: 0
+--- !u!114 &1849185895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849185891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0e9daba6cda413c8c833ba2f63246d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Level_1_Final
+  highlightObject: {fileID: 1206688527}
 --- !u!1 &1917522743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1863,7 +1897,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 101
   m_Sprite: {fileID: 21300000, guid: bc30bdd501b9a46d6bb03017462d0ccd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2085,8 +2119,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1955758533}
   - component: {fileID: 1955758534}
-  - component: {fileID: 1955758536}
-  - component: {fileID: 1955758535}
   m_Layer: 0
   m_Name: HighlightPyramid (1)
   m_TagString: Untagged
@@ -2161,34 +2193,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1955758535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955758532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad0e9daba6cda413c8c833ba2f63246d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToLoad: Level1
-  highlightObject: {fileID: 0}
---- !u!114 &1955758536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955758532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad0e9daba6cda413c8c833ba2f63246d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToLoad: Level1
-  highlightObject: {fileID: 822088579}
 --- !u!1 &2028001664
 GameObject:
   m_ObjectHideFlags: 0
@@ -2199,7 +2203,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2028001665}
   - component: {fileID: 2028001666}
-  - component: {fileID: 2028001667}
   m_Layer: 0
   m_Name: HighlightPyramid (3)
   m_TagString: Untagged
@@ -2274,20 +2277,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2028001667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2028001664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad0e9daba6cda413c8c833ba2f63246d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToLoad: Level2
-  highlightObject: {fileID: 1092928572}
 --- !u!1 &2033009641
 GameObject:
   m_ObjectHideFlags: 0
