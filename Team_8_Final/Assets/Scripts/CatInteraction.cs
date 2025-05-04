@@ -5,15 +5,24 @@ public class CatInteraction : MonoBehaviour
 {
     private bool hasInteracted = false;
     private bool playerInRange = false;
+    private PlayerMove playerMove;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) playerInRange = true;
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+            playerMove = other.GetComponent<PlayerMove>();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) playerInRange = false;
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+            playerMove = null;
+        }
     }
 
     void Update()
@@ -21,6 +30,12 @@ public class CatInteraction : MonoBehaviour
         if (playerInRange && !hasInteracted && Input.GetKeyDown(KeyCode.M))
         {
             hasInteracted = true;
+
+            if (playerMove != null)
+            {
+                playerMove.Pet();
+            }
+
             StartCoroutine(BoostHealth());
         }
     }
@@ -28,7 +43,7 @@ public class CatInteraction : MonoBehaviour
     IEnumerator BoostHealth()
     {
         Debug.Log("Cat interaction started.");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2f); // Match pet animation duration
 
         GameHandler.playerHealth += 10;
 
@@ -46,5 +61,4 @@ public class CatInteraction : MonoBehaviour
 
         Destroy(gameObject);
     }
-
 }

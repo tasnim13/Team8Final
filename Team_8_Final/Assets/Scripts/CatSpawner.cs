@@ -12,7 +12,7 @@ public class CatSpawner : MonoBehaviour
 
     [Header("Space Checking")]
     public float checkRadius = 0.5f;
-    public LayerMask obstacleLayer; // Set this to "Ground", "Walls", "Player", etc.
+    public LayerMask obstacleLayer; 
 
     [Header("Audio")]
     public AudioSource spawnAudio;

@@ -46,12 +46,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   catPrefabs:
-  - {fileID: 337313661237717359, guid: 282737177bf5a4f29893d74dbbdb5ff7, type: 3}
-  - {fileID: 337313661237717359, guid: 282737177bf5a4f29893d74dbbdb5ff7, type: 3}
+  - {fileID: 124367700796116307, guid: 578f960b3fc514127bff18eb2f28f5f2, type: 3}
+  - {fileID: 2974200721932951642, guid: 502e4ec8d60134880ab4b4502425670a, type: 3}
+  - {fileID: 2472687355452324102, guid: d9eab5951e3264457ab26f08174017fd, type: 3}
   - {fileID: 337313661237717359, guid: 282737177bf5a4f29893d74dbbdb5ff7, type: 3}
   maxCats: 1
   spawnAreaMin: {x: 0, y: 1}
   spawnAreaMax: {x: 0, y: 1}
+  checkRadius: 0.5
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
   spawnAudio: {fileID: 7190007506973551062}
 --- !u!82 &7190007506973551062
 AudioSource:
