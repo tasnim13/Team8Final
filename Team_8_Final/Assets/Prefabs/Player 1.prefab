@@ -155,15 +155,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77be2ad4711ac4dafacb7810597a8912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSwitchClip: {fileID: 0}
-  attackPoint: {fileID: 4549346513664009381}
   attackRange: 1
+  attackDamage: 10
+  attackPoint: {fileID: 4549346513664009381}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
-  weaponDamages: 05000000
-  weaponSprites: []
-  weaponRenderer: {fileID: 0}
+  attackSoundHit: {fileID: 0}
+  attackSoundMiss: {fileID: 0}
 --- !u!114 &348677604638894250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,9 +188,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea24751596cb408189928c21a5e1f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  falconSpd: 0.8
-  lionessSpd: 1.3
-  shouldChangeSprite: 1
+  falconSpdMult: 1
+  lionessSpdMult: 1
+  falconAtk: 18
+  lionessAtk: 6
   formSprites:
   - {fileID: 2103498312, guid: 5948675b780a544de89e6e6a5867c490, type: 3}
   - {fileID: -1376050189, guid: d03c9767bcab0416e8f9696f1d2355ef, type: 3}
@@ -204,6 +204,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 8e2f34bf646fc46768d9002071bf7509, type: 2}
   - {fileID: 9100000, guid: b92a85ae42ab24973abf3aa4de9f6ab5, type: 2}
   - {fileID: 9100000, guid: 7eed557ce93bc432bbdc9de2fe87e858, type: 2}
+  formUnlockedPreviously: 00000000
 --- !u!50 &6246753547471829311
 Rigidbody2D:
   serializedVersion: 4

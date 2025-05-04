@@ -75,6 +75,15 @@ public class FormUI : MonoBehaviour {
     }
 
     void Update() {
+        //Only run this once to restore form state on load
+        if (!playerForms.startBS) {
+            if (GameHandler.currForm != 0) {
+                playerForms.ChangeForm(GameHandler.currForm, false);
+                AnimateFormUp(GameHandler.currForm - 1);
+            }
+            playerForms.startBS = true;
+        }
+
         for (int i = 2; i < forms.Length; i++) {
             bool unlocked = GameHandler.formUnlocked[i];
             bool wasPreviouslyUnlocked = playerForms.formUnlockedPreviously[i - 2];
@@ -83,12 +92,16 @@ public class FormUI : MonoBehaviour {
             if (unlocked && !wasPreviouslyUnlocked) {
                 //Enable form visually
                 forms[i].SetActive(true);
+                glows[i].SetActive(true);
                 formsDisabled[i].SetActive(false);
                 //Tween up
                 AnimateFormUp(i);
                 playerForms.formUnlockedPreviously[i - 2] = true;
                 //Tween other form down (should only ever unlock falcon after lioness)
-                if (i == 2) AnimateFormDown(3);
+                if (i == 2) {
+                    glows[3].SetActive(false);
+                    AnimateFormDown(3);
+                }
                 currentIndex = i;
                 playerForms.ChangeForm(i + 1, false);
             }
