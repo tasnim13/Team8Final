@@ -1141,7 +1141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: Discover more about the amulets you encounter in the pause menu.
-  extraArtwork: {fileID: 21300000, guid: 33b7be8787fe147a2ae1d75f887ebe45, type: 3}
+  extraArtwork: {fileID: 0}
 --- !u!1001 &341551975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1975,7 +1975,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3886435663637686097, guid: dcc0761261214413cbde0439423a7adb, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3886435663637686097, guid: dcc0761261214413cbde0439423a7adb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5117,7 +5117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1756828659056104242, guid: 0e4c38c84b71f4c749a6e98889d72cf8, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1756828659056104242, guid: 0e4c38c84b71f4c749a6e98889d72cf8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5586,6 +5586,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7062917767557962349, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
+      propertyPath: msgNeedKey
+      value: 
+      objectReference: {fileID: 2871241934106149429}
     - target: {fileID: 7889952427856071345, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -5595,3 +5599,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
+--- !u!1 &2871241934106149429 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6533691323657592051, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
+  m_PrefabInstance: {fileID: 2871241934106149428}
+  m_PrefabAsset: {fileID: 0}

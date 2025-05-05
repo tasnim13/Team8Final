@@ -437,6 +437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: Level_4_Final
   highlightObject: {fileID: 1188558982}
+  pylock: {fileID: 1930815396}
 --- !u!1 &667479906
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932ec21f584564362adf3949ef4af9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalAmuletsCollected: 2
+  totalAmuletsCollected: 0
 --- !u!4 &678401891
 Transform:
   m_ObjectHideFlags: 0
@@ -855,6 +856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: Level_3_Final
   highlightObject: {fileID: 1955758532}
+  pylock: {fileID: 1622453354}
 --- !u!1001 &836492431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1110,6 +1112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: Level_2_Final
   highlightObject: {fileID: 2028001664}
+  pylock: {fileID: 1927401365}
 --- !u!1 &1188558982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1824,6 +1827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: Level_1_Final
   highlightObject: {fileID: 1206688527}
+  pylock: {fileID: 1486470432}
 --- !u!1 &1917522743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1897,7 +1901,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 101
+  m_SortingOrder: 1000
   m_Sprite: {fileID: 21300000, guid: bc30bdd501b9a46d6bb03017462d0ccd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
