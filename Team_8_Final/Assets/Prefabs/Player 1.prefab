@@ -97,9 +97,9 @@ GameObject:
   - component: {fileID: 131332532908662273}
   - component: {fileID: 348677604638894250}
   - component: {fileID: 188399580772114784}
+  - component: {fileID: 6000770911437657072}
   - component: {fileID: 6246753547471829311}
   - component: {fileID: 9043898785142481987}
-  - component: {fileID: 6000770911437657072}
   m_Layer: 3
   m_Name: Player 1
   m_TagString: Player
@@ -140,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   sprend: {fileID: 4487763593263428923}
+  isPetting: 0
   poisonMat: {fileID: 0}
   poisonDuration: 5
   poisonSpeedMultiplier: 0.5
@@ -163,6 +164,8 @@ MonoBehaviour:
     m_Bits: 512
   attackSoundHit: {fileID: 0}
   attackSoundMiss: {fileID: 0}
+  falconProjectile: {fileID: 9190939234013033023, guid: 9527522394e904a78afe25a960a4d9ea, type: 3}
+  projectileSpd: 10
 --- !u!114 &348677604638894250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,10 +191,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea24751596cb408189928c21a5e1f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  falconSpdMult: 1
-  lionessSpdMult: 1
-  falconAtk: 18
-  lionessAtk: 6
+  falconSpdMult: 0.8
+  lionessSpdMult: 1.2
+  falconAtk: 0
+  lionessAtk: 4
+  falconRng: 0
+  lionessRng: 2
   formSprites:
   - {fileID: 2103498312, guid: 5948675b780a544de89e6e6a5867c490, type: 3}
   - {fileID: -1376050189, guid: d03c9767bcab0416e8f9696f1d2355ef, type: 3}
@@ -205,6 +210,27 @@ MonoBehaviour:
   - {fileID: 9100000, guid: b92a85ae42ab24973abf3aa4de9f6ab5, type: 2}
   - {fileID: 9100000, guid: 7eed557ce93bc432bbdc9de2fe87e858, type: 2}
   formUnlockedPreviously: 00000000
+  startBS: 0
+--- !u!114 &6000770911437657072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6225063006445170039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 446174d36dc6c4fb08c48011cc1ecaf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roarProjectile: {fileID: 5996418074758868140, guid: e50cc14fb7bf04b9590bbb67454b7242, type: 3}
+  falconProjectile: {fileID: 538935619384581268, guid: d68ead86cdd0342f18239b3ad47a68a8, type: 3}
+  firePoint: {fileID: 6596713787023982096}
+  projectileSpeed: 6
+  flaconProjSpd: 10
+  canSpecial: 1
+  useSpecial: 0
+  specialCooldown: 15
 --- !u!50 &6246753547471829311
 Rigidbody2D:
   serializedVersion: 4
@@ -267,22 +293,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.118946254, y: -0.3311088}
   m_Size: {x: 0.88553894, y: 2.5542326}
   m_Direction: 0
---- !u!114 &6000770911437657072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6225063006445170039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 446174d36dc6c4fb08c48011cc1ecaf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 5996418074758868140, guid: e50cc14fb7bf04b9590bbb67454b7242, type: 3}
-  firePoint: {fileID: 6596713787023982096}
-  projectileSpeed: 10
-  canSpecial: 1
 --- !u!1 &8243314648862392833
 GameObject:
   m_ObjectHideFlags: 0

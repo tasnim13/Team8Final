@@ -7,7 +7,8 @@ public class PlayerForms : MonoBehaviour {
     [Header("Forms Stat Multipliers")]
     public float falconSpdMult = 1f;
     public float lionessSpdMult = 1f;
-    public int falconAtk = 17;
+    //Attack assigned in FalconAttack prefab
+    public int falconAtk = 0;
     public int lionessAtk = 7;
     public int falconRng = 0;
     public int lionessRng = 3;
@@ -30,11 +31,10 @@ public class PlayerForms : MonoBehaviour {
     private float baseSpeed;
     private int baseAttack;
     private int baseRange = 1;
+    private float transformCooldownStartTime = -Mathf.Infinity;
     
-
     void Start() {
         playermove = GetComponent<PlayerMove>();
-        spatk = GetComponent<PlayerSpecialAttack>();
         //gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         baseSpeed = playermove.moveSpeed;
         baseAttack = 10;
@@ -62,6 +62,7 @@ public class PlayerForms : MonoBehaviour {
 
     IEnumerator ChangeFormWithCooldown(int id, bool allowToggle = false) {
         GameHandler.transformCooldownOver = false;
+        transformCooldownStartTime = Time.time;
         ChangeForm(id, allowToggle);
         yield return new WaitForSeconds(GameHandler.transformCooldownTime);
         GameHandler.transformCooldownOver = true;
@@ -86,7 +87,7 @@ public class PlayerForms : MonoBehaviour {
             } else if (GameHandler.formUnlocked[3] && Input.GetKeyDown("4")) {
                 StartCoroutine(ChangeFormWithCooldown(4, true));
             }
-        } */
+        }
 
         if (Input.GetKeyDown(KeyCode.F)) {
             switch (GameHandler.currForm) {
@@ -103,7 +104,7 @@ public class PlayerForms : MonoBehaviour {
                     spatk.roarAttack();
                     break;
             }
-        }
+        } */
     }
 
     //Changes the form and handles sprite + speed
@@ -141,4 +142,13 @@ public class PlayerForms : MonoBehaviour {
             Debug.Log("Uh oh! Unknown form ID");
         }
     }
+
+    //Returns 1 when cooldown just started, 0 when done
+    public float GetFormsCooldownPercent() {
+        if (GameHandler.transformCooldownOver) return 0f;
+        float elapsed = Time.time - transformCooldownStartTime;
+        float percent = Mathf.Clamp01(1f - (elapsed / GameHandler.transformCooldownTime));
+        return percent;
+    }
+
 } 

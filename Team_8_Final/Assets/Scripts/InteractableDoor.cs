@@ -22,7 +22,7 @@ public class InteractableDoor : MonoBehaviour
     {
         if (canPressE && Input.GetKeyDown(KeyCode.E))
         {
-            if (GameHandler.hasKey)
+            if (!gh.hasKey)
             {
                 EnterDoor();
             }

@@ -6,6 +6,12 @@ public class CatInteraction : MonoBehaviour
     private bool hasInteracted = false;
     private bool playerInRange = false;
     private PlayerMove playerMove;
+    private PlayerSpecialAttack spatk;
+    private PlayerHealthBar playerHealthBar;
+
+    void Start() {
+        playerHealthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar").GetComponent<PlayerHealthBar>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,6 +19,7 @@ public class CatInteraction : MonoBehaviour
         {
             playerInRange = true;
             playerMove = other.GetComponent<PlayerMove>();
+            spatk = other.GetComponent<PlayerSpecialAttack>();
         }
     }
 
@@ -27,8 +34,9 @@ public class CatInteraction : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange && !hasInteracted && Input.GetKeyDown(KeyCode.M))
+        if (playerInRange && !hasInteracted && spatk.useSpecial)
         {
+            Debug.Log("Pet cat!");
             hasInteracted = true;
 
             if (playerMove != null)
@@ -42,23 +50,13 @@ public class CatInteraction : MonoBehaviour
 
     IEnumerator BoostHealth()
     {
-        Debug.Log("Cat interaction started.");
         yield return new WaitForSeconds(2f); // Match pet animation duration
 
-        GameHandler.playerHealth += 10;
+       if (GameHandler.playerHealth < 100) GameHandler.playerHealth += 10;
 
-        GameHandler gameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
+        playerHealthBar.UpdateHealthBar();
 
-        if (gameHandler.playerHealthBar != null)
-        {
-            gameHandler.playerHealthBar.UpdateHealthBar();
-            Debug.Log("Health bar updated!");
-        }
-        else
-        {
-            Debug.LogWarning("PlayerHealthBar is null in GameHandler.");
-        }
-
+        spatk.useSpecial = false;
         Destroy(gameObject);
     }
 }
