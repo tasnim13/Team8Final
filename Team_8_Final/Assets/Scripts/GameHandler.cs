@@ -57,11 +57,11 @@ public class GameHandler : MonoBehaviour
             }
         }
 
-        // Load level completion status from PlayerPrefs
-        for (int i = 0; i < levelCompleted.Length; i++) {
-            // levelCompleted[i] = PlayerPrefs.GetInt("LevelCompleted_" + i, 0) == 1;
-            levelCompleted[i] = false;
-        }
+        // // Load level completion status from PlayerPrefs
+        // for (int i = 0; i < levelCompleted.Length; i++) {
+        //     // levelCompleted[i] = PlayerPrefs.GetInt("LevelCompleted_" + i, 0) == 1;
+        //     levelCompleted[i] = false;
+        // }
     }
 
 
