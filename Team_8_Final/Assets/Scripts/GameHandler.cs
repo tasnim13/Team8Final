@@ -59,13 +59,17 @@ public class GameHandler : MonoBehaviour
 
         // Load level completion status from PlayerPrefs
         for (int i = 0; i < levelCompleted.Length; i++) {
-            levelCompleted[i] = PlayerPrefs.GetInt("LevelCompleted_" + i, 0) == 1;
+            // levelCompleted[i] = PlayerPrefs.GetInt("LevelCompleted_" + i, 0) == 1;
+            levelCompleted[i] = false;
         }
     }
 
 
     void Start()
     {
+        // TODO: i think this should work.
+        hasKey = false;
+
         player = GameObject.FindWithTag("Player");
         sceneName = SceneManager.GetActiveScene().name;
 

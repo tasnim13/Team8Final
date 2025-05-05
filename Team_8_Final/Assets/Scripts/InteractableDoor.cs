@@ -19,9 +19,7 @@ public class InteractableDoor : MonoBehaviour
     {
         gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         msgPressE.SetActive(false);
-        if (GameHandler.hasKey) {  // CHANGED HERE
-            msgNeedKey.SetActive(false);
-        }
+        msgNeedKey.SetActive(false);
     }
 
     void Update()
