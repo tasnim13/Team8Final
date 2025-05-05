@@ -7,6 +7,9 @@ public class InteractableDoor : MonoBehaviour
     public string NextLevel = "MainMenu";
     public GameObject msgPressE;
     public GameObject msgNeedKey;
+
+    private GameHandler gh;
+
     public bool canPressE = false;
 
     private float msgTimer = 0f;
@@ -14,15 +17,18 @@ public class InteractableDoor : MonoBehaviour
 
     void Start()
     {
+        gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         msgPressE.SetActive(false);
-        msgNeedKey.SetActive(false);
+        if (GameHandler.hasKey) {  // CHANGED HERE
+            msgNeedKey.SetActive(false);
+        }
     }
 
     void Update()
     {
         if (canPressE && Input.GetKeyDown(KeyCode.E))
         {
-            if (!gh.hasKey)
+            if (!GameHandler.hasKey)  // CHANGED HERE
             {
                 EnterDoor();
             }
@@ -43,6 +49,7 @@ public class InteractableDoor : MonoBehaviour
             }
         }
     }
+    
 
     void OnTriggerEnter2D(Collider2D other)
     {
