@@ -100,7 +100,7 @@ public class CatInteraction : MonoBehaviour
 
         if (GameHandler.playerHealth < 100)
         {
-            GameHandler.playerHealth = Mathf.Min(GameHandler.playerHealth + 10, 100);
+            GameHandler.playerHealth = Mathf.Min(GameHandler.playerHealth + 70, 100);
             Debug.Log($"[CatInteraction] Player health increased from {oldHealth} to {GameHandler.playerHealth}.");
         }
         else
