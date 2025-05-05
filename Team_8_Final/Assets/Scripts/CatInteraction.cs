@@ -37,12 +37,12 @@ public class CatInteraction : MonoBehaviour
     {
         if (playerInRange && !hasInteracted && spatk != null && spatk.useSpecial)
         {
-            Debug.Log("Pet cat!");
+            Debug.Log("Cat interaction started.");
             hasInteracted = true;
 
             if (playerMove != null)
             {
-                playerMove.Pet();
+                playerMove.Pet(); // Trigger the petting animation
             }
 
             StartCoroutine(BoostHealth());
@@ -51,11 +51,18 @@ public class CatInteraction : MonoBehaviour
 
     IEnumerator BoostHealth()
     {
-        yield return new WaitForSeconds(2f); // Match pet animation duration
+        yield return new WaitForSeconds(5f); // Wait for animation to finish
+
+        int oldHealth = GameHandler.playerHealth;
 
         if (GameHandler.playerHealth < 100)
         {
-            GameHandler.playerHealth += 10;
+            GameHandler.playerHealth = Mathf.Min(GameHandler.playerHealth + 10, 100);
+            Debug.Log($"Player health increased from {oldHealth} to {GameHandler.playerHealth}.");
+        }
+        else
+        {
+            Debug.Log("Player health is already full. No health added.");
         }
 
         playerHealthBar.UpdateHealthBar();
@@ -65,6 +72,7 @@ public class CatInteraction : MonoBehaviour
             spatk.useSpecial = false;
         }
 
+        Debug.Log("Cat has been petted and will now disappear.");
         Destroy(gameObject);
     }
 }
