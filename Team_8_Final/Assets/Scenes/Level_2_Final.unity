@@ -3783,7 +3783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialText: Be careful! You have only one life; waste it, and you'll soon have
     your heart weighed by Anubis in the underworld.
-  extraArtwork: {fileID: 21300000, guid: 33b7be8787fe147a2ae1d75f887ebe45, type: 3}
+  extraArtwork: {fileID: 0}
 --- !u!1001 &1416614269
 PrefabInstance:
   m_ObjectHideFlags: 0
