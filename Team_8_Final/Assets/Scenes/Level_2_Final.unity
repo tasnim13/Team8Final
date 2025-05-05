@@ -999,6 +999,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3067852746935299012, guid: 2b3e0690c28ea4e0dbafa19f4cd0a638, type: 3}
   m_PrefabInstance: {fileID: 231161466}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &231552756 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6533691323657592051, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
+  m_PrefabInstance: {fileID: 2871241934106149428}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &269973534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,6 +1345,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialText: The elephant charges when it sees you, tread carefully.
   extraArtwork: {fileID: 0}
+--- !u!1 &415793809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 415793810}
+  m_Layer: 0
+  m_Name: bruh momento
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &415793810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415793809}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.35567078, y: -0.06819858, z: -44.298183}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &418613826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,7 +1724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3566406477875468897, guid: 86eebb5ce7b82480b9f474917e212d0d, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3566406477875468897, guid: 86eebb5ce7b82480b9f474917e212d0d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5655,9 +5691,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7062917767557962349, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
+      propertyPath: NextLevel
+      value: OverworldMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062917767557962349, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
       propertyPath: msgNeedKey
       value: 
-      objectReference: {fileID: 2871241934106149429}
+      objectReference: {fileID: 231552756}
     - target: {fileID: 7889952427856071345, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
       propertyPath: m_IsActive
       value: 1
