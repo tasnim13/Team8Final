@@ -42,7 +42,7 @@ public class CatInteraction : MonoBehaviour
         // Logging state for debugging
         Debug.Log($"[CatInteraction] InRange: {playerInRange}, HasInteracted: {hasInteracted}, UseSpecial: {spatk?.useSpecial}");
 
-        if (playerInRange && !hasInteracted && spatk != null && Input.GetKey(KeyCode.M))
+        if (playerInRange && !hasInteracted && spatk.useSpecial)
         {
             Debug.Log("[CatInteraction] Interacting with cat...");
             hasInteracted = true;
@@ -58,7 +58,7 @@ public class CatInteraction : MonoBehaviour
 
     IEnumerator BoostHealth()
     {
-        yield return new WaitForSeconds(5f); // Wait for animation
+        yield return new WaitForSeconds(2f); // Wait for animation
 
         int oldHealth = GameHandler.playerHealth;
 
