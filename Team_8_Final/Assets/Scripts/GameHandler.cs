@@ -30,6 +30,7 @@ public class GameHandler : MonoBehaviour
 
     public PlayerHealthBar playerHealthBar;
 
+    public static bool[] levelCompleted = new bool[4];
     public static bool[] formUnlocked = new bool[4];
     public static bool transformCooldownOver = true;
     public static float transformCooldownTime = 3f;
@@ -39,7 +40,8 @@ public class GameHandler : MonoBehaviour
 
     private string sceneName;
 
-    public void Awake() {
+    public void Awake()
+    {
         // Only initialize if it hasn’t been modified yet
         bool allFalse = true;
         for (int i = 0; i < 4; i++) {
@@ -54,7 +56,13 @@ public class GameHandler : MonoBehaviour
                 formUnlocked[i] = false;
             }
         }
+
+        // Load level completion status from PlayerPrefs
+        for (int i = 0; i < levelCompleted.Length; i++) {
+            levelCompleted[i] = PlayerPrefs.GetInt("LevelCompleted_" + i, 0) == 1;
+        }
     }
+
 
     void Start()
     {
@@ -146,6 +154,14 @@ public class GameHandler : MonoBehaviour
         GameHandler_PauseMenu.GameisPaused = false;
         SceneManager.LoadScene("MainMenu");
         playerHealth = StartPlayerHealth;
+    }
+
+    public void MarkLevelCompleted()
+    {
+        int index = SceneManager.GetActiveScene().buildIndex;
+        levelCompleted[index] = true;
+        PlayerPrefs.SetInt("LevelCompleted_" + index, 1);
+        PlayerPrefs.Save();
     }
 
     public void ReplayLastLevel()
