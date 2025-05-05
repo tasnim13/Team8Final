@@ -158,6 +158,7 @@ public class FormUI : MonoBehaviour {
             }
             glows[newIndex].SetActive(true);
             AnimateFormUp(newIndex);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Swap");
             currentIndex = newIndex;
             playerForms.ChangeForm(newIndex + 1, false);
         }

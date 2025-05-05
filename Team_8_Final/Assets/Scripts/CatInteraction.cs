@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using FMODUnity;
 
 public class CatInteraction : MonoBehaviour
 {
@@ -90,6 +91,8 @@ public class CatInteraction : MonoBehaviour
 
         //Scale up heart
         LeanTween.scale(heartEffect, new Vector3(1.75f, 1.75f, 1f), 2.5f).setEase(LeanTweenType.easeOutCubic);
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Meow");
     }
 
     IEnumerator BoostHealth()

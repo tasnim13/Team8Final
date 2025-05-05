@@ -3,8 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using FMODUnity;
 
-public class InteractableDoor : MonoBehaviour
-{
+public class InteractableDoor : MonoBehaviour{
     public string NextLevel = "MainMenu";
     public GameObject msgPressE;
     public GameObject msgNeedKey;
@@ -14,25 +13,17 @@ public class InteractableDoor : MonoBehaviour
     public bool canPressE = true;
 
     private float msgTimer = 0f;
-    private float msgDuration = 2f; 
+    private float msgDuration = 2f;
+
+    public FMOD.Studio.Bus musicBus;
 
     void Start()
     {
         gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         msgPressE.SetActive(false);
         msgNeedKey.SetActive(false);
+        musicBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/MX");
     }
-public class InteractableDoor : MonoBehaviour{
-
-        public string NextLevel = "MainMenu";
-        public GameObject msgPressE;
-        public bool canPressE =false;
-        public FMOD.Studio.Bus musicBus;
-
-       void Start(){
-              msgPressE.SetActive(false);
-              musicBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/MX");
-        }
 
     void Update()
     {
@@ -98,22 +89,4 @@ public class InteractableDoor : MonoBehaviour{
     {
         SceneManager.LoadScene(NextLevel);
     }
-}
-
-        void OnTriggerExit2D(Collider2D other){
-              if (other.gameObject.tag == "Player"){
-                     msgPressE.SetActive(false);
-                     canPressE = false;
-              }
-        }
-
-      public void EnterDoor(){
-            if (NextLevel == "level4_2") // allows for stopping old music to make room for new music at specific scene
-            {
-                musicBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                Debug.Log("stopping music" + NextLevel);
-            }
-            SceneManager.LoadScene (NextLevel);
-      }
-
 }
