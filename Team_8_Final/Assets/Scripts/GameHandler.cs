@@ -11,7 +11,6 @@ public class GameHandler : MonoBehaviour
     public int StartPlayerHealth = 100;
     public static bool hasKey = false;
 
-
     public static int gotTokens = 0;
     public GameObject tokensText;
 
