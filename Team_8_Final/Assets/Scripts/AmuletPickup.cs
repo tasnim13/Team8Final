@@ -11,6 +11,8 @@ public class AmuletPickup : MonoBehaviour
         // int levelIndex = SceneManager.GetActiveScene().buildIndex;
 
         // Disable amulet if already collected in this level
+        Debug.Log("levelCompleted: " + GameHandler.levelCompleted[levelNum - 1]);
+
         if (GameHandler.levelCompleted[levelNum - 1])
         {
             alreadyCollected = true;
@@ -29,11 +31,18 @@ public class AmuletPickup : MonoBehaviour
             // Mark this level as completed
             // int levelIndex = SceneManager.GetActiveScene().buildIndex;
             GameHandler.levelCompleted[levelNum - 1] = true;
+
+            Debug.Log("levelCompleted: " + GameHandler.levelCompleted[levelNum - 1]);
+
+
             // PlayerPrefs.SetInt("LevelCompleted_" + levelIndex, 1);
             // PlayerPrefs.Save();
 
             // this is so scuffed
             GameHandler.hasKey = true;
+            Debug.Log(
+                "hasKey = " + GameHandler.hasKey
+            );
 
             Destroy(gameObject);
             alreadyCollected = true;

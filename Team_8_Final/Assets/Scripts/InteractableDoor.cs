@@ -10,7 +10,7 @@ public class InteractableDoor : MonoBehaviour
 
     private GameHandler gh;
 
-    public bool canPressE = false;
+    public bool canPressE = true;
 
     private float msgTimer = 0f;
     private float msgDuration = 2f; 
@@ -26,7 +26,14 @@ public class InteractableDoor : MonoBehaviour
     {
         if (canPressE && Input.GetKeyDown(KeyCode.Q))
         {
-            if (!GameHandler.hasKey)  // CHANGED HERE
+
+
+            Debug.Log(
+                "hasKey = " + GameHandler.hasKey
+            );
+
+
+            if (GameHandler.hasKey)  // CHANGED HERE
             {
                 EnterDoor();
             }
