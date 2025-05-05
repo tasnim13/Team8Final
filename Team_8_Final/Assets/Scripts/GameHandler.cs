@@ -10,7 +10,8 @@ public class GameHandler : MonoBehaviour
     private GameObject player;
     public static int playerHealth = 100;
     public int StartPlayerHealth = 100;
-    public int numLives = 3;
+    public int numLives = 3;    
+    public static bool hasKey = false;
 
     public static int gotTokens = 0;
     public GameObject tokensText;
@@ -27,26 +28,50 @@ public class GameHandler : MonoBehaviour
 
     public FormUI formUI;
     public static int currForm = 0;
+    public static int totalAmuletsCollected = 0;
 
     public PlayerHealthBar playerHealthBar;
 
+    public static bool[] levelCompleted = new bool[4];
     public static bool[] formUnlocked = new bool[4];
     public static bool transformCooldownOver = true;
-    public static float transformCooldownTime = 1f;
+    public static float transformCooldownTime = 3f;
 
     [Header("Enemies to Defeat")]
     public GameObject[] enemiesToDefeat;
 
     private string sceneName;
 
-    public void Awake() {
+    public void Awake()
+    {
+        // Only initialize if it hasn’t been modified yet
+        bool allFalse = true;
         for (int i = 0; i < 4; i++) {
-            formUnlocked[i] = false;
+            if (formUnlocked[i]) {
+                allFalse = false;
+                break;
+            }
         }
+
+        if (allFalse) {
+            for (int i = 0; i < 4; i++) {
+                formUnlocked[i] = false;
+            }
+        }
+
+        // // Load level completion status from PlayerPrefs
+        // for (int i = 0; i < levelCompleted.Length; i++) {
+        //     // levelCompleted[i] = PlayerPrefs.GetInt("LevelCompleted_" + i, 0) == 1;
+        //     levelCompleted[i] = false;
+        // }
     }
+
 
     void Start()
     {
+        // TODO: i think this should work.
+        hasKey = false;
+
         player = GameObject.FindWithTag("Player");
         sceneName = SceneManager.GetActiveScene().name;
 
@@ -59,6 +84,7 @@ public class GameHandler : MonoBehaviour
         if (GameObject.FindWithTag("PlayerFormsUI") != null) {
             formUI = GameObject.FindWithTag("PlayerFormsUI").GetComponent<FormUI>();
         }
+        
     }
 
     public void playerGetTokens(int newTokens)
@@ -89,6 +115,7 @@ public class GameHandler : MonoBehaviour
     public void playerDies()
     {
         player.GetComponent<PlayerHurt>().playerDead();
+        player.GetComponent<PlayerMove>().playerDie();
         lastLevelDied = sceneName;
         numLives -= 1;
 
@@ -130,8 +157,13 @@ public class GameHandler : MonoBehaviour
 
     public void StartGame()
     {
-        //SceneManager.LoadScene("Level1"); this is what was here on the audio branch, adding a path to Level_1_Final for the purposes of testing audio
-        SceneManager.LoadScene("Level_1_Final");
+        // SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("OverworldMap");
+    }
+
+    public void OpeningCutScene()
+    {
+        SceneManager.LoadScene("OpeningCutScene");
     }
 
     public void RestartGame()
@@ -140,6 +172,14 @@ public class GameHandler : MonoBehaviour
         GameHandler_PauseMenu.GameisPaused = false;
         SceneManager.LoadScene("MainMenu");
         playerHealth = StartPlayerHealth;
+    }
+
+    public void MarkLevelCompleted()
+    {
+        int index = SceneManager.GetActiveScene().buildIndex;
+        levelCompleted[index] = true;
+        PlayerPrefs.SetInt("LevelCompleted_" + index, 1);
+        PlayerPrefs.Save();
     }
 
     public void ReplayLastLevel()

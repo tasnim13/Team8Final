@@ -294,7 +294,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 283710929326130265, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 283710929326130265, guid: 9d90926aaeca645aabc9dff3d9199dab, type: 3}
       propertyPath: m_LocalScale.x
@@ -553,7 +553,7 @@ MonoBehaviour:
   lastPosition: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
   movementSpeed: 4
-  sightRange: 2
+  sightRange: 2.5
   sightOffsetX: 0
   sightOffsetY: 0
   damage: 3

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using FMODUnity;
 
 public class EnemyParent : MonoBehaviour {
-    [Header("Don't Touch")]
+    [Header("Hide In Inspector")]
     public Animator anim;
     private CircleCollider2D enemyCollider;
     public Transform target;
@@ -180,7 +180,12 @@ public class EnemyParent : MonoBehaviour {
             GameObject particles = Instantiate(deathParticlesPrefab, spawnPos, deathParticlesPrefab.transform.rotation);
 
             ParticleSystem ps = particles.GetComponent<ParticleSystem>();
-            ps.Play();
+            if (ps != null) {
+                ps.Play();
+                Destroy(particles, ps.main.duration + ps.main.startLifetime.constantMax);
+            } else {
+                Destroy(particles, 3f); //fallback
+            }
         }
 
         GameHandler handler = FindObjectOfType<GameHandler>();
@@ -250,4 +255,8 @@ public class EnemyParent : MonoBehaviour {
             attackEffectRenderer.color = fade;
         }).setEase(LeanTweenType.linear);
     }
+
+    public bool IsDead() {
+            return isDead;
+        }
 }

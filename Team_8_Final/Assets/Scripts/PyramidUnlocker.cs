@@ -24,6 +24,10 @@ public class PyramidUnlocker : MonoBehaviour
         }
     }
 
+    public bool isUnlocked() {
+        return hasUnlocked;
+    }
+
     void UpdateVisual()
     {
         if (hasUnlocked)

@@ -15,21 +15,22 @@ public class GameHandler_PauseMenu : MonoBehaviour {
         private Slider sliderVolumeCtrl;
 
         void Awake(){
-                if (pauseMenuUI == null) {
-                        Debug.LogWarning("pauseMenuUI was not assigned in the Inspector.");
-                } else {
-                        pauseMenuUI.SetActive(true); // Activate once to configure slider
-                }
+        GameisPaused = false; // RESET static flag when scene loads
 
-                SetLevel(volumeLevel);
-
-                GameObject sliderTemp = GameObject.FindWithTag("PauseMenuSlider");
-                if (sliderTemp != null){
-                        sliderVolumeCtrl = sliderTemp.GetComponent<Slider>();
-                        sliderVolumeCtrl.value = volumeLevel;
-                }
+        if (pauseMenuUI == null) {
+                Debug.LogWarning("pauseMenuUI was not assigned in the Inspector.");
+        } else {
+                pauseMenuUI.SetActive(false); // Ensure it starts hidden
         }
 
+        SetLevel(volumeLevel);
+
+        GameObject sliderTemp = GameObject.FindWithTag("PauseMenuSlider");
+        if (sliderTemp != null){
+                sliderVolumeCtrl = sliderTemp.GetComponent<Slider>();
+                sliderVolumeCtrl.value = volumeLevel;
+        }
+        }
 
         void Start(){
                 pauseMenuUI.SetActive(false);

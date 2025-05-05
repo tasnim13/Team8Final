@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3650554164876555600}
+  - component: {fileID: 5511254190884984157}
   m_Layer: 0
   m_Name: FirePit
   m_TagString: Untagged
@@ -30,8 +31,21 @@ Transform:
   m_Children:
   - {fileID: 3516588368309811284}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5511254190884984157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022988647290331490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67c9918cd9ed4156b3ebf360b25a355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
 --- !u!1 &6610675555319239174
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,6 +57,7 @@ GameObject:
   - component: {fileID: 3516588368309811284}
   - component: {fileID: 5740367045328754811}
   - component: {fileID: 6264264800727484753}
+  - component: {fileID: 8078026940622234053}
   m_Layer: 0
   m_Name: firePit_0
   m_TagString: Untagged
@@ -138,3 +153,68 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!60 &8078026940622234053
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6610675555319239174}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.45, y: 0.48}
+    newSize: {x: 1.45, y: 0.48}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.59499997, y: 0.099999994}
+      - {x: 0.555, y: 0.11}
+      - {x: 0.515, y: 0.11}
+      - {x: 0.33499998, y: -0.04}
+      - {x: 0.33499998, y: 0.049999997}
+      - {x: 0.265, y: 0.089999996}
+      - {x: 0.155, y: -0.03}
+      - {x: 0.024999999, y: -0.06}
+      - {x: -0.024999999, y: 0.049999997}
+      - {x: -0.16499999, y: -0.03}
+      - {x: -0.285, y: 0.02}
+      - {x: -0.465, y: 0.03}
+      - {x: -0.60499996, y: 0.02}
+      - {x: -0.635, y: -0.06}
+      - {x: -0.635, y: -0.16}
+      - {x: -0.615, y: -0.17}
+      - {x: -0.225, y: -0.17}
+      - {x: 0.285, y: -0.14999999}
+      - {x: 0.305, y: -0.17}
+      - {x: 0.59499997, y: -0.17}
+  m_UseDelaunayMesh: 0

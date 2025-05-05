@@ -24,14 +24,13 @@ public class PlayerProjectile : MonoBehaviour{
             }
            if (other.gameObject.tag != "Player" && other.gameObject.tag != "Projectile") {
                 Debug.Log("collided with " + other.gameObject.name);
-        //    if (other.gameObject.tag != "Enemy" || other.gameObject.tag != "Player") {
-                  gameObject.GetComponent<BoxCollider2D>().enabled = false;
-                //   GameObject animEffect = Instantiate (hitEffectAnim, transform.position, Quaternion.identity);
-                //   projectileArt.SetActive(false);
+                  //    if (other.gameObject.tag != "Enemy" || other.gameObject.tag != "Player") {
+                  //gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                  //   GameObject animEffect = Instantiate (hitEffectAnim, transform.position, Quaternion.identity);
+                  //   projectileArt.SetActive(false);
                   //Destroy (animEffect, 0.5);
-                //   StartCoroutine(SelfDestructHit(animEffect));
+                  //   StartCoroutine(SelfDestructHit(animEffect));
                   StartCoroutine(SelfDestruct());
-
             }
 
 

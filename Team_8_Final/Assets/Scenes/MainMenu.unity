@@ -1139,6 +1139,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4700130599172604488, guid: ce496122bb74b46b9af7a2a106d31fd7, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d350918d673094559b919307133ec80b, type: 3}
     - target: {fileID: 5843146788183640170, guid: ce496122bb74b46b9af7a2a106d31fd7, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -1550,7 +1554,7 @@ RectTransform:
   m_GameObject: {fileID: 2132933579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 660282662}
@@ -1591,7 +1595,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 180d8f1a633c847cbbd23f3737a14210, type: 3}
+  m_Sprite: {fileID: 974686562, guid: 9eda7e542aa5f45aaac9682f79c1c058, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1653,7 +1657,7 @@ MonoBehaviour:
   - {fileID: 629573163}
   - {fileID: 1379464163}
   - {fileID: 2023032406}
-  moveSpeed: 500
+  moveSpeed: 700
 --- !u!1001 &937276588094926562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1764,7 +1768,7 @@ PrefabInstance:
       objectReference: {fileID: 1636671174}
     - target: {fileID: 5289557972417862156, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartGame
+      value: OpeningCutScene
       objectReference: {fileID: 0}
     - target: {fileID: 5289557972417862156, guid: 681daa56ed48b49e9af450df546856f3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
