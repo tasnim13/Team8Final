@@ -41,8 +41,19 @@ public class GameHandler : MonoBehaviour
     private string sceneName;
 
     public void Awake() {
+        // Only initialize if it hasn’t been modified yet
+        bool allFalse = true;
         for (int i = 0; i < 4; i++) {
-            formUnlocked[i] = false;
+            if (formUnlocked[i]) {
+                allFalse = false;
+                break;
+            }
+        }
+
+        if (allFalse) {
+            for (int i = 0; i < 4; i++) {
+                formUnlocked[i] = false;
+            }
         }
     }
 

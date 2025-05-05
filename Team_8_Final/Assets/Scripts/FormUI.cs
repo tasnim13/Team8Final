@@ -81,17 +81,11 @@ public class FormUI : MonoBehaviour {
         cooldownOverlayFalcon.fillMethod = Image.FillMethod.Vertical;
         cooldownOverlayFalcon.fillOrigin = (int)Image.OriginVertical.Top;
         cooldownOverlayFalcon.fillAmount = 0f;
+
+        RestoreUIState();
     }
 
     void Update() {
-        if (!playerForms.startBS) {
-            if (GameHandler.currForm != 0) {
-                playerForms.ChangeForm(GameHandler.currForm, false);
-                AnimateFormUp(GameHandler.currForm - 1);
-            }
-            playerForms.startBS = true;
-        }
-
         for (int i = 2; i < forms.Length; i++) {
             bool unlocked = GameHandler.formUnlocked[i];
             bool wasPreviouslyUnlocked = playerForms.formUnlockedPreviously[i - 2];
@@ -190,5 +184,31 @@ public class FormUI : MonoBehaviour {
 
         LeanTween.move(formRect, formBasePositions[index], duration).setEase(easeType);
         LeanTween.move(glowRect, glowBasePositions[index], duration).setEase(easeType);
+    }
+
+    private void RestoreUIState() {
+        Debug.Log($"[FormUI] RestoreUIState - formUnlocked[2]: {GameHandler.formUnlocked[2]}, formUnlocked[3]: {GameHandler.formUnlocked[3]}");
+        for (int i = 2; i < forms.Length; i++) {
+            bool unlocked = GameHandler.formUnlocked[i];
+
+            forms[i].SetActive(unlocked);
+            formsDisabled[i].SetActive(!unlocked);
+
+            glows[i].SetActive(false);
+
+            RectTransform formRect = forms[i].GetComponent<RectTransform>();
+            RectTransform glowRect = glows[i].GetComponent<RectTransform>();
+
+            formRect.anchoredPosition = formBasePositions[i];
+            glowRect.anchoredPosition = glowBasePositions[i];
+        }
+
+        if (GameHandler.currForm >= 3 && GameHandler.currForm <= 4) {
+            int uiIndex = GameHandler.currForm - 1;
+            glows[uiIndex].SetActive(true);
+            AnimateFormUp(uiIndex);
+            currentIndex = uiIndex;
+            isFormUp[uiIndex] = true;
+        }
     }
 }
