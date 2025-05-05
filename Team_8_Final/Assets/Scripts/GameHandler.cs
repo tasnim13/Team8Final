@@ -98,6 +98,7 @@ public class GameHandler : MonoBehaviour
     public void playerDies()
     {
         player.GetComponent<PlayerHurt>().playerDead();
+        player.GetComponent<PlayerMove>().playerDie();
         lastLevelDied = sceneName;
         StartCoroutine(DeathPause());
     }
