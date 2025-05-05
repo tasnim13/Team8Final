@@ -81,17 +81,24 @@ public class EnemyPhoenix : EnemyParent {
         if (isDead) return;
 
         if (isAttacking && Time.time >= lastAttackTime + attackCooldown) {
+            Debug.Log("[Phoenix] Shooting fireball!");
             lastAttackTime = Time.time;
             ShootFireball();
         }
     }
 
     private void ShootFireball() {
-        if (target == null || fireballPrefab == null || firePoint == null) return;
+        if (target == null || fireballPrefab == null || firePoint == null) {
+            Debug.Log("fireball null reference");
+            return;
+        }
 
         shotsFiredSinceLastSpiral++;
 
         GameObject fireball = Instantiate(fireballPrefab, firePoint.position, Quaternion.identity);
+        Debug.Log("Active: " + fireball.activeInHierarchy);
+        Debug.Log("Fireball made at" + firePoint.position);
+
         Vector2 direction = firePoint.up;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         fireball.transform.rotation = Quaternion.Euler(0f, 0f, angle);

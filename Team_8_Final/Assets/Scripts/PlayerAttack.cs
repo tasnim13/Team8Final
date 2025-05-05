@@ -70,11 +70,26 @@ public class PlayerAttack : MonoBehaviour
             audioSource.PlayOneShot(attackSoundHit);
         }
 
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            Debug.Log($"Hit enemy: {enemy.name}");
-            enemy.GetComponent<EnemyParent>()?.TakeDamage(attackDamage);
+        foreach (Collider2D hit in hitEnemies) {
+            if (hit.CompareTag("PhoenixDamageZone")) {
+                // Phoenix uses a special damage zone
+                EnemyPhoenix phoenix = hit.GetComponentInParent<EnemyPhoenix>();
+                if (phoenix != null) {
+                    //Debug.Log("Hit Phoenix via damage zone!");
+                    phoenix.TakeDamage(attackDamage);
+                }
+            } else {
+                EnemyPhoenix phoenix = hit.GetComponentInParent<EnemyPhoenix>();
+                if (phoenix != null) return;
+
+                EnemyParent enemy = hit.GetComponent<EnemyParent>();
+                if (enemy != null) {
+                    Debug.Log($"Hit enemy: {enemy.name}");
+                    enemy.TakeDamage(attackDamage);
+                }
+            }
         }
+
     }
 
     void FalconAttack() {

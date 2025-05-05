@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EnemyParent : MonoBehaviour {
     [Header("Hide In Inspector")]
     public Animator anim;
-    private CircleCollider2D enemyCollider;
+    public CircleCollider2D enemyCollider;
     public Transform target;
     public bool isAttacking = false;
     public float lastAttackTime = Mathf.NegativeInfinity;
@@ -47,7 +47,7 @@ public class EnemyParent : MonoBehaviour {
     private SpriteRenderer attackEffectRenderer;
 
     public virtual void Start() {
-        enemyCollider = GetComponent<CircleCollider2D>();
+        if (enemyCollider == null) enemyCollider = GetComponent<CircleCollider2D>();
         enemyCollider.radius = attackRange;
         enemyCollider.offset = new Vector2(sightOffsetX, sightOffsetY);
 
