@@ -18,7 +18,7 @@ public class PlayerSpecialAttack : MonoBehaviour
 
     public void defaultSpatk() {
         if (canSpecial) {
-            useSpecial = true;
+            StartCoroutine(PetPossible());
             StartCoroutine(StartSpecialCooldown());
         }
     }
@@ -42,6 +42,12 @@ public class PlayerSpecialAttack : MonoBehaviour
         cooldownStartTime = Time.time;
         yield return new WaitForSeconds(specialCooldown);
         canSpecial = true;
+    }
+
+    private IEnumerator PetPossible() {
+        useSpecial = true;
+        yield return new WaitForSeconds(2f);
+        useSpecial = false;
     }
 
     public float GetSpecialCooldownPercent() {

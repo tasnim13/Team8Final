@@ -11,7 +11,7 @@ public class PlayerForms : MonoBehaviour {
     public int falconAtk = 0;
     public int lionessAtk = 7;
     public int falconRng = 0;
-    public int lionessRng = 3;
+    public float lionessRng = 3f;
 
     [Header("Form Art")]
     private bool shouldChangeSprite = true;

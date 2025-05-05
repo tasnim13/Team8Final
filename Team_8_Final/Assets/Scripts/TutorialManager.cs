@@ -42,6 +42,12 @@ public class TutorialManager : MonoBehaviour {
         hasTyped = false;
     }
 
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            OnNextPressed();
+        }
+    }
+
     public void OnNextPressed() {
         if (!hasTyped) {
             StopAllCoroutines();

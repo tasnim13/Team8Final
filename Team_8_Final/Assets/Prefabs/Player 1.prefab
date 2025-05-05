@@ -196,7 +196,7 @@ MonoBehaviour:
   falconAtk: 0
   lionessAtk: 4
   falconRng: 0
-  lionessRng: 2
+  lionessRng: 1.25
   formSprites:
   - {fileID: 2103498312, guid: 5948675b780a544de89e6e6a5867c490, type: 3}
   - {fileID: -1376050189, guid: d03c9767bcab0416e8f9696f1d2355ef, type: 3}
