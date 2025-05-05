@@ -6,6 +6,8 @@ public class ClickableLevel : MonoBehaviour
     public string sceneToLoad = "Level1";
 
     public GameObject highlightObject;
+    public PyramidUnlocker pylock;
+    // TODO: highlight only if unlocked?
 
     void Start()
     {
@@ -36,7 +38,7 @@ public class ClickableLevel : MonoBehaviour
     {
         // Debug.Log(sceneToLoad);
         // return;
-        if (!string.IsNullOrEmpty(sceneToLoad))
+        if (!string.IsNullOrEmpty(sceneToLoad) && pylock.isUnlocked())
         {
             Debug.Log("Loading scene: " + sceneToLoad);
             SceneManager.LoadScene(sceneToLoad);

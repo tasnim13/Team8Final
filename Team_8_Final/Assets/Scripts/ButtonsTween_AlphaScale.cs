@@ -23,9 +23,9 @@ public class ButtonsTween_AlphaScale : MonoBehaviour{
 
        float timer = 0;
        float button1Timer = 1f;
-       float button2Timer = 10f;
-       float button3Timer = 16f;
-       float button4Timer = 16f + 5f;
+       float button2Timer = 5f;
+       float button3Timer = 10f;
+       float button4Timer = 11f;
        // float button1Timer = 10f;
        // float button2Timer = 17f;
        // float button3Timer = 24f;

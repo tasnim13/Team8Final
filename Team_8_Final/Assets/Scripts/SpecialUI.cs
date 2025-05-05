@@ -39,7 +39,7 @@ public class SpecialUI : MonoBehaviour
             if (isActive) {
                 // Align overlay to this icon
                 RectTransform iconRect = icons[i].GetComponent<RectTransform>();
-                overlayRect.position = new Vector2(107f, 94f);
+                overlayRect.position = new Vector2(55f, 50f);
                 overlayRect.sizeDelta = new Vector2(100f, 100f);
             }
         }

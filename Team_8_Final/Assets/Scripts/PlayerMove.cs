@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -25,6 +27,9 @@ public class PlayerMove : MonoBehaviour
 
     private Vector2 lastDirection = Vector2.right;
     public Vector2 LastDirection => lastDirection;
+    public int trackHealth;
+
+    private Color originalColor;
 
     void Start()
     {
@@ -37,6 +42,9 @@ public class PlayerMove : MonoBehaviour
         {
             Debug.Log("UH OH! sprend is null!");
         }
+        
+        trackHealth = GameHandler.playerHealth;
+        originalColor = sprend.color;
     }
 
     void Update()
@@ -48,9 +56,16 @@ public class PlayerMove : MonoBehaviour
             anim.SetTrigger("Attack");
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
+        /* if (Input.GetKeyDown(KeyCode.M))
         {
             Pet();
+        } */
+
+        if (GameHandler.playerHealth != trackHealth) {
+            if (GameHandler.playerHealth < trackHealth) {
+                DamageFlash();
+            }
+            trackHealth = GameHandler.playerHealth;
         }
     }
 
@@ -81,6 +96,15 @@ public class PlayerMove : MonoBehaviour
         {
             lastDirection = change.normalized;
         }
+    }
+
+    public void DamageFlash() {
+        sprend.color = Color.red;
+        LeanTween.value(gameObject, 0f, 1f, 0.2f)
+            .setOnUpdate((float t) => {
+                sprend.color = Color.Lerp(Color.red, originalColor, t);
+            })
+            .setEase(LeanTweenType.linear);
     }
 
     void UpdateAnimationAndMove()
