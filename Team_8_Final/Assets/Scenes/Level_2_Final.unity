@@ -844,6 +844,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OrangeCat
       objectReference: {fileID: 0}
+    - target: {fileID: 1469027687332535312, guid: 282737177bf5a4f29893d74dbbdb5ff7, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8798480626612679910, guid: 282737177bf5a4f29893d74dbbdb5ff7, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1582,6 +1586,10 @@ PrefabInstance:
     - target: {fileID: 2472687355452324102, guid: d9eab5951e3264457ab26f08174017fd, type: 3}
       propertyPath: m_Name
       value: GreyCat2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437680911378885689, guid: d9eab5951e3264457ab26f08174017fd, type: 3}
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
