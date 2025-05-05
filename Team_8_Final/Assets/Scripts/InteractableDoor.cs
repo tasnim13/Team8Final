@@ -26,7 +26,7 @@ public class InteractableDoor : MonoBehaviour
 
     void Update()
     {
-        if (canPressE && Input.GetKeyDown(KeyCode.E))
+        if (canPressE && Input.GetKeyDown(KeyCode.Q))
         {
             if (!GameHandler.hasKey)  // CHANGED HERE
             {

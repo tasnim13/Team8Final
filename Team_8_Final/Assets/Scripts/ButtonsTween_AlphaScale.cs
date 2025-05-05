@@ -23,9 +23,12 @@ public class ButtonsTween_AlphaScale : MonoBehaviour{
 
        float timer = 0;
        float button1Timer = 1f;
-       float button2Timer = 5f;
+       float button2Timer = 6f;
        float button3Timer = 10f;
-       float button4Timer = 11f;
+       float button4Timer = 1f;
+
+       float changeTextTimer = 15f;
+       bool changeText = false;
        // float button1Timer = 10f;
        // float button2Timer = 17f;
        // float button3Timer = 24f;
@@ -45,6 +48,7 @@ public class ButtonsTween_AlphaScale : MonoBehaviour{
               if (timer >= button2Timer){doButton2 = true;}
               if (timer >= button3Timer){doButton3 = true;}
               if (timer >= button4Timer){doButton4 = true;}
+              if (timer >= changeTextTimer){changeText = true;}
 
               if (
                      ((isButton1) && (doButton1))
@@ -62,6 +66,10 @@ public class ButtonsTween_AlphaScale : MonoBehaviour{
                     buttonText.color = new Color(2.55f, 2.55f, 2.55f, newAlpha);
                 }
                 elapsed += Time.deltaTime;
+
+                if (changeText && isButton4) {
+                     buttonText.text = "BEGIN";
+                }
               }
        }
 }

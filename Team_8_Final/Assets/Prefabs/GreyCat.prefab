@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 4685496779158936006}
   - component: {fileID: 4734554989291890945}
   - component: {fileID: 1784487559646317531}
-  - component: {fileID: 5127144800828581098}
   - component: {fileID: 8465522392441893292}
   m_Layer: 0
   m_Name: GreyCat
@@ -128,7 +127,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2974200721932951642}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -231,33 +230,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &5127144800828581098
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2974200721932951642}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!58 &8465522392441893292
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -292,4 +264,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.25428486, y: -0.103597224}
   serializedVersion: 2
-  m_Radius: 0.6207442
+  m_Radius: 1
