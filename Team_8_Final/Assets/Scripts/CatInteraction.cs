@@ -13,12 +13,18 @@ public class CatInteraction : MonoBehaviour
     public GameObject heartEffect;
     private SpriteRenderer loveRenderer;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip pettingSound;     // Sound during interaction
+    public AudioClip disappearSound;   // Sound when cat disappears
+
     void Start()
     {
         playerHealthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar").GetComponent<PlayerHealthBar>();
-        
-        //Cache heart effect
-        if (heartEffect != null) {
+
+        // Cache heart effect
+        if (heartEffect != null)
+        {
             loveRenderer = heartEffect.GetComponent<SpriteRenderer>();
             Color c = loveRenderer.color;
             c.a = 0f;
@@ -28,11 +34,8 @@ public class CatInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Debug.Log("[CatInteraction] Trigger entered by: " + other.name);
-
         if (other.CompareTag("Player"))
         {
-            // Debug.Log("[CatInteraction] Player entered trigger.");
             playerInRange = true;
             playerMove = other.GetComponent<PlayerMove>();
             spatk = other.GetComponent<PlayerSpecialAttack>();
@@ -43,7 +46,6 @@ public class CatInteraction : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Debug.Log("[CatInteraction] Player exited trigger.");
             playerInRange = false;
             playerMove = null;
         }
@@ -51,13 +53,15 @@ public class CatInteraction : MonoBehaviour
 
     void Update()
     {
-        // Logging state for debugging
-        // Debug.Log($"[CatInteraction] InRange: {playerInRange}, HasInteracted: {hasInteracted}, UseSpecial: {spatk?.useSpecial}");
-
-        if (playerInRange && !hasInteracted && spatk.useSpecial)
+        if (playerInRange && !hasInteracted && spatk != null && spatk.useSpecial)
         {
-            // Debug.Log("[CatInteraction] Interacting with cat...");
             hasInteracted = true;
+
+            // Play petting sound
+            if (audioSource != null && pettingSound != null)
+            {
+                audioSource.PlayOneShot(pettingSound);
+            }
 
             if (playerMove != null)
             {
@@ -65,30 +69,31 @@ public class CatInteraction : MonoBehaviour
             }
 
             StartCoroutine(BoostHealth());
-
             KittyLove();
         }
     }
 
-    private void KittyLove() {
+    private void KittyLove()
+    {
         if (heartEffect == null || loveRenderer == null) return;
 
-        //Make fully visible
+        // Make fully visible
         Color c = loveRenderer.color;
         c.a = 1f;
         loveRenderer.color = c;
 
-        //Reset scale to normal in case it's reused
+        // Reset scale to normal
         heartEffect.transform.localScale = Vector3.one;
 
-        //Fade out alpha
-        LeanTween.value(heartEffect, 1f, 0f, 2.5f).setOnUpdate((float a) => {
+        // Fade out heart
+        LeanTween.value(heartEffect, 1f, 0f, 2.5f).setOnUpdate((float a) =>
+        {
             Color fade = loveRenderer.color;
             fade.a = a;
             loveRenderer.color = fade;
         }).setEase(LeanTweenType.linear);
 
-        //Scale up heart
+        // Scale up heart
         LeanTween.scale(heartEffect, new Vector3(1.75f, 1.75f, 1f), 2.5f).setEase(LeanTweenType.easeOutCubic);
     }
 
@@ -101,11 +106,6 @@ public class CatInteraction : MonoBehaviour
         if (GameHandler.playerHealth < 100)
         {
             GameHandler.playerHealth = Mathf.Min(GameHandler.playerHealth + 70, 100);
-            // Debug.Log($"[CatInteraction] Player health increased from {oldHealth} to {GameHandler.playerHealth}.");
-        }
-        else
-        {
-            // Debug.Log("[CatInteraction] Player health already full. No health added.");
         }
 
         playerHealthBar.UpdateHealthBar();
@@ -115,7 +115,15 @@ public class CatInteraction : MonoBehaviour
             spatk.useSpecial = false;
         }
 
-        // Debug.Log("[CatInteraction] Cat has been petted and will now disappear.");
-        Destroy(gameObject);
+        // Play disappear sound before destroying
+        if (audioSource != null && disappearSound != null)
+        {
+            audioSource.PlayOneShot(disappearSound);
+            Destroy(gameObject, disappearSound.length);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
