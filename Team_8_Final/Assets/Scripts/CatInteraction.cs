@@ -28,11 +28,11 @@ public class CatInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("[CatInteraction] Trigger entered by: " + other.name);
+        // Debug.Log("[CatInteraction] Trigger entered by: " + other.name);
 
         if (other.CompareTag("Player"))
         {
-            Debug.Log("[CatInteraction] Player entered trigger.");
+            // Debug.Log("[CatInteraction] Player entered trigger.");
             playerInRange = true;
             playerMove = other.GetComponent<PlayerMove>();
             spatk = other.GetComponent<PlayerSpecialAttack>();
@@ -43,7 +43,7 @@ public class CatInteraction : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("[CatInteraction] Player exited trigger.");
+            // Debug.Log("[CatInteraction] Player exited trigger.");
             playerInRange = false;
             playerMove = null;
         }
@@ -52,11 +52,11 @@ public class CatInteraction : MonoBehaviour
     void Update()
     {
         // Logging state for debugging
-        Debug.Log($"[CatInteraction] InRange: {playerInRange}, HasInteracted: {hasInteracted}, UseSpecial: {spatk?.useSpecial}");
+        // Debug.Log($"[CatInteraction] InRange: {playerInRange}, HasInteracted: {hasInteracted}, UseSpecial: {spatk?.useSpecial}");
 
         if (playerInRange && !hasInteracted && spatk.useSpecial)
         {
-            Debug.Log("[CatInteraction] Interacting with cat...");
+            // Debug.Log("[CatInteraction] Interacting with cat...");
             hasInteracted = true;
 
             if (playerMove != null)
@@ -101,11 +101,11 @@ public class CatInteraction : MonoBehaviour
         if (GameHandler.playerHealth < 100)
         {
             GameHandler.playerHealth = Mathf.Min(GameHandler.playerHealth + 70, 100);
-            Debug.Log($"[CatInteraction] Player health increased from {oldHealth} to {GameHandler.playerHealth}.");
+            // Debug.Log($"[CatInteraction] Player health increased from {oldHealth} to {GameHandler.playerHealth}.");
         }
         else
         {
-            Debug.Log("[CatInteraction] Player health already full. No health added.");
+            // Debug.Log("[CatInteraction] Player health already full. No health added.");
         }
 
         playerHealthBar.UpdateHealthBar();
@@ -115,7 +115,7 @@ public class CatInteraction : MonoBehaviour
             spatk.useSpecial = false;
         }
 
-        Debug.Log("[CatInteraction] Cat has been petted and will now disappear.");
+        // Debug.Log("[CatInteraction] Cat has been petted and will now disappear.");
         Destroy(gameObject);
     }
 }
