@@ -9,7 +9,7 @@ public class GameHandler : MonoBehaviour
     private GameObject player;
     public static int playerHealth = 100;
     public int StartPlayerHealth = 100;
-    public bool hasKey = false;
+    public static bool hasKey = false;
 
 
     public static int gotTokens = 0;
@@ -33,7 +33,7 @@ public class GameHandler : MonoBehaviour
 
     public static bool[] formUnlocked = new bool[4];
     public static bool transformCooldownOver = true;
-    public static float transformCooldownTime = 1f;
+    public static float transformCooldownTime = 3f;
 
     [Header("Enemies to Defeat")]
     public GameObject[] enemiesToDefeat;

@@ -7,9 +7,6 @@ public class InteractableDoor : MonoBehaviour
     public string NextLevel = "MainMenu";
     public GameObject msgPressE;
     public GameObject msgNeedKey;
-
-    private GameHandler gh;
-
     public bool canPressE = false;
 
     private float msgTimer = 0f;
@@ -17,11 +14,8 @@ public class InteractableDoor : MonoBehaviour
 
     void Start()
     {
-        gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         msgPressE.SetActive(false);
-        if (gh.hasKey) {
-            msgNeedKey.SetActive(false);
-        }
+        msgNeedKey.SetActive(false);
     }
 
     void Update()

@@ -31,8 +31,8 @@ public class PlayerForms : MonoBehaviour {
     private float baseSpeed;
     private int baseAttack;
     private int baseRange = 1;
+    private float transformCooldownStartTime = -Mathf.Infinity;
     
-
     void Start() {
         playermove = GetComponent<PlayerMove>();
         //gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
@@ -62,6 +62,7 @@ public class PlayerForms : MonoBehaviour {
 
     IEnumerator ChangeFormWithCooldown(int id, bool allowToggle = false) {
         GameHandler.transformCooldownOver = false;
+        transformCooldownStartTime = Time.time;
         ChangeForm(id, allowToggle);
         yield return new WaitForSeconds(GameHandler.transformCooldownTime);
         GameHandler.transformCooldownOver = true;
@@ -141,4 +142,13 @@ public class PlayerForms : MonoBehaviour {
             Debug.Log("Uh oh! Unknown form ID");
         }
     }
+
+    //Returns 1 when cooldown just started, 0 when done
+    public float GetFormsCooldownPercent() {
+        if (GameHandler.transformCooldownOver) return 0f;
+        float elapsed = Time.time - transformCooldownStartTime;
+        float percent = Mathf.Clamp01(1f - (elapsed / GameHandler.transformCooldownTime));
+        return percent;
+    }
+
 } 

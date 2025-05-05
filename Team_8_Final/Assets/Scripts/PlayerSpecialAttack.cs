@@ -14,6 +14,8 @@ public class PlayerSpecialAttack : MonoBehaviour
     public bool useSpecial;
     public float specialCooldown = 10f;
 
+    private float cooldownStartTime = -Mathf.Infinity;
+
     public void defaultSpatk() {
         if (canSpecial) {
             useSpecial = true;
@@ -37,8 +39,15 @@ public class PlayerSpecialAttack : MonoBehaviour
 
     private IEnumerator StartSpecialCooldown() {
         canSpecial = false;
+        cooldownStartTime = Time.time;
         yield return new WaitForSeconds(specialCooldown);
         canSpecial = true;
+    }
+
+    public float GetSpecialCooldownPercent() {
+        float elapsed = Time.time - cooldownStartTime;
+        if (elapsed >= specialCooldown) return 0f;
+        return Mathf.Clamp01(1f - (elapsed / specialCooldown));
     }
 
     private void basicAttack(int num) {
@@ -46,7 +55,6 @@ public class PlayerSpecialAttack : MonoBehaviour
 
         for (int i = 0; i < num; i++) {
             Vector3 orb_placement = new Vector3(0, 0, i * (360f / num));
-            Vector3 fwd3 = fwd;
             GameObject projectile = Instantiate(roarProjectile, firePoint.position, Quaternion.identity);
             projectile.GetComponent<Rigidbody2D>().AddForce(fwd * projectileSpeed, ForceMode2D.Impulse);
             projectile.GetComponentInChildren<SpriteRenderer>().transform.Rotate(orb_placement);
@@ -64,10 +72,7 @@ public class PlayerSpecialAttack : MonoBehaviour
 
     void falconSpecial() {
         Vector2 direction = GetComponent<PlayerMove>().LastDirection;
-
-        if (direction == Vector2.zero) {
-            direction = new Vector2(1, 0);
-        }
+        if (direction == Vector2.zero) direction = new Vector2(1, 0);
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rot = Quaternion.Euler(0, 0, angle);
