@@ -16,11 +16,85 @@ public class PlayerSpecialAttack : MonoBehaviour
 
     private float cooldownStartTime = -Mathf.Infinity;
 
+    private Collider2D coll;
+    private SpriteRenderer messageRend;
+    public GameObject messageEffect;
+
+    void Start() {
+        coll = GetComponent<Collider2D>();
+
+        //Cache message effect
+        if (messageEffect != null) {
+            messageRend = messageEffect.GetComponent<SpriteRenderer>();
+            Color c = messageRend.color;
+            c.a = 0f;
+            messageRend.color = c;
+        }
+    }
+
+    void LateUpdate() {
+        if (messageEffect != null) {
+            messageEffect.transform.rotation = Quaternion.identity;
+        }
+    }
+
     public void defaultSpatk() {
         if (canSpecial) {
+            // Check for contact with "Cat"
+            ContactFilter2D filter = new ContactFilter2D();
+            filter.useTriggers = true;
+            Collider2D[] results = new Collider2D[5];
+            int count = coll.OverlapCollider(filter, results);
+
+            bool touchingCat = false;
+            for (int i = 0; i < count; i++) {
+                if (results[i] != null && results[i].CompareTag("Cat")) {
+                    touchingCat = true;
+                    break;
+                }
+            }
+
+            if (!touchingCat) {
+                NoCatMessage();
+            }
+
             StartCoroutine(PetPossible());
             StartCoroutine(StartSpecialCooldown());
         }
+    }
+
+    private void NoCatMessage() {
+        if (messageEffect == null || messageRend == null) return;
+
+        // Detach from player to prevent flipping and lock rotation
+        messageEffect.transform.SetParent(null);
+        messageEffect.transform.rotation = Quaternion.identity;
+
+        // Reset position to current world location (optional)
+        messageEffect.transform.position = transform.position;
+
+        // Make fully visible
+        Color c = messageRend.color;
+        c.a = 1f;
+        messageRend.color = c;
+
+        // Reset scale before tween
+        messageEffect.transform.localScale = Vector3.one;
+
+        // Fade out alpha
+        LeanTween.value(messageEffect, 1f, 0f, 2.5f).setOnUpdate((float a) => {
+            Color fade = messageRend.color;
+            fade.a = a;
+            messageRend.color = fade;
+        }).setEase(LeanTweenType.linear);
+
+        // Scale up and reparent after complete
+        LeanTween.scale(messageEffect, new Vector3(1.75f, 1.75f, 1f), 2.5f)
+            .setEase(LeanTweenType.easeOutCubic)
+            .setOnComplete(() => {
+                // Reparent to player to clean up hierarchy
+                messageEffect.transform.SetParent(this.transform);
+            });
     }
 
     public void lionessSpatk() {
