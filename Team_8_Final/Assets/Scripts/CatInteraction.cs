@@ -9,14 +9,18 @@ public class CatInteraction : MonoBehaviour
     private PlayerSpecialAttack spatk;
     private PlayerHealthBar playerHealthBar;
 
-    void Start() {
+    void Start()
+    {
         playerHealthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar").GetComponent<PlayerHealthBar>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("[CatInteraction] Trigger entered by: " + other.name);
+
         if (other.CompareTag("Player"))
         {
+            Debug.Log("[CatInteraction] Player entered trigger.");
             playerInRange = true;
             playerMove = other.GetComponent<PlayerMove>();
             spatk = other.GetComponent<PlayerSpecialAttack>();
@@ -27,6 +31,7 @@ public class CatInteraction : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("[CatInteraction] Player exited trigger.");
             playerInRange = false;
             playerMove = null;
         }
@@ -34,14 +39,17 @@ public class CatInteraction : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange && !hasInteracted && spatk.useSpecial)
+        // Logging state for debugging
+        Debug.Log($"[CatInteraction] InRange: {playerInRange}, HasInteracted: {hasInteracted}, UseSpecial: {spatk?.useSpecial}");
+
+        if (playerInRange && !hasInteracted && spatk != null && Input.GetKey(KeyCode.M))
         {
-            Debug.Log("Pet cat!");
+            Debug.Log("[CatInteraction] Interacting with cat...");
             hasInteracted = true;
 
             if (playerMove != null)
             {
-                playerMove.Pet();
+                playerMove.Pet(); // Trigger animation
             }
 
             StartCoroutine(BoostHealth());
@@ -50,13 +58,28 @@ public class CatInteraction : MonoBehaviour
 
     IEnumerator BoostHealth()
     {
-        yield return new WaitForSeconds(2f); // Match pet animation duration
+        yield return new WaitForSeconds(5f); // Wait for animation
 
-       if (GameHandler.playerHealth < 100) GameHandler.playerHealth += 10;
+        int oldHealth = GameHandler.playerHealth;
+
+        if (GameHandler.playerHealth < 100)
+        {
+            GameHandler.playerHealth = Mathf.Min(GameHandler.playerHealth + 10, 100);
+            Debug.Log($"[CatInteraction] Player health increased from {oldHealth} to {GameHandler.playerHealth}.");
+        }
+        else
+        {
+            Debug.Log("[CatInteraction] Player health already full. No health added.");
+        }
 
         playerHealthBar.UpdateHealthBar();
 
-        spatk.useSpecial = false;
+        if (spatk != null)
+        {
+            spatk.useSpecial = false;
+        }
+
+        Debug.Log("[CatInteraction] Cat has been petted and will now disappear.");
         Destroy(gameObject);
     }
 }

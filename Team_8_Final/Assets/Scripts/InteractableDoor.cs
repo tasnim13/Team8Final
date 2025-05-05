@@ -19,7 +19,7 @@ public class InteractableDoor : MonoBehaviour
     {
         gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         msgPressE.SetActive(false);
-        if (gh.hasKey) {
+        if (GameHandler.hasKey) {  // CHANGED HERE
             msgNeedKey.SetActive(false);
         }
     }
@@ -28,7 +28,7 @@ public class InteractableDoor : MonoBehaviour
     {
         if (canPressE && Input.GetKeyDown(KeyCode.E))
         {
-            if (!gh.hasKey)
+            if (!GameHandler.hasKey)  // CHANGED HERE
             {
                 EnterDoor();
             }
@@ -49,6 +49,7 @@ public class InteractableDoor : MonoBehaviour
             }
         }
     }
+    
 
     void OnTriggerEnter2D(Collider2D other)
     {
