@@ -36,12 +36,6 @@ public class SpecialUI : MonoBehaviour
         for (int i = 0; i < icons.Length; i++) {
             bool isActive = (i == curr);
             icons[i].SetActive(isActive);
-            if (isActive) {
-                // Align overlay to this icon
-                RectTransform iconRect = icons[i].GetComponent<RectTransform>();
-                overlayRect.position = new Vector2(55f, 50f);
-                overlayRect.sizeDelta = new Vector2(100f, 100f);
-            }
         }
 
         // Update overlay fill amount
