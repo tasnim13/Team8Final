@@ -93,6 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextLevel: Level4_1
   msgPressE: {fileID: 6533691323657592051}
+  msgNeedKey: {fileID: 0}
   canPressE: 0
 --- !u!1 &5299356065315917244
 GameObject:
@@ -423,7 +424,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 50
-  m_Sprite: {fileID: 21300000, guid: 023189013078e43028a0885c7654c8b6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be1d7f93494fb49e8920c78f0e9b61a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
