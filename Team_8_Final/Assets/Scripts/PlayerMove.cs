@@ -23,14 +23,13 @@ public class PlayerMove : MonoBehaviour
     public float poisonSpeedMultiplier = 0.1f;
     private float poisonEffectMultiplier = 1f;
 
-    //Tracks the last direction the player moved in
     private Vector2 lastDirection = Vector2.right;
     public Vector2 LastDirection => lastDirection;
 
-    void Start() {
+    void Start()
+    {
         anim = GetComponentInChildren<Animator>();
         rend = GetComponentInChildren<Renderer>();
-
         rb2d = GetComponent<Rigidbody2D>();
         originalMat = rend.material;
 
@@ -42,17 +41,22 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        if (!isAlive || isPetting) return;
+        if (!isAlive) return;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetTrigger("Attack");
         }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            Pet();
+        }
     }
 
     void FixedUpdate()
     {
-        if (!isAlive || isPetting) return;
+        if (!isAlive) return;
 
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
@@ -73,7 +77,8 @@ public class PlayerMove : MonoBehaviour
             transform.localScale = newScale;
         }
 
-        if (change != Vector3.zero) {
+        if (change != Vector3.zero)
+        {
             lastDirection = change.normalized;
         }
     }
@@ -156,7 +161,7 @@ public class PlayerMove : MonoBehaviour
 
         isPetting = true;
         anim.SetTrigger("Pet");
-        StartCoroutine(EndPetAfterDelay(2f));
+        StartCoroutine(EndPetAfterDelay(5f));
     }
 
     private IEnumerator EndPetAfterDelay(float delay)
@@ -165,3 +170,4 @@ public class PlayerMove : MonoBehaviour
         isPetting = false;
     }
 }
+

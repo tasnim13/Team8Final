@@ -9,13 +9,14 @@ public class CatInteraction : MonoBehaviour
     private PlayerSpecialAttack spatk;
     private PlayerHealthBar playerHealthBar;
 
-    void Start() {
+    void Start()
+    {
         playerHealthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar").GetComponent<PlayerHealthBar>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && gameObject.layer == LayerMask.NameToLayer("Pet"))
         {
             playerInRange = true;
             playerMove = other.GetComponent<PlayerMove>();
@@ -34,7 +35,7 @@ public class CatInteraction : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange && !hasInteracted && spatk.useSpecial)
+        if (playerInRange && !hasInteracted && spatk != null && spatk.useSpecial)
         {
             Debug.Log("Pet cat!");
             hasInteracted = true;
@@ -52,11 +53,18 @@ public class CatInteraction : MonoBehaviour
     {
         yield return new WaitForSeconds(2f); // Match pet animation duration
 
-       if (GameHandler.playerHealth < 100) GameHandler.playerHealth += 10;
+        if (GameHandler.playerHealth < 100)
+        {
+            GameHandler.playerHealth += 10;
+        }
 
         playerHealthBar.UpdateHealthBar();
 
-        spatk.useSpecial = false;
+        if (spatk != null)
+        {
+            spatk.useSpecial = false;
+        }
+
         Destroy(gameObject);
     }
 }
