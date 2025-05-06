@@ -14,8 +14,17 @@ public class FalconAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
-        {
+        if (other.CompareTag("PhoenixDamageZone")) {
+            // Phoenix uses a special damage zone
+            EnemyPhoenix phoenix = other.GetComponentInParent<EnemyPhoenix>();
+            if (phoenix != null) {
+                phoenix.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+        } else if (other.CompareTag("Enemy")) {
+            EnemyPhoenix phoenix = other.GetComponentInParent<EnemyPhoenix>();
+            if (phoenix != null) return;
+
             other.GetComponent<EnemyParent>()?.TakeDamage(damage);
             Destroy(gameObject);
         }
