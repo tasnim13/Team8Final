@@ -50,8 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heartEffect: {fileID: 5891425775088258847}
   audioSource: {fileID: 1761768855427514046}
-  pettingSound: {fileID: 0}
-  disappearSound: {fileID: 0}
+  pettingSound: {fileID: 8300000, guid: 70f3e363dfb024f6e81e51f79582b2fe, type: 3}
+  disappearSound: {fileID: 8300000, guid: 7406bea1e2b034fb5b6b1b55d0adfa53, type: 3}
 --- !u!212 &641835387757462706
 SpriteRenderer:
   m_ObjectHideFlags: 0
