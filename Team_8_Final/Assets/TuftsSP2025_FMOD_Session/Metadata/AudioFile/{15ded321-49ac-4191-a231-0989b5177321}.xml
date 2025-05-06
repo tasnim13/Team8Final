@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{15ded321-49ac-4191-a231-0989b5177321}">
+		<property name="assetPath">
+			<value>Achievement_earned.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>10.120272108843537</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b9c51688-93c7-45b4-9d40-df04aa3a15b6}</destination>
+		</relationship>
+	</object>
+</objects>

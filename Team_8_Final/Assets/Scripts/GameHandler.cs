@@ -3,12 +3,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 public class GameHandler : MonoBehaviour
 {
     private GameObject player;
     public static int playerHealth = 100;
     public int StartPlayerHealth = 100;
+    public int numLives = 3;    
     public static bool hasKey = false;
 
     public static int gotTokens = 0;
@@ -93,6 +95,9 @@ public class GameHandler : MonoBehaviour
     public void playerGetHit(int damage)
     {
         playerHealth -= damage;
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Take_Damage"); // play damage sound
+
         /*if (damage > 0)
         {
             player.GetComponent<PlayerHurt>().playerHit();
@@ -112,6 +117,15 @@ public class GameHandler : MonoBehaviour
         player.GetComponent<PlayerHurt>().playerDead();
         player.GetComponent<PlayerMove>().playerDie();
         lastLevelDied = sceneName;
+        numLives -= 1;
+
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isCombat", 0f, true); // reset any music layering that may have been happening
+
+        // TODO: what is this
+        // ankhIcons[numLives].enabled = false;
+
+
+        // TODO: update stuff
         StartCoroutine(DeathPause());
     }
 

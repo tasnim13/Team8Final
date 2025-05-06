@@ -1,4 +1,5 @@
 using UnityEngine;
+using FMODUnity;
 
 public class EnemyElephant : EnemyParent {
     [Header("Elephant-Specific Stats")]
@@ -17,14 +18,22 @@ public class EnemyElephant : EnemyParent {
         Vector2 moveDirection = Vector2.zero;
         bool shouldMove = false;
 
+        float distToPlayer = Vector3.Distance(transform.position, target.position);
         if (IsPlayerInSight()) {
             moveDirection = (target.position - transform.position).normalized;
             Vector2 moveDelta = moveDirection * movementSpeed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + moveDelta);
             shouldMove = true;
 
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isCombat", 1f, false); // music: fades in intense percussion when an enemy sees you
+
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
+        }
+        else if (distToPlayer <= (sightRange + 0.5f))
+        {
+            // purely for audio. fades out intense percussion when moving out of sight range. to account for multiple distToPlayer instances at the same time, the trigger for fading everything out is a radius around the sight range
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isCombat", 0f, false);
         }
 
         //Animator blend tree inputs

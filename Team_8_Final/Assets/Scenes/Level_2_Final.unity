@@ -1344,37 +1344,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialText: The elephant charges when it sees you, tread carefully.
   extraArtwork: {fileID: 0}
---- !u!1 &415793809
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 415793810}
-  m_Layer: 0
-  m_Name: bruh momento
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &415793810
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 415793809}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.35567078, y: -0.06819858, z: -44.298183}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &418613826
 GameObject:
   m_ObjectHideFlags: 0
@@ -4720,8 +4689,47 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5843146788183640170, guid: ce496122bb74b46b9af7a2a106d31fd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1765795418}
   m_SourcePrefab: {fileID: 100100000, guid: ce496122bb74b46b9af7a2a106d31fd7, type: 3}
+--- !u!1 &1765795417 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5843146788183640170, guid: ce496122bb74b46b9af7a2a106d31fd7, type: 3}
+  m_PrefabInstance: {fileID: 1765795416}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1765795418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765795417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 337922486
+      Data2: 1176748854
+      Data3: -2004916074
+      Data4: 288438035
+    Path: event:/MX/Level 1
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &1766743266 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4228527223274461468, guid: 6c94f7584fadf4faf9f004946a43bcfc, type: 3}

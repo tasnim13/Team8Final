@@ -25,15 +25,25 @@ public class EnemyBeetle : EnemyParent {
 
         Vector2 moveDirection = Vector2.zero;
         float distToPlayer = Vector3.Distance(transform.position, target.position);
-
+        
         if (distToPlayer <= sightRange) {
             moveDirection = (target.position - transform.position).normalized;
             Vector2 newPosition = rb.position + moveDirection * movementSpeed * Time.fixedDeltaTime;
             rb.MovePosition(newPosition);
 
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isCombat", 1f, false); // music: fades in intense percussion when an enemy sees you
+
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
         }
+        else if (distToPlayer <= (sightRange + 0.5f))
+        {
+            // purely for audio. fades out intense percussion when moving out of sight range. to account for multiple distToPlayer instances at the same time, the trigger for fading everything out is a radius around the sight range
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isCombat", 0f, false);
+        }
+
+
+        // Debug.Log("distToPlayer:" + distToPlayer);
 
         anim.SetFloat("inputX", moveDirection.x);
         anim.SetFloat("inputY", moveDirection.y);

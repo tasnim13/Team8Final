@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// using UnityEditor.animations;
+using FMODUnity;
 
 public class PlayerForms : MonoBehaviour {
 
@@ -80,12 +82,16 @@ public class PlayerForms : MonoBehaviour {
         /* if (GameHandler.transformCooldownOver) {
             if (GameHandler.formUnlocked[0] && Input.GetKeyDown("1")) {
                 StartCoroutine(ChangeFormWithCooldown(1, true));
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Swap");
             } else if (GameHandler.formUnlocked[1] && Input.GetKeyDown("2")) {
                 StartCoroutine(ChangeFormWithCooldown(2, true));
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Swap");
             } else if (GameHandler.formUnlocked[2] && Input.GetKeyDown("3")) {
                 StartCoroutine(ChangeFormWithCooldown(3, true));
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Swap");
             } else if (GameHandler.formUnlocked[3] && Input.GetKeyDown("4")) {
                 StartCoroutine(ChangeFormWithCooldown(4, true));
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Swap");
             }
         }
 

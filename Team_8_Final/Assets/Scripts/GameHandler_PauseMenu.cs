@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using FMODUnity;
+using FMODUnity;
 
 public class GameHandler_PauseMenu : MonoBehaviour {
 
@@ -65,22 +67,24 @@ public class GameHandler_PauseMenu : MonoBehaviour {
                                 Debug.Log("pauseMenuUI has no Canvas component.");
                         }
                         Time.timeScale = 0f;
-                        GameisPaused = true;
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/Logic/Pause");
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Logic/Pause");
+                GameisPaused = true;
                 } else {
                         Resume();
                 }
         }
 
-
-
         public void Resume(){
                 pauseMenuUI.SetActive(false);
                 Time.timeScale = 1f;
                 GameisPaused = false;
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Logic/Unpause");
         }
 
         public void SetLevel(float sliderValue){
-                mixer.SetFloat("MusicVolume", Mathf.Log10 (sliderValue) * 20);
-                volumeLevel = sliderValue;
+                //mixer.SetFloat("MusicVolume", Mathf.Log10 (sliderValue) * 20);
+                //volumeLevel = sliderValue;
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("MasterVol", sliderValue, false);
         }
 }

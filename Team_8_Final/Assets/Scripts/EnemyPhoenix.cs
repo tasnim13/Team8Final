@@ -58,9 +58,21 @@ public class EnemyPhoenix : EnemyParent {
             Vector2 newPosition = rb.position + moveDirection * movementSpeed * Time.fixedDeltaTime;
             rb.MovePosition(newPosition);
 
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isCombat", 1f, false); // music: fades in intense percussion when an enemy sees you
+
             float targetAngle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
             Quaternion desiredRotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0f, 0f, targetAngle - 90f), rotationSpeed * Time.fixedDeltaTime);
             transform.rotation = desiredRotation;
+        }
+        else if (distToPlayer <= (sightRange + 0.5f))
+        {
+            // purely for audio. fades out intense percussion when moving out of sight range. to account for multiple distToPlayer instances at the same time, the trigger for fading everything out is a radius around the sight range
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isCombat", 0f, false);
+        }
+        else if (distToPlayer <= (sightRange + 0.5f))
+        {
+            // purely for audio. fades out intense percussion when moving out of sight range. to account for multiple distToPlayer instances at the same time, the trigger for fading everything out is a radius around the sight range
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isCombat", 0f, false);
         }
 
         anim.SetFloat("inputX", moveDirection.x);

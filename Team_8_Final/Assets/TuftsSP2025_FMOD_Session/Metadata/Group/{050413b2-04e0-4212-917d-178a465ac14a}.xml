@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{050413b2-04e0-4212-917d-178a465ac14a}">
+		<property name="name">
+			<value>MX</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{1b9195fa-48df-46f3-bc13-feb53afa99f7}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{055934c2-1695-4e8c-9980-073883124995}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{c8bdfd0f-58b3-4aed-996a-b5630a7309ad}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{1b9195fa-48df-46f3-bc13-feb53afa99f7}">
+		<relationship name="effects">
+			<destination>{a4677890-aa4a-4eca-865a-8f935332e4a2}</destination>
+			<destination>{35a116ff-420b-4ade-8cdb-b1437d3c9d6a}</destination>
+			<destination>{5ca5ba15-4d5d-4058-b934-433215d9034b}</destination>
+			<destination>{41d5ebbf-d631-4391-aecd-b6efc9b417a1}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{055934c2-1695-4e8c-9980-073883124995}" />
+	<object class="CompressorEffect" id="{a4677890-aa4a-4eca-865a-8f935332e4a2}">
+		<property name="threshold">
+			<value>-15.5</value>
+		</property>
+		<relationship name="sidechains">
+			<destination>{e84babc1-7cc4-4e61-9e00-9264b2f0f2ce}</destination>
+		</relationship>
+	</object>
+	<object class="CompressorEffect" id="{35a116ff-420b-4ade-8cdb-b1437d3c9d6a}">
+		<property name="threshold">
+			<value>-24</value>
+		</property>
+		<property name="ratio">
+			<value>1.45000005</value>
+		</property>
+		<relationship name="sidechains">
+			<destination>{6d9aaef1-6c8c-42d2-950d-bf5f6bc8ff7d}</destination>
+		</relationship>
+	</object>
+	<object class="CompressorEffect" id="{5ca5ba15-4d5d-4058-b934-433215d9034b}">
+		<property name="threshold">
+			<value>-39.5</value>
+		</property>
+		<property name="ratio">
+			<value>50</value>
+		</property>
+		<property name="attackTime">
+			<value>42</value>
+		</property>
+		<relationship name="sidechains">
+			<destination>{b3b37eca-4388-4b14-a249-3e81342ff70c}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusFader" id="{41d5ebbf-d631-4391-aecd-b6efc9b417a1}" />
+</objects>

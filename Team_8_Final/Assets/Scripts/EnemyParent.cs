@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class EnemyParent : MonoBehaviour {
     [Header("Hide In Inspector")]
@@ -45,6 +46,9 @@ public class EnemyParent : MonoBehaviour {
     public GameObject attackEffect;
     public float attackEffectDistance = 0.5f;
     private SpriteRenderer attackEffectRenderer;
+
+    // for music layering
+    private bool isCombat = false;
 
     public virtual void Start() {
         if (enemyCollider == null) enemyCollider = GetComponent<CircleCollider2D>();
@@ -98,6 +102,8 @@ public class EnemyParent : MonoBehaviour {
             Vector2 moveDelta = moveDirection * movementSpeed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + moveDelta);
 
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isCombat", 1f, false); // music: fades in intense percussion when an enemy sees you. included as a default in case some enemies don't override FixedUpdate
+
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
         }
@@ -135,6 +141,8 @@ public class EnemyParent : MonoBehaviour {
         isDead = true;
 
         Debug.Log($"{gameObject.name} is dead.");
+
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("isCombat", 0f, false); // music: fades out intense percussion when enemy dies. if multiple enemies are aggro'd at the same time, this shouldn't happen due to FixedUpdate
 
         isAttacking = false;
         rb.velocity = Vector2.zero;

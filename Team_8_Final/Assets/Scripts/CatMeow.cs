@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class CatMeow : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class CatMeow : MonoBehaviour
         {
             if (audioSource != null && audioSource.clip != null)
             {
-                audioSource.Play();
+                //audioSource.Play();
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Meow");
             }
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using FMODUnity;
 
 public class Amulet : MonoBehaviour{
 
@@ -30,7 +31,8 @@ public class Amulet : MonoBehaviour{
                   GetComponent<Collider2D>().enabled = false;
                   // TODO: the audio clip here gets cut off. Also
                   // we're using a TF2 one right now
-                  GetComponent<AudioSource>().Play();
+                  //GetComponent<AudioSource>().Play();
+                  FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Pickup");
                   StartCoroutine(DestroyThis());
 
                   switch (amuletID) {

@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
-public class InteractableDoor : MonoBehaviour
-{
+public class InteractableDoor : MonoBehaviour{
     public string NextLevel = "MainMenu";
     public GameObject msgPressE;
     public GameObject msgNeedKey;
@@ -13,13 +13,16 @@ public class InteractableDoor : MonoBehaviour
     public bool canPressE = true;
 
     private float msgTimer = 0f;
-    private float msgDuration = 2f; 
+    private float msgDuration = 2f;
+
+    public FMOD.Studio.Bus musicBus;
 
     void Start()
     {
         gh = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         msgPressE.SetActive(false);
         msgNeedKey.SetActive(false);
+        musicBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/MX");
     }
 
     void Update()
