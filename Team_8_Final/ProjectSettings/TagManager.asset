@@ -15,6 +15,7 @@ TagManager:
   - PlayerFormsUI
   - TutorialUI
   - Cat
+  - PhoenixDamageZone
   layers:
   - Default
   - TransparentFX

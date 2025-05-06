@@ -3216,19 +3216,40 @@ PrefabInstance:
       value: OverworldMap
       objectReference: {fileID: 0}
     - target: {fileID: 7062917767557962349, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
+      propertyPath: msgPressE
+      value: 
+      objectReference: {fileID: 2871241934106149430}
+    - target: {fileID: 7062917767557962349, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
       propertyPath: msgNeedKey
       value: 
       objectReference: {fileID: 2871241934106149429}
     - target: {fileID: 9159894910179382542, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
+      propertyPath: m_Size.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159894910179382542, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
+      propertyPath: m_Size.y
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159894910179382542, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: be1d7f93494fb49e8920c78f0e9b61a3, type: 3}
+    - target: {fileID: 9159894910179382542, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
 --- !u!1 &2871241934106149429 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4523557774488327825, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
+  m_PrefabInstance: {fileID: 2871241934106149428}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2871241934106149430 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6533691323657592051, guid: 12ba6409240ac4f69b5e0fab2bf93c88, type: 3}
   m_PrefabInstance: {fileID: 2871241934106149428}
