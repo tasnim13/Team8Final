@@ -316,7 +316,7 @@ MonoBehaviour:
   flaconProjSpd: 10
   canSpecial: 1
   useSpecial: 0
-  specialCooldown: 15
+  specialCooldown: 20
   messageEffect: {fileID: 3082663712917033421}
 --- !u!50 &6246753547471829311
 Rigidbody2D:
