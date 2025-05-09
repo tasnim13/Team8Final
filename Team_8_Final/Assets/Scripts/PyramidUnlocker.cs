@@ -17,7 +17,8 @@ public class PyramidUnlocker : MonoBehaviour
 
     void Update()
     {
-        if (!hasUnlocked && AmuletManager.Instance.totalAmuletsCollected >= amuletsRequiredToUnlock)
+        // if (!hasUnlocked && AmuletManager.Instance.totalAmuletsCollected >= amuletsRequiredToUnlock)
+        if (!hasUnlocked && GameHandler.totalAmuletsCollected >= amuletsRequiredToUnlock)
         {
             hasUnlocked = true;
             UpdateVisual();

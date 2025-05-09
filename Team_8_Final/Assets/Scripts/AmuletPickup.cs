@@ -16,6 +16,7 @@ public class AmuletPickup : MonoBehaviour
         if (GameHandler.levelCompleted[levelNum - 1])
         {
             alreadyCollected = true;
+            GameHandler.hasKey = true;
             gameObject.SetActive(false);
         }
     }
@@ -26,7 +27,9 @@ public class AmuletPickup : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            AmuletManager.Instance.CollectAmulet();
+            // AmuletManager.Instance.CollectAmulet();
+            GameHandler.totalAmuletsCollected++;
+            Debug.Log("Amulet collected! Total: " + GameHandler.totalAmuletsCollected);
 
             // Mark this level as completed
             // int levelIndex = SceneManager.GetActiveScene().buildIndex;

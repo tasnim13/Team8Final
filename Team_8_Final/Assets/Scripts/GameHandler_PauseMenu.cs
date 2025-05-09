@@ -15,21 +15,21 @@ public class GameHandler_PauseMenu : MonoBehaviour {
         private Slider sliderVolumeCtrl;
 
         void Awake(){
-        GameisPaused = false; // RESET static flag when scene loads
+                GameisPaused = false; // RESET static flag when scene loads
 
-        if (pauseMenuUI == null) {
-                Debug.LogWarning("pauseMenuUI was not assigned in the Inspector.");
-        } else {
-                pauseMenuUI.SetActive(false); // Ensure it starts hidden
-        }
+                if (pauseMenuUI == null) {
+                        Debug.LogWarning("pauseMenuUI was not assigned in the Inspector.");
+                } else {
+                        pauseMenuUI.SetActive(false); // Ensure it starts hidden
+                }
 
-        SetLevel(volumeLevel);
+                SetLevel(volumeLevel);
 
-        GameObject sliderTemp = GameObject.FindWithTag("PauseMenuSlider");
-        if (sliderTemp != null){
-                sliderVolumeCtrl = sliderTemp.GetComponent<Slider>();
-                sliderVolumeCtrl.value = volumeLevel;
-        }
+                GameObject sliderTemp = GameObject.FindWithTag("PauseMenuSlider");
+                if (sliderTemp != null){
+                        sliderVolumeCtrl = sliderTemp.GetComponent<Slider>();
+                        sliderVolumeCtrl.value = volumeLevel;
+                }
         }
 
         void Start(){
@@ -39,6 +39,7 @@ public class GameHandler_PauseMenu : MonoBehaviour {
 
         void Update(){
                 if (Input.GetKeyDown(KeyCode.Escape)){
+                        Debug.Log("PRESSING ESCAPE");
                         if (GameisPaused){
                                 Resume();
                         }
@@ -49,6 +50,7 @@ public class GameHandler_PauseMenu : MonoBehaviour {
         }
 
         public void PauseButton() {
+                Debug.Log("PAUSE BUTTON PRESSED");
                 if (GameisPaused) {
                         Resume();
                 } else {
@@ -57,6 +59,7 @@ public class GameHandler_PauseMenu : MonoBehaviour {
         }
 
         public void Pause() {
+                Debug.Log("PAUSING");
                 if (!GameisPaused) {
                         pauseMenuUI.SetActive(true);
                         Debug.Log("pauseMenuUI activeSelf: " + pauseMenuUI.activeSelf);
@@ -68,8 +71,7 @@ public class GameHandler_PauseMenu : MonoBehaviour {
                         }
                         Time.timeScale = 0f;
                         FMODUnity.RuntimeManager.PlayOneShot("event:/Logic/Pause");
-                FMODUnity.RuntimeManager.PlayOneShot("event:/Logic/Pause");
-                GameisPaused = true;
+                        GameisPaused = true;
                 } else {
                         Resume();
                 }
