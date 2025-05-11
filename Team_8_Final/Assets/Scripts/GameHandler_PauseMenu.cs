@@ -12,7 +12,10 @@ public class GameHandler_PauseMenu : MonoBehaviour {
         public GameObject pauseMenuUI;
         public AudioMixer mixer;
         public static float volumeLevel = 1.0f;
-        private Slider sliderVolumeCtrl;
+        // private Slider sliderVolumeCtrl;
+        public Slider sliderVolumeCtrl;
+
+        public static float currVol = 1.0f;
 
         void Awake(){
                 GameisPaused = false; // RESET static flag when scene loads
@@ -23,46 +26,59 @@ public class GameHandler_PauseMenu : MonoBehaviour {
                         pauseMenuUI.SetActive(false); // Ensure it starts hidden
                 }
 
-                SetLevel(volumeLevel);
+                SetLevel(currVol);
 
-                GameObject sliderTemp = GameObject.FindWithTag("PauseMenuSlider");
-                if (sliderTemp != null){
-                        sliderVolumeCtrl = sliderTemp.GetComponent<Slider>();
-                        sliderVolumeCtrl.value = volumeLevel;
-                }
+                // GameObject sliderTemp = GameObject.FindGameObjectWithTag("PauseMenuSlider");
+                // if (sliderTemp != null){
+                //         sliderVolumeCtrl = sliderTemp.GetComponent<Slider>();
+                sliderVolumeCtrl.value = currVol;
+                // }
         }
 
         void Start(){
                 pauseMenuUI.SetActive(false);
                 GameisPaused = false;
+                SetLevel(currVol);
+                // Slider slider = GameObject.FindGameObjectWithTag("PauseMenuSlider").GetComponent<Slider>();
+                // slider.value = currVol;
+
+                // GameObject sliderTemp = GameObject.FindGameObjectWithTag("PauseMenuSlider");
+                // Debug.Log("TRYING TO FIND SLIDER");
+                // if (sliderTemp != null){
+                //         Debug.Log("FOUND SLIDER");
+                //         sliderVolumeCtrl = sliderTemp.GetComponent<Slider>();
+                sliderVolumeCtrl.value = currVol;
+                // }
         }
 
         void Update(){
                 if (Input.GetKeyDown(KeyCode.Escape)){
                         Debug.Log("PRESSING ESCAPE");
-                        if (GameisPaused){
-                                Resume();
-                        }
-                        else{
-                                Pause();
-                        }
+                        Pause();
+                        // if (GameisPaused){
+                        //         Resume();
+                        // }
+                        // else{
+                        //         Pause();
+                        // }
                 }
         }
 
         public void PauseButton() {
                 Debug.Log("PAUSE BUTTON PRESSED");
-                if (GameisPaused) {
-                        Resume();
-                } else {
-                        Pause();
-                }
+                Pause();
+                // if (GameisPaused) {
+                //         Resume();
+                // } else {
+                //         Pause();
+                // }
         }
 
         public void Pause() {
                 Debug.Log("PAUSING");
                 if (!GameisPaused) {
+                        GameisPaused = true;
                         pauseMenuUI.SetActive(true);
-                        Debug.Log("pauseMenuUI activeSelf: " + pauseMenuUI.activeSelf);
                         Canvas canvas = pauseMenuUI.GetComponent<Canvas>();
                         if (canvas != null) {
                                 Debug.Log("pauseMenuUI canvas enabled: " + canvas.enabled);
@@ -71,10 +87,10 @@ public class GameHandler_PauseMenu : MonoBehaviour {
                         }
                         Time.timeScale = 0f;
                         FMODUnity.RuntimeManager.PlayOneShot("event:/Logic/Pause");
-                        GameisPaused = true;
                 } else {
                         Resume();
                 }
+                Debug.Log("pauseMenuUI activeSelf: " + pauseMenuUI.activeSelf);
         }
 
         public void Resume(){
@@ -85,8 +101,9 @@ public class GameHandler_PauseMenu : MonoBehaviour {
         }
 
         public void SetLevel(float sliderValue){
+                currVol = sliderValue;
                 //mixer.SetFloat("MusicVolume", Mathf.Log10 (sliderValue) * 20);
                 //volumeLevel = sliderValue;
-                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("MasterVol", sliderValue, false);
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("MasterVol", currVol, false);
         }
 }

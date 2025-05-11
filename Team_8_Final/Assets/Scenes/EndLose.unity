@@ -248,6 +248,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e4c38c84b71f4c749a6e98889d72cf8, type: 3}
+--- !u!114 &78512735 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4297720296556838818, guid: 0e4c38c84b71f4c749a6e98889d72cf8, type: 3}
+  m_PrefabInstance: {fileID: 78512734}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &78512736 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7395008335827508169, guid: 0e4c38c84b71f4c749a6e98889d72cf8, type: 3}
@@ -1131,6 +1142,10 @@ PrefabInstance:
       propertyPath: pauseMenuUI
       value: 
       objectReference: {fileID: 78512736}
+    - target: {fileID: -1374926896474140559, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
+      propertyPath: sliderVolumeCtrl
+      value: 
+      objectReference: {fileID: 78512735}
     - target: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
       propertyPath: healthText
       value: 

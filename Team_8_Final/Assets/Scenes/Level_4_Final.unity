@@ -1503,6 +1503,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9194594033716512178, guid: 86eebb5ce7b82480b9f474917e212d0d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 671069954}
+    - target: {fileID: 9194594033716512178, guid: 86eebb5ce7b82480b9f474917e212d0d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
     - target: {fileID: 9206242552543165384, guid: 86eebb5ce7b82480b9f474917e212d0d, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2643,6 +2651,10 @@ PrefabInstance:
       propertyPath: pauseMenuUI
       value: 
       objectReference: {fileID: 1797860561}
+    - target: {fileID: -1374926896474140559, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
+      propertyPath: sliderVolumeCtrl
+      value: 
+      objectReference: {fileID: 1133880622}
     - target: {fileID: 2530668179022041205, guid: ad3fa7532c3264126a0f33439d62e656, type: 3}
       propertyPath: healthText
       value: 
@@ -4270,6 +4282,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6170092378104679954, guid: 85fc87afbb32b44699783252e8e5c925, type: 3}
   m_PrefabInstance: {fileID: 1102685418}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1133880622 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4297720296556838818, guid: 0e4c38c84b71f4c749a6e98889d72cf8, type: 3}
+  m_PrefabInstance: {fileID: 1446204714}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1195700903
 PrefabInstance:
   m_ObjectHideFlags: 0
